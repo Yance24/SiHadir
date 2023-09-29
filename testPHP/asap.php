@@ -7,9 +7,8 @@
 
 <body>
     <?php
-    echo "tes";
+    echo "asap ganteng";
     ?>
 </body>
 
 </html>
-dwikk

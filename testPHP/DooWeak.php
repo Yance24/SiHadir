@@ -7,9 +7,8 @@
 
 <body>
     <?php
-    echo "tes";
+    echo "Assalamualaikum";
     ?>
 </body>
 
 </html>
-dwikk
