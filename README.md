@@ -1,6 +1,6 @@
 # SiHadir - Aplikasi Presensi Berbasis Web dan Mobile
 
-![Asset\Logo\Sihadir.png](link_ke_logo.png) //Placeholder
+![SiHadir](Asset\Logo\Sihadir.png)
 
 SiHadir adalah aplikasi presensi berbasis web dan mobile yang bertujuan untuk mempermudah pekerjaan admin jurusan akademik dalam pembuatan rekap data kehadiran mahasiswa secara otomatis. Proyek ini dikembangkan oleh mahasiswa semester 5 kelas 5A di Politeknik Negeri Pontianak.
 
