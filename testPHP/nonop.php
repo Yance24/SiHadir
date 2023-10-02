@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Contoh Program PHP nonop</title>
 </head>
+
 <body>
     <?php
     // Variabel
@@ -40,7 +42,8 @@
     }
 
     // Fungsi
-    function tambah($a, $b) {
+    function tambah($a, $b)
+    {
         return $a + $b;
     }
 
@@ -57,16 +60,19 @@
     echo "</ul>";
 
     // Class
-    class Manusia {
+    class Manusia
+    {
         public $nama;
         public $umur;
 
-        public function __construct($nama, $umur) {
+        public function __construct($nama, $umur)
+        {
             $this->nama = $nama;
             $this->umur = $umur;
         }
 
-        public function perkenalan() {
+        public function perkenalan()
+        {
             echo "<p>Halo, nama saya {$this->nama} dan saya berumur {$this->umur} tahun.</p>";
         }
     }
@@ -75,4 +81,5 @@
     $orang->perkenalan();
     ?>
 </body>
+
 </html>
