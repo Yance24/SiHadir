@@ -2,6 +2,19 @@
 $globalVar = 10;
 $initvalue = $globalVar;
 
+class classprivate
+{
+    private $privatvar = 100;
+
+    function getivpriv()
+    {
+        return $this->privatvar;
+    }
+    function modpriv($newprivate)
+    {
+        return $this->privatvar = $newprivate;
+    }
+}
 function accessGlobal()
 {
     global $globalVar;
@@ -24,6 +37,7 @@ function resetglobal()
     global $globalVar, $initvalue;
     $globalVar = $initvalue;
 }
+//global
 accessGlobal();
 modifyGlobal();
 accessGlobal();
@@ -32,4 +46,10 @@ accessGlobal();
 modifyGlobal();
 accessGlobal();
 resetglobal();
-echo "after reset " . $globalVar;
+echo "after reset " . $globalVar . "<br>";
+
+//private
+$objectprivate = new classprivate();
+echo "nilai object private " . $objectprivate->getivpriv() . "<br>";
+$objectprivate->modpriv(200);
+echo "Nlai object private setelah dirubah " . $objectprivate->getivpriv();
