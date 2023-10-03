@@ -49,6 +49,7 @@
 
     ?>
 
+    <?php echo $_SERVER["PHP_SELF"]; ?>
 
 
     <h2>Halaman Login</h2>
@@ -62,6 +63,8 @@
         <input type="password" id="password" name="password" required><br><br>
 
         <input type="submit" value="Login">
+
+
     </form>
 </body>
 
