@@ -46,9 +46,9 @@ Aplikasi SiHadir memiliki fitur utama berikut:
 
 SiHadir dibangun dengan menggunakan berbagai teknologi, termasuk:
 
-- Bahasa Pemrograman: [Nama Bahasa Pemrograman]
-- Framework: [Nama Framework]
-- Database: [Nama Database]
+- Bahasa Pemrograman: PHP
+- Framework: LARAVEL 10
+- Database: mySQL
 - Teknologi Lainnya: [Nama Teknologi Lainnya]
 
 ## Instalasi
@@ -56,6 +56,6 @@ SiHadir dibangun dengan menggunakan berbagai teknologi, termasuk:
 Untuk menginstal SiHadir di lingkungan lokal, ikuti langkah-langkah berikut:
 
 ```bash
-git clone https://github.com/username/sihadir.git
+git clone https://github.com/Yance24/SiHadir
 cd sihadir
 npm install
