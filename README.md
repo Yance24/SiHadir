@@ -46,10 +46,9 @@ Aplikasi SiHadir memiliki fitur utama berikut:
 
 SiHadir dibangun dengan menggunakan berbagai teknologi, termasuk:
 
-- Bahasa Pemrograman: PHP
-- Framework: LARAVEL 10
-- Database: mySQL
-- Teknologi Lainnya: [Nama Teknologi Lainnya]
+- Bahasa Pemrograman: PHP, JavaScript
+- Framework: LARAVEL 10, Bootstrap 5
+- Database: mySQL/MySQLi
 
 ## Instalasi
 
