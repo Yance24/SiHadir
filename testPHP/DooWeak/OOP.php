@@ -1,49 +1,65 @@
 <?php
-class Animal
+
+// Kelas dasar untuk merepresentasikan kendaraan
+class Vehicle
 {
-    protected $name;
-    protected $species;
+    protected $brand;
+    protected $model;
 
-    public function __construct($name, $species)
+    public function __construct($brand, $model)
     {
-        $this->name = $name;
-        $this->species = $species;
+        $this->brand = $brand;
+        $this->model = $model;
     }
 
-    public function getName()
+    public function startEngine()
     {
-        return $this->name;
+        return "{$this->brand} {$this->model}'s engine is started!";
     }
 
-    public function getSpecies()
+    public static function honk()
     {
-        return $this->species;
-    }
-
-    public function makeSound()
-    {
+        return "Honk! Honk!";
     }
 }
 
-class Cat extends Animal
+// Kelas warisan untuk mobil
+class Car extends Vehicle
 {
-    public function makeSound()
+    private $numDoors;
+
+    public function __construct($brand, $model, $numDoors)
     {
-        return "Meow!";
+        parent::__construct($brand, $model);
+        $this->numDoors = $numDoors;
+    }
+
+    public function openDoors()
+    {
+        return "{$this->brand} {$this->model} has {$this->numDoors} doors open.";
     }
 }
 
-class Dog extends Animal
+// Kelas warisan untuk sepeda motor
+class Motorcycle extends Vehicle
 {
-    public function makeSound()
+    public function startEngine()
     {
-        return "Woof!";
+        return "{$this->brand} {$this->model}'s motorcycle engine is roaring!";
     }
 }
 
-$cat = new Cat("Whiskers", "Kucing");
-$dog = new Dog("Rex", "Anjing");
+// Polimorfisme dalam tindakan
+function performAction(Vehicle $vehicle)
+{
+    echo $vehicle->startEngine() . "<br>";
+}
 
+// Contoh penggunaan
+$car = new Car("Toyota", "Camry", 4);
+$motorcycle = new Motorcycle("Honda", "CBR 600RR");
 
-echo $cat->getName() . " (" . $cat->getSpecies() . ") says: " . $cat->makeSound() . "<br>";
-echo $dog->getName() . " (" . $dog->getSpecies() . ") says: " . $dog->makeSound() . "<br>";
+performAction($car);
+performAction($motorcycle);
+
+echo Vehicle::honk(); // Menggunakan metode statis
