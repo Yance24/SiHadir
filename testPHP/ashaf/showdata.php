@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -13,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve the id_user from the POST request
         $id_user = $_POST["id_user"];
 
-        // Query the mahasiswa table with the provided id_user
+
         $sql = "SELECT * FROM mahasiswa WHERE id_user = :id_user";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
@@ -25,12 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Name: " . $row['nama'] . "<br>";
                 echo "Kelas: " . $row['kelas'] . "<br>";
                 echo "Kelamin: " . $row['kelamin'] . "<br>";
-                // Add more fields as needed
             }
         } else {
-            echo "No records found for ID User: $id_user";
+            $_SESSION["status"] = "failed";
+            header("Location: testipunt.php");
+            $connection = null;
+            exit();
         }
     } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
     }
 }
