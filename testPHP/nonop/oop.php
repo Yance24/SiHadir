@@ -11,7 +11,7 @@ class Person {
         $this->age = $age;
     }
 
-    //son' untuk menampilkan informasi
+    // Metode atau fungsi kelas 'Person' untuk menampilkan informasi
     public function displayInfo() {
         echo "Nama: " . $this->name . "<br>";
         echo "Usia: " . $this->age . " tahun<br>";
