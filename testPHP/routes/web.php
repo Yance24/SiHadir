@@ -22,5 +22,21 @@ Route::get('/mainpage', function(){
     return view('mainpage');
 });
 
+Route::get('/dosen/change-password', function(){
+    return view('dosen.change-password');
+});
+
+Route::get('/dosen/login', function(){
+    return view('dosen.login');
+});
+
+Route::get('/mahasiswa/login', function(){
+    return view('mahasiswa.login');
+});
+
+Route::get('/dosen/permits', function(){
+    return view('dosen.permits');
+});
+
 //Route untuk CRUD
 Route::get('/sihadir','App\Http\Controllers\SiHadirController@index');
