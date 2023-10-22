@@ -21,12 +21,24 @@
             margin-bottom: 50px;
         }
 
-
         .sidebar {
             width: 250px;
             min-height: 100vh;
             background-color: #78A2CC;
             color: white;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
 
         .header-box {
@@ -34,7 +46,7 @@
         }
 
         .custom-profile {
-            background: url("{{ asset('images/bg-main.jpeg') }}");
+            background: url("https://github.com/pddccvv/sihadir/blob/main/public/images/bg-main.jpeg?raw=true");
             background-position: center;
             background-size: cover;
             position: relative;
@@ -48,16 +60,26 @@
             top: 0;
             left: 0;
             width: 250px;
-            /* Match the width of the sidebar */
             height: 100%;
             opacity: 0.2;
-            /* Adjust the opacity as needed */
             z-index: -1;
         }
 
         @media screen and (max-width: 768px) {
             .sidebar {
-                display: none;
+                transform: translateX(-250px);
+                /* Hide the sidebar */
+                margin-top: 100px;
+                z-index: 2;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+                /* Show the sidebar */
+            }
+
+            .overlay.active {
+                display: block;
             }
 
             .content {
@@ -67,32 +89,29 @@
             .appbar {
                 display: flex;
             }
-
-
-
         }
     </style>
 </head>
 
 <body>
-    {{-- APP BAR MOBILE VERSION --}}
+    <!-- APP BAR MOBILE VERSION -->
     <div class="appbar fixed-top overflow-hidden">
         <div class="mt-5 ps-2">
-            <i class="fa-solid fa-arrow-left fa-xl"></i>
+            <i class="fas fa-bars fa-xl" onclick="toggleSidebar()"></i>
         </div>
         <div class="mx-auto mt-5">
             <h1 class="">Sihadir</h1>
         </div>
     </div>
-    {{-- END --}}
+    <!-- END -->
 
-    <div class="main-container d-flex">
+    <div class="container-fluid">
         <!-- SIDEBAR -->
-        <div class="sidebar" id="side-nav">
+        <div class="sidebar row" id="side-nav">
             <div class="header-box custom-profile mb-3">
                 <div class="mb-2" style="z-index: 1">
-                    <img src="{{ asset('images/profile.png') }}" alt="profile" class="rounded-circle" width="100px"
-                        height="100px">
+                    <img src="https://github.com/pddccvv/sihadir/blob/main/public/images/profile.png?raw=true'"
+                        alt="profile" class="rounded-circle" width="100px" height="100px">
                 </div>
                 <div class="" style="z-index: 2">
                     <span class="fw-bold">Ferry Faisal, S.ST., M.T.</span><br>
@@ -101,15 +120,19 @@
             </div>
             <div class="d-flex flex-column gap-3 p-2">
                 <a href="/" class="text-decoration-none text-white">
-                    <img src="{{ asset('icons/absensi.png') }}" alt="" class=" nav-custom"> Absensi</a>
+                    <img src="https://github.com/pddccvv/sihadir/blob/main/public/icons/absensi.png?raw=true"
+                        alt="" class=" nav-custom"> Absensi</a>
                 <a href="/" class="text-decoration-none text-white">
-                    <img src="{{ asset('icons/perizinan.png') }}" alt="" class=" nav-custom"> Perizinan</a>
+                    <img src="https://github.com/pddccvv/sihadir/blob/main/public/icons/perizinan.png?raw=true"
+                        alt="" class=" nav-custom"> Perizinan</a>
                 <a href="/" class="text-decoration-none text-white">
-                    <img src="{{ asset('icons/change-password.svg') }}" alt="" class=" nav-custom"> Ganti
+                    <img src="https://raw.githubusercontent.com/pddccvv/sihadir/35032d3c03b9de2ddc69bb2bdb356af33c8cc8f0/public/icons/change-password.svg"
+                        alt="" class=" nav-custom"> Ganti
                     Password</a>
                 <hr>
                 <a href="/" class="text-decoration-none text-white">
-                    <img src="{{ asset('icons/logout.svg') }}" alt="" class=" nav-custom"> Logout</a>
+                    <img src="https://raw.githubusercontent.com/pddccvv/sihadir/35032d3c03b9de2ddc69bb2bdb356af33c8cc8f0/public/icons/logout.svg"
+                        alt="" class=" nav-custom"> Logout</a>
             </div>
         </div>
         <!-- END -->
@@ -123,25 +146,24 @@
                             <div class="row">
                                 <div id="content" class="content">
                                     <!-- CURRENT JADWAL -->
-                                    <div class="col-sm-11 p-5 flex justify-content-center justify-content-lg-start border shadow rounded-3 mb-5"
+                                    <div class="col-sm-15 p-5 flex justify-content-center justify-content-lg-start border shadow rounded-3 mb-5"
                                         style="" data-bs-toggle="collapse" data-bs-target="#collapseExample"
                                         aria-expanded="false" aria-controls="collapseExample">
                                         <h1 class="ml-lg-2">PBL</h1>
                                         <h1 class="ml-lg-2">07.00 - 12.00</h1>
                                         <hr>
-                                    
                                     </div>
-                                    {{-- END --}}
+                                    <!-- END -->
+                                    <!-- NEXT JADWAL -->
+                                    <div class="col-sm-15 p-5 flex justify-content-center justify-content-lg-start border shadow mb-5"
+                                        style="border-radius: 15px;" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseExample" aria-expanded="false"
+                                        aria-controls="collapseExample">
+                                        <h1 class="ml-lg-2">PEMOGRAMAN WEB</h1>
+                                        <h1 class="ml-lg-2">07.00 - 12.00</h1>
+                                        <hr>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <!-- NEXT JADWAL -->
-                            <div class="col-sm-11 p-5 flex justify-content-center justify-content-lg-start border shadow mb-5"
-                                style="border-radius: 15px;" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                                aria-expanded="false" aria-controls="collapseExample">
-                                <h1 class="ml-lg-2">PEMOGRAMAN WEB</h1>
-                                <h1 class="ml-lg-2">07.00 - 12.00</h1>
-                                <hr>
                             </div>
                             <!-- END -->
                         </div>
@@ -150,21 +172,33 @@
             </div>
             <!-- END -->
 
-            {{-- SEND MAIL --}}
+            <!-- SEND MAIL -->
             <div class="mb-5 text-center fs-1">
                 <label class="file-upload-button">
                     <button class="btn btn-primary rounded-pill">KIRIM</button>
-                    <i class="fas fa-paperclip"></i>
-                    <input type="file" id="file-input" accept=".pdf" style="display: none;">
-                  </label>
+                    <i class="fas fa-paperclip">
+                        <input type="file" id="file-input" accept=".pdf" style="display: none;">
+                    </i>
+                </label>
             </div>
-            
-          
         </div>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('side-nav');
+        sidebar.classList.toggle('active');
+        if (sidebar.classList.contains('active')) {
+            sidebar.style.display = 'block';
+        } else {
+            sidebar.style.display = 'none';
+        }
+    }
 </script>
 
 </html>
