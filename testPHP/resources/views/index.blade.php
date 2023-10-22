@@ -18,7 +18,7 @@
         <div class="row">
           <div class="col-2 bg-danger" style="height:100vh">1</div>
           <div class="col-10 ml-1 px-4 pt-2" style="background-color: #D9D9D9">
-            <div class="text-left my-4" style="height: 5vh; background-color: #D9D9D9; font: 40px Montserrat;">User List</div>  
+            <div class="text-left my-4" style="height: 5vh; background-color: #D9D9D9; font: 40px Montserrat;">User List</div>
             <div style="width: 100%; height:100%" class="bg-white">A</div>
             {{-- <table border="1" style="border-radius: 15px;" class="table table-striped bg-white" >
                 <thead>
@@ -29,7 +29,7 @@
                         <th scope="col">Gender</th>
                     </tr>
                 </thead>
-        
+
                 @foreach ($user as $item)
                 <tr>
                     <td>{{ $item->name }}</td>
@@ -42,7 +42,11 @@
           </div>
         </div>
     </div>
-      
-    
+
+    <?php
+        echo "<div></div>"
+    ?>
+
+
 </body>
 </html>
