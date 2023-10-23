@@ -11,30 +11,24 @@
         * {
             font-family: "Montserrat";
         }
-
-        thead {
-            margin-bottom: 12px;
-            position: sticky;
-            top: 0;
+        tbody{
+            overflow-y: scroll;
         }
         th {
             text-align: center;
             font-weight: normal;
+            background: white;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
         }
         th,td{
-            padding: 8px;
-
-        }
-        td {
-            
+            padding: 0.25rem;
         }
         table {
             width: 100%;
             border-collapse: collapse;  
-        }
-        .table-container {
-                overflow-y: scroll;
-                max-height: 600px;
+            position: relative;
         }
 
     </style>
@@ -49,23 +43,23 @@
                 <div class="d-flex justify-content-between p-4">
                     <div class="rounded d-flex align-items-center justify-content-center" style="width: 150px; height:50px; background-color: #78A2CC;color:white">+ Tambah</div>
                     <div class="input-group mb-3" style="width: 300px; height: 50px">
-                        <div class="input-group-prepend " style="width: 20px; height: 50px">
-                          <span class="input-group-text" id="basic-addon1">@</span>
+                        <div class="input-group-prepend " style="width: 50px; height: 50px">
+                          <i style="height: 50px" class="bi bi-search"></i>
                         </div>
                         <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
                       </div>
                 </div>
-                <div class="table-container">
-                    <table style="width:96%;" class="table bg-white mx-4 my-1 " >
-                        <thead>
-                            <tr>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Website</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-        
+                <table style="width:96%;" class="table bg-white mx-4 my-1 " >
+                    <thead>
+                        <tr>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Website</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+    
+                    <tbody>
                         @foreach ($user as $item)
                         <tr class="m-2">
                             <td>{{ $item->name }}</td>
@@ -78,8 +72,8 @@
                             </td>
                         </tr>
                         @endforeach
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
             
           </div>

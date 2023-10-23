@@ -36,6 +36,9 @@
     Route::get('/dosen/perizinan', function(){
         return view('dosen.perizinan');
     });
+    Route::get('/dosen/dashboard', function(){
+        return view('dosen.dashboard');
+    });
 
     //Route untuk admin
     Route::get('/admin/jadwal-akademik','App\Http\Controllers\SiHadirController@index');
