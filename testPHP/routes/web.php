@@ -14,29 +14,28 @@
     |
     */
 
+    //Route untuk umum
     Route::get('/', function () {
         return view('welcome');
     });
 
-    Route::get('/mainpage', function(){
-        return view('mainpage');
+    Route::get('/change-password', function(){
+        return view('change-password');
     });
 
-    Route::get('/dosen/change-password', function(){
-        return view('dosen.change-password');
+    Route::get('/login', function(){
+        return view('login');
     });
 
-    Route::get('/dosen/login', function(){
-        return view('dosen.login');
+    // Route login untuk mahasiswa sama dengan login untuk dosen
+    // Route::get('/mahasiswa/login', function(){
+    //     return view('mahasiswa.login');
+    // });
+    
+    //Route untuk dosen
+    Route::get('/dosen/perizinan', function(){
+        return view('dosen.perizinan');
     });
 
-    Route::get('/mahasiswa/login', function(){
-        return view('mahasiswa.login');
-    });
-
-    Route::get('/dosen/permits', function(){
-        return view('dosen.permits');
-    });
-
-    //Route untuk CRUD
-    Route::get('/sihadir','App\Http\Controllers\SiHadirController@index');
+    //Route untuk admin
+    Route::get('/admin/jadwal-akademik','App\Http\Controllers\SiHadirController@index');

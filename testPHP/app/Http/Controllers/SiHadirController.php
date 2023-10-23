@@ -10,6 +10,6 @@ class SiHadirController extends Controller
     //
     public function index(){
         $user = DB::table('user')->get();
-        return view('index', ['user' => $user]);
+        return view('admin.jadwal-akademik', ['user' => $user]);
     }
 }
