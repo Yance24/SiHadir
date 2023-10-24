@@ -8,7 +8,7 @@
         <br><br>
         <?php
 
-        use App\Http\Controllers\TimeControl;
+        use App\Http\Controllers\AbsensiController;
 
         $homeSchedule = session('homeSchedule');
         foreach($homeSchedule as $item){
@@ -25,7 +25,7 @@
             @csrf
             <button type="submit"
                 <?php
-                if($homeSchedule->count() == 0 || TimeControl::compareTime(TimeControl::getTime(),$homeSchedule->first()->jam_mulai,'<')) echo "disabled";
+                if(AbsensiController::checkEnableQR()) echo "disabled";
                 ?>
             >
                 Generate Qr

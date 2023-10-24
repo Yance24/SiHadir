@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\LoginValidation;
+use App\Models\MahasiswaAccounts;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/test',function(){
+    dd(MahasiswaAccounts::all());
+});
 
 Route::get('/', function () {
     return view('login');
