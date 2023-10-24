@@ -1,204 +1,281 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style-perizinan.css') }}" media="screen and (min-width: 768px)">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style-sidebar.css') }}" media="screen and (min-width: 768px)">
+    {{-- <link rel="stylesheet" type="text/css" href="styles/style-android.css" media="screen and (max-width: 767px)"> --}}
+    <link rel=" stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-        .appbar {
-            display: none;
-            top: 0;
-            height: 100px;
-            width: 100%;
-            background-color: #78A2CC;
-            margin-bottom: 50px;
-        }
-
-        .sidebar {
-            width: 250px;
-            min-height: 100vh;
-            background-color: #78A2CC;
-            color: white;
-            transition: transform 0.3s ease;
-            display: block;
-        }
-
-        .overlay {
+        /* Gaya CSS untuk tampilan popup */
+        .modal {
             display: none;
             position: fixed;
-            top: 0;
+            z-index: 1;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
-        .header-box {
-            padding: 40px 10px 10px 10px;
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
         }
 
-        .custom-profile {
-            background: url("https://github.com/pddccvv/sihadir/blob/main/public/images/bg-main.jpeg?raw=true");
-            background-position: center;
-            background-size: cover;
-            position: relative;
-            opacity: 0.7;
+        .modal-button-container {
+            text-align: center;
+            margin-top: 20px;
         }
 
-        .custom-profile::before {
-            content: "";
-            background-color: #78A2CC;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100%;
-            opacity: 0.2;
-            z-index: -1;
+        .modal-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
 
-        @media screen and (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-250px);
-                /* Hide the sidebar */
-                margin-top: 100px;
-                z-index: 2;
-            }
+        /* Gaya CSS untuk pesan validasi */
+        .validation-message {
+            font-weight: bold;
+        }
 
-            .sidebar.active {
-                transform: translateX(0);
-                /* Show the sidebar */
-            }
-
-            .overlay.active {
-                display: block;
-            }
-
-            .content {
-                margin-left: 0;
-            }
-
-            .appbar {
-                display: flex;
-            }
+        .swal2-styled.swal2-confirm {
+            border: 0;
+            border-radius: .25em;
+            background: initial;
+            background-color: initial;
+            background-image: initial;
+            background-color: #7AAC78;
+            color: #fff;
+            font-size: 1em;
         }
     </style>
 </head>
 
+
 <body>
-    <!-- APP BAR MOBILE VERSION -->
-    <div class="appbar fixed-top overflow-hidden">
-        <div class="mt-5 ps-2">
-            <i class="fas fa-bars fa-xl" onclick="toggleSidebar()"></i>
+    <!-- Pembatas Sidebar -->
+    <div class="sidebar">
+        <div class="profile-images">
+            <img src="{{ asset('assets/img/Photo%20Dosen.svg') }}" alt="Foto Anda" class="photo-dosen">
+            <div class="text-overlay">Ferry Faisal, S.ST., M.T.</div>
+            <div class="text-overlay2">19730206 199501 1 001</div>
+
         </div>
-        <div class="mx-auto mt-5">
-            <h1 class="">Sihadir</h1>
+
+        <div class="nav">
+            <a href="dashboard.html">
+                <img src="{{ asset('assets/icon/table%201.svg') }}" alt="Absen">
+                <span>Absen</span>
+            </a>
+            <a class="active" href="perizinan.html">
+                <img src="{{ asset('assets/icon/mail%201.svg') }}" alt="Perizinan">
+                <span>Perizinan</span>
+            </a>
+            <a href="#contact">
+                <img src="{{ asset('assets/icon/lock%201.svg') }}" alt="Ganti Password">
+                <span>Ganti Password</span>
+            </a>
+            <hr>
+            <a href="#about">
+                <img src="{{ asset('assets/icon/log-out.svg') }}" alt="Log Out">
+                <span>Log Out</span>
+            </a>
         </div>
     </div>
-    <!-- END -->
-
-    <div class="container-fluid">
-        <!-- SIDEBAR -->
-        <div class="sidebar row" id="side-nav">
-            <div class="header-box custom-profile mb-3">
-                <div class="mb-2" style="z-index: 1">
-                    <img src="https://github.com/pddccvv/sihadir/blob/main/public/images/profile.png?raw=true'"
-                        alt="profile" class="rounded-circle" width="100px" height="100px">
-                </div>
-                <div class="" style="z-index: 2">
-                    <span class="fw-bold">Ferry Faisal, S.ST., M.T.</span><br>
-                    <span>19730206 199501 1 001</span>
-                </div>
+    <!-- Pembatas Sidebar -->
+    <div class="content-perizinan">
+        <div class="jadwal-container-perizinan">
+            <div class="jadwal-info-perizinan">
+                <div class="mata-kuliah-perizinan1">PBL</div>
+                <div class="jam-perizinan1">07:00 - 12:00</div>
+                <hr class="gariscontainer-perizinan1">
             </div>
-            <div class="d-flex flex-column gap-3 p-2">
-                <a href="/" class="text-decoration-none text-white">
-                    <img src="https://github.com/pddccvv/sihadir/blob/main/public/icons/absensi.png?raw=true"
-                        alt="" class=" nav-custom"> Absensi</a>
-                <a href="/" class="text-decoration-none text-white">
-                    <img src="https://github.com/pddccvv/sihadir/blob/main/public/icons/perizinan.png?raw=true"
-                        alt="" class=" nav-custom"> Perizinan</a>
-                <a href="/" class="text-decoration-none text-white">
-                    <img src="https://raw.githubusercontent.com/pddccvv/sihadir/35032d3c03b9de2ddc69bb2bdb356af33c8cc8f0/public/icons/change-password.svg"
-                        alt="" class=" nav-custom"> Ganti
-                    Password</a>
-                <hr>
-                <a href="/" class="text-decoration-none text-white">
-                    <img src="https://raw.githubusercontent.com/pddccvv/sihadir/35032d3c03b9de2ddc69bb2bdb356af33c8cc8f0/public/icons/logout.svg"
-                        alt="" class=" nav-custom"> Logout</a>
-            </div>
-        </div>
-        <!-- END -->
-
-        <!-- CONTENT -->
-        <div class="content" style="margin-top:150px;">
-            <div class="main-content" style="margin-left: 25px">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="table-wrapper">
-                            <div class="row">
-                                <div id="content" class="content">
-                                    <!-- CURRENT JADWAL -->
-                                    <div class="col-sm-15 p-5 flex justify-content-center justify-content-lg-start border shadow rounded-3 mb-5"
-                                        style="" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                                        aria-expanded="false" aria-controls="collapseExample">
-                                        <h1 class="ml-lg-2">PBL</h1>
-                                        <h1 class="ml-lg-2">07.00 - 12.00</h1>
-                                        <hr>
-                                    </div>
-                                    <!-- END -->
-                                    <!-- NEXT JADWAL -->
-                                    <div class="col-sm-15 p-5 flex justify-content-center justify-content-lg-start border shadow mb-5"
-                                        style="border-radius: 15px;" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseExample" aria-expanded="false"
-                                        aria-controls="collapseExample">
-                                        <h1 class="ml-lg-2">PEMOGRAMAN WEB</h1>
-                                        <h1 class="ml-lg-2">07.00 - 12.00</h1>
-                                        <hr>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END -->
+            <div class="mahasiswa-container">
+                <div class="mahasiswa">
+                    <div class="mahasiswa-info">
+                        <div class="nama-mahasiswa">Adi Suryadi</div>
+                        <div class="nim-mahasiswa">3202116005</div>
+                        <div class="photo-mail">
+                            <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda"
+                                class="photo-mail-perizinan">
                         </div>
+                    </div>
+                    <div class="expand-content">
+                        <button class="invalidButton" onclick="invalidButton()">Invalid</button>
+                        <button class="validButton" onclick="validButton()">Valid</button>
+                    </div>
+                </div>
+
+                <div class="mahasiswa">
+                    <div class="mahasiswa-info">
+                        <div class="nama-mahasiswa">Agustia Lita</div>
+                        <div class="nim-mahasiswa">3202116085</div>
+                        <div class="photo-mail">
+                            <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda"
+                                class="photo-mail-perizinan">
+                        </div>
+                    </div>
+                    <div class="expand-content">
+                        <button class="invalidButton" onclick="invalidButton()">Invalid</button>
+                        <button class="validButton" onclick="validButton()">Valid</button>
+                    </div>
+                </div>
+                <div class="mahasiswa">
+                    <div class="mahasiswa-info">
+                        <div class="nama-mahasiswa">Rizky Ramadhan</div>
+                        <div class="nim-mahasiswa">3202116004</div>
+                        <div class="photo-mail">
+                            <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda"
+                                class="photo-mail-perizinan">
+                        </div>
+                    </div>
+                    <div class="expand-content">
+                        <button class="invalidButton" onclick="invalidButton()">Invalid</button>
+                        <button class="validButton" onclick="validButton()">Valid</button>
+                    </div>
+
+                </div>
+                <div class="mahasiswa">
+                    <div class="mahasiswa-info">
+                        <div class="nama-mahasiswa">Fahryan</div>
+                        <div class="nim-mahasiswa">3202116051</div>
+                        <div class="photo-mail">
+                            <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda"
+                                class="photo-mail-perizinan">
+                        </div>
+                    </div>
+                    <div class="expand-content">
+                        <button class="invalidButton" onclick="invalidButton()">Invalid</button>
+                        <button class="validButton" onclick="validButton()">Valid</button>
+                    </div>
+                </div>
+                <div class="mahasiswa">
+                    <div class="mahasiswa-info">
+                        <div class="nama-mahasiswa">Fahryan</div>
+                        <div class="nim-mahasiswa">3202116051</div>
+                        <div class="photo-mail">
+                            <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda"
+                                class="photo-mail-perizinan">
+                        </div>
+                    </div>
+                    <div class="expand-content">
+                        <button class="invalidButton" onclick="invalidButton()">Invalid</button>
+                        <button class="validButton" onclick="validButton()">Valid</button>
                     </div>
                 </div>
             </div>
-            <!-- END -->
-
-            <!-- SEND MAIL -->
-            <div class="mb-5 text-center fs-1">
-                <label class="file-upload-button">
-                    <button class="btn btn-primary rounded-pill">KIRIM</button>
-                    <i class="fas fa-paperclip">
-                        <input type="file" id="file-input" accept=".pdf" style="display: none;">
-                    </i>
-                </label>
-            </div>
         </div>
 
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-</script>
+        <br>
+        <br>
+        <br>
+        
+        <div class="jadwal-container-perizinan2">
+            <div class="jadwal-info-perizinan">
+                <div class="mata-kuliah-perizinan2">Pemrograman Web</div>
+                <hr class="gariscontainer-perizinan2">
+                <div class="jam-perizinan2">14:00 - 16:00</div>
+            </div>
+        </div>
+    </div>
 
 
-<script>
-    function toggleSidebar() {
-        const sidebar = document.getElementById('side-nav');
-        sidebar.classList.toggle('active');
-        if (sidebar.classList.contains('active')) {
-            sidebar.style.display = 'block';
-        } else {
-            sidebar.style.display = 'none';
+    <script type="text/javascript">
+
+        // Function to display the SweetAlert2 popup
+        function invalidButton() {
+            Swal.fire({
+                title: 'Anda tidak mengizinkan izin tersebut?',
+                icon: 'warning',
+                showCancelButton: true, // Menampilkan tombol "Tidak"
+                confirmButtonColor: '#7ACC78',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                reverseButtons: true // Memutar urutan tombol
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Handle "Ya" button click
+                    Swal.fire('Validasi berhasil terkirim', '', 'success');
+
+
+                    // Clear the name data here
+                } else {
+                    // Handle "Tidak" button click
+                    // Do nothing or provide custom behavior
+                }
+            });
         }
-    }
-</script>
+
+        // Function to display the SweetAlert2 popup
+        function validButton() {
+            Swal.fire({
+                title: 'Anda mengizinkan izin tersebut?',
+                icon: 'warning',
+                showCancelButton: true, // Menampilkan tombol "Tidak"
+                confirmButtonColor: '#7ACC78',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                reverseButtons: true // Memutar urutan tombol
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Handle "Ya" button click
+                    Swal.fire('Validasi berhasil terkirim', '', 'success');
+                    // Clear the name data here
+                } else {
+                    // Handle "Tidak" button click
+                    // Do nothing or provide custom behavior
+                }
+            });
+        }
+
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const mahasiswaElements = document.querySelectorAll(".mahasiswa");
+            console.log(mahasiswaElements);
+            mahasiswaElements.forEach(function (mahasiswa) {
+                const expandContent = mahasiswa.querySelector(".expand-content");
+                const validButton = mahasiswa.querySelector(".valid-button");
+                const invalidButton = mahasiswa.querySelector(".invalid-button");
+                mahasiswa.addEventListener("click", function () {
+
+                    mahasiswaElements.forEach(function (element) {
+                        if (element !== mahasiswa) {
+                            element.querySelector(".expand-content").style.display = "none";
+                        }
+                    });
+
+                    if (expandContent.style.display === "none" || expandContent.style.display === "") {
+                        expandContent.style.display = "block";
+                        validButton.style.display = "inline";
+                        invalidButton.style.display = "inline";
+                    } else {
+                        expandContent.style.display = "none";
+                        validButton.style.display = "none";
+                        invalidButton.style.display = "none";
+                    }
+                });
+
+            });
+        });
+
+
+    </script>
+
+</body>
 
 </html>
