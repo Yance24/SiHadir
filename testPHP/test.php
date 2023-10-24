@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html>
+    <head>
 
-<head>
-
-</head>
-
-<body>
-    <?php
-    echo "tes";
-    ?>
-</body>
-
+    </head>
+    <body>
+        <?php
+            echo "haa";
+        ?>
+    </body>
 </html>
-dwikk
