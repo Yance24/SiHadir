@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0px;
+  padding: 0;
+  width: 330px;
+  background-color: #78a2cc;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #b2d2f2;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+.profile-images {
+  text-align: center;
+  position: relative;
+
+  background-image: url("/front-end/images/BG Profile.svg");
+  width: 330px;
+  /* Sesuaikan ukuran gambar sesuai kebutuhan */
+  height: 250px;
+  /* Sesuaikan tinggi gambar sesuai kebutuhan */
+  background-size: cover;
+}
+
+.profile-images .photo-dosen {
+  margin-left: 100px;
+  width: 100px;
+  /* Sesuaikan ukuran gambar sesuai kebutuhan */
+  border-radius: 50%;
+  /* Ini akan membuat gambar dalam elips */
+  position: absolute;
+  right: 215px;
+  /* Sesuaikan dengan nilai x yang Anda inginkan */
+  top: 70px;
+  /* Sesuaikan dengan nilai y yang Anda inginkan */
+  z-index: 1;
+}
+
+.text-overlay {
+  font-size: 15px;
+  position: relative;
+  top: 190px;
+  right: 70px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.text-overlay2 {
+  font-size: 15px;
+  position: relative;
+  top: 200px;
+  right: 70px;
+  color: #ffffff;
+  font-weight: normal;
+}
+
+.nav hr {
+  border: none;
+  border-top: 1px solid #ffffff;
+  /* Warna dan ketebalan garis sesuaikan dengan preferensi Anda */
+  margin: 1px 0;
+  /* Atur margin atas dan bawah sesuai keinginan Anda */
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  padding-left: 10px; /* Ubah angka sesuai kebutuhan Anda */
+  color: #ffffff;
+}
+
+.nav img {
+  margin-right: 10px; /* Untuk memberikan jarak antara ikon dan teks */
+}
