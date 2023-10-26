@@ -1,6 +1,6 @@
 # SiHadir - Aplikasi Presensi Berbasis Web dan Mobile
 
-![Logo SiHadir](link_ke_logo.png) //Placeholder
+![SiHadir](Asset/Logo/SiHadir.png)
 
 SiHadir adalah aplikasi presensi berbasis web dan mobile yang bertujuan untuk mempermudah pekerjaan admin jurusan akademik dalam pembuatan rekap data kehadiran mahasiswa secara otomatis. Proyek ini dikembangkan oleh mahasiswa semester 5 kelas 5A di Politeknik Negeri Pontianak.
 
@@ -46,16 +46,15 @@ Aplikasi SiHadir memiliki fitur utama berikut:
 
 SiHadir dibangun dengan menggunakan berbagai teknologi, termasuk:
 
-- Bahasa Pemrograman: [Nama Bahasa Pemrograman]
-- Framework: [Nama Framework]
-- Database: [Nama Database]
-- Teknologi Lainnya: [Nama Teknologi Lainnya]
+- Bahasa Pemrograman: PHP, JavaScript
+- Framework: LARAVEL 10, Bootstrap 5
+- Database: mySQL/MySQLi
 
 ## Instalasi
 
 Untuk menginstal SiHadir di lingkungan lokal, ikuti langkah-langkah berikut:
 
 ```bash
-git clone https://github.com/username/sihadir.git
+git clone https://github.com/Yance24/SiHadir
 cd sihadir
 npm install
