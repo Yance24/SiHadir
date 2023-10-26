@@ -14,12 +14,41 @@
 
 
 <body>
+
+    <?php 
+
+    //$account menyimpan informasi dari akun dosen yang terlogin
+    //data dari $account akan berupa field-field dari database dummyny backend
+    $account = session()->get('account');
+
+    //$schedule menyimpan informasi dari jadwal-jadwal yang ada
+    //mahasiswa dan dosen akan memiliki jadwal yang berbeda
+    $schedule = session()->get('schedule');
+
+    //$dashBoard menyimpan informasi dari jadwal sekarang dan jadwal selanjutnya
+    $dashBoard = session()->get('dashboardSchedule');
+
+    //buat melihat data dari variable $account
+    // dd($account);
+    
+    //buat melihat data dari variable $schedule
+    //dd($schedule);
+
+    //buat melihat data dari variable $dashBoard
+    //dd($dashBoard);
+    ?>
+
     <!-- Pembatas Sidebar -->
     <div class="sidebar">
         <div class="profile-images">
             <img src="{{ asset('assets/img/Photo%20Dosen.svg') }}" alt="Foto Anda" class="photo-dosen">
-            <div class="text-overlay">Ferry Faisal, S.ST., M.T.</div>
-            <div class="text-overlay2">19730206 199501 1 001</div>
+
+            <!-- Contoh Penggunaan Data $account -->
+            <!-- <div class="text-overlay">Ferry Faisal, S.ST., M.T.</div> -->
+            <div class="text-overlay"><?php echo $account->nama; ?></div>
+
+            <!-- <div class="text-overlay2">19730206 199501 1 001</div> -->
+            <div class="text-overlay2"><?php echo $account->id_userdosen; ?></div>
 
         </div>
 

@@ -78,9 +78,14 @@
                 width="150px" style="padding-bottom: 24px;">
             <h1 class="custom-header text-center text-dark text-white font-weight-bolder mb-3" style="font-size: 64px;">
                 SiHadir</h1>
+
+            <!-- form di bawah aku buat methodny POST -->
             <form
                 class="bg-light font-weight-bold text-center p-4 shadow mb-5 mx-auto pb-5 shadow align-content-center justify-center"
-                action="login.php" style="width: 550px; height: auto; border-radius: 45px;">
+                action="<?php echo route('login-validation');?>" style="width: 550px; height: auto; border-radius: 45px;"
+                method="POST"
+            >
+                @csrf
                 <div class="mb-3 mt-3 pb-4">
                     <input type="text" name="username" placeholder="USERNAME" class="form-control rounded-pill">
                 </div>
@@ -97,6 +102,7 @@
                         style="background-color: #99BBEC">Login</button>
                 </div>
             </form>
+
         </div>
         <footer class="text-center mt-4 pb-2">
             <span class="text-dark fs-5 font-weight-bold">V.0.1.0.</span>

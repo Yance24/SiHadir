@@ -1,7 +1,10 @@
     <?php
 
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginValidation;
+use Illuminate\Support\Facades\Route;
     use Illuminate\Support\Facades\DB;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
     /*
     |--------------------------------------------------------------------------
@@ -24,8 +27,11 @@
     });
 
     Route::get('/login', function(){
+        // session()->flush();
         return view('login');
     });
+
+    Route::post('/login-validation',[LoginValidation::class,'validateLogin'])->name('login-validation');
 
     // Route login untuk mahasiswa sama dengan login untuk dosen
     // Route::get('/mahasiswa/login', function(){
@@ -36,9 +42,7 @@
     Route::get('/dosen/perizinan', function(){
         return view('dosen.perizinan');
     });
-    Route::get('/dosen/dashboard', function(){
-        return view('dosen.dashboard');
-    });
+    Route::get('/dosen/dashboard',[DashboardController::class,'processDosenView']);
 
     //Route untuk admin
     Route::get('/admin/jadwal-akademik','App\Http\Controllers\SiHadirController@index');
