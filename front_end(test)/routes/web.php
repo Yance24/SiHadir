@@ -31,6 +31,14 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
         return view('login');
     });
 
+    Route::get('/mahasiswa/profil', function(){
+        return view('mahasiswa.profil');
+    });
+
+    Route::get('/mahasiswa/dashboard', function(){
+        return view('mahasiswa.dashboard');
+    });
+
     Route::post('/login-validation',[LoginValidation::class,'validateLogin'])->name('login-validation');
 
     // Route login untuk mahasiswa sama dengan login untuk dosen
