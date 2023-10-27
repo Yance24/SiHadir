@@ -29,11 +29,12 @@
             height: 100%;
             width: 0;
             position: fixed;
-            top: 0;
+            top: 100px;
             left: 0;
             background-color: #78A2CC;
             overflow-x: hidden;
             transition: 0.5s;
+            z-index: 1;
         }
 
         .sidebar a {
@@ -45,6 +46,10 @@
             transition: 0.3s;
         }
 
+        .custom-profile {
+            background: url({{ asset('assets/img/bg-profile.png') }})
+        }
+
         .sidebar a:hover {
             color: #78A2CC;
         }
@@ -54,11 +59,11 @@
         }
 
         #menuToggle:checked+.appbar+.content-fluid {
-            margin-left: 20%;
+            margin-left: 200px;
         }
 
-        #menuToggle:checked+.appbar+.content-fluid+.sidebar {
-            width: 30%;
+        #menuToggle:checked+.appbar+.sidebar {
+            width: 200px;
         }
 
         #menuToggle:checked+.appbar label {
@@ -73,30 +78,44 @@
             color: #78A2CC;
         }
 
-
         .bg-custom {
-            background: url("https://raw.githubusercontent.com/Yance24/SiHadir/f5951c8b5b4805564e605848cc5f10c81a520165/Asset/Images/BG%20Profile.svg") center no-repeat;
+            background: url({{ asset('assets/img/bg-profile.png') }}) center no-repeat;
             background-size: cover;
+        }
+
+        @media (min-width: 951px) {
+            .content-fluid {
+                display: none;
+            }
+        }
+
+        @media (max-width: 950px) {
+            .content-fluid {
+                display: block;
+            }
         }
     </style>
 </head>
 
 <body>
+    /* APPBAR */
     <input type="checkbox" id="menuToggle">
     <div class="appbar fixed-top">
         <label for="menuToggle" class="mt-5 ps-2">
             <i class="fa-solid fa-2xl fa-bars" style="color: #ffffff;"></i>
         </label>
         <div class="mx-auto mt-5">
-            <h1 class="">Sihadir</h1>
+            <h1 class="text-white">Sihadir</h1>
         </div>
     </div>
+    /* END */
 
+    /* SIDEBAR */
     <div class="sidebar text-white">
-        <div class="header-box custom-profile mb-3">
-            <div class="mb-2" style="z-index: 1">
-                <img src="https://github.com/pddccvv/sihadir/blob/main/public/images/profile.png?raw=true"
-                    alt="profile" class="rounded-circle" width="100px" height="100px">
+        <div class="header-box custom-profile mb-3 pb-3">
+            <div class="mb-2 p-3" style="z-index: 2">
+                <img src="{{ asset('assets/img/profile-pict.png') }}" alt="profile" class="rounded-circle"
+                    width="80px" height="80px">
             </div>
             <div class="" style="z-index: 2">
                 <span class="fw-bold">Ferry Faisal, S.ST., M.T.</span><br>
@@ -104,55 +123,96 @@
             </div>
         </div>
 
-        <div class="nav">
-
-        </div>
-    </div>
-
-    <div class="content-fluid" style="margin-top: 100px;">
-        <div class="bg-custom mb-3">
-            <img src="https://github.com/pddccvv/sihadir/blob/main/public/images/profile.png?raw=true" width="100px"
-                alt="profile">
-            <div class="">
-                <span class="text-dark">Weldy Flaminggo</span>
+        <div class="d-flex flex-column gap-2 p-1">
+            <div>
+                <a href="/" class="text-decoration-none text-white">
+                    <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
+                    <span style="font-size: 17px"> Absen</span>
+                </a>
+            </div>
+            <div class="disabled" style="background-color: #B2D2F2;">
+                <a href="/" class="text-decoration-none text-white ">
+                    <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
+                    <span class="text-dark" style="font-size: 17px"> Profil</span>
+                </a>
             </div>
             <div>
-                <span class="text-dark">3202116038</span>
+                <a href="/" class="text-decoration-none text-white">
+                    <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class=" nav-custom">
+                    <span style="font-size: 17px"> Perizinan</span>
+                </a>
             </div>
-            <div class="">
-                <button class="btn btn-danger rounde-pill">SP2</button>
+            <div>
+                <a href="/" class="text-decoration-none text-white">
+                    <img src="{{ asset('assets/icon/change-password.svg') }}" alt="" class=" nav-custom">
+                    <span style="font-size: 17px"> Ganti Password</span>
+                </a>
+
+            </div>
+
+            <hr>
+            <div></div>
+            <a href="/" class="text-decoration-none text-white">
+                <img src="{{ asset('assets/icon/logout.svg') }}" alt="" class=" nav-custom">
+                <span style="font-size: 17px"> Logout</span>
+            </a>
+        </div>
+    </div>
+    /* END */
+
+    /* CONTENT */
+    <div class="content-fluid" style="margin-top: 75px;">
+        <div class="bg-custom mb-3 p-4">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <img src="{{ asset('assets/img/profile-pict.png') }}" width="100px" alt="profile">
+                </div>
+                <div class="col">
+                    <span class="text-dark fw-bold">Weldy Flamingo</span>
+                    <div class="row pb-2">
+                        <div class="col">
+                            <span class="text-dark">3202116038</span>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-left: 10px;">
+                        <button class="btn btn-danger rounded-pill d-flex align-items-center justify-content-center"
+                            style="width: 50px; height: 25px;">
+                            <span style="font-size: 15px;">SP2</span>
+                        </button>
+
+                    </div>
+                </div>
             </div>
         </div>
 
         <div>
-            <div>
-                <div class="bg-white text-dark"><span class="p-2 fw-bold">Status Kehadiran</span></div>
-                <div class="alert alert-light alert-dismissible fade show m-0 text-dark" role="alert">
-                    <img src="https://github.com/Yance24/SiHadir/blob/frontend/testPHP/public/assets/icon/izin.png?raw=true"
-                        alt="izin">
-                    <span class="fw-bold">Jumlah Izin</span>
-                    <span class="badge bg-danger">1</span>
-                </div>
-                <div class="alert alert-light alert-dismissible fade show m-0 text-dark" role="alert">
-                    <img src="https://github.com/Yance24/SiHadir/blob/frontend/testPHP/public/assets/icon/sakit.png?raw=true"
-                        alt="sakit">
-                    <span class="fw-bold">Jumlah Sakit</span>
-                    <span class="badge bg-danger">1</span>
-                </div>
-                <div class="alert alert-light alert-dismissible fade show text-dark" role="alert">
-                    <img src="https://github.com/Yance24/SiHadir/blob/frontend/testPHP/public/assets/icon/alpa.png?raw=true"
-                        alt="alpa">
-                    <span class="fw-bold">Jumlah Alpa</span>
-                    <span class="badge bg-danger">1</span>
-                </div>
+            <div class="bg-white text-dark mb-2" style="padding-left: 10px;"><span class="p-2 fw-bold">Status
+                    Kehadiran</span></div>
+            <div class="alert alert-light alert-dismissible fade show m-0 text-dark" role="alert">
+                <img src="{{ asset('assets/icon/izin.png') }}" alt="izin">
+                <span class="fw-bold">Jumlah Izin</span>
+                <span class="badge bg-danger position-relative right-3">1</span>
             </div>
-            <div class="text-dark mb-3" style="background-color: #F0F0F0; height: 34px;"><span
-                    class="p-2 fw-bold">Security</span> </div>
-            <div class="bg-transparent m-3">
-                <img src="https://github.com/Yance24/SiHadir/blob/frontend/testPHP/public/assets/icon/lock.png?raw=true"
-                    alt="">
-                <span class="fw-bold">Ganti Password</span>
+            <div class="alert alert-light alert-dismissible fade show m-0 text-dark" role="alert">
+                <img src="{{ asset('assets/icon/sakit.png') }}" alt="sakit">
+                <span class="fw-bold">Jumlah Sakit</span>
+                <span class="badge bg-danger ml-auto">1</span>
             </div>
+            <div class="alert alert-light alert-dismissible fade show text-dark" role="alert">
+                <img src="{{ asset('assets/icon/alpa.png') }}" alt="alpa">
+                <span class="fw-bold">Jumlah Alpa</span>
+                <span class="badge bg-danger ml-auto">1</span>
+            </div>
+        </div>
+
+        <div class="text-dark mb-3 d-flex justify-content-start align-items-center"
+            style="background-color: #F0F0F0; height: 34px;">
+            <span class="p-2 fw-bold">Security</span>
+        </div>
+
+        <div class="bg-transparent m-3">
+            <img src="{{ asset('assets/icon/lock.png') }}" alt="">
+            <span class="fw-bold">Ganti Password</span>
         </div>
     </div>
 
