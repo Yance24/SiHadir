@@ -26,11 +26,13 @@
     ?>
     @csrf
     <?php
-    echo "<h4>".$jadwal[0]->mataKuliah->nama_makul."</h4><br>";
-    foreach($mahasiswaJadwal[0] as $item){
+    if($jadwal->isNotEmpty()){
+        echo "<h4>".$jadwal[0]->mataKuliah->nama_makul."</h4><br>";
+        foreach($mahasiswaJadwal[0] as $item){
         echo $item['account']->nama;
-        if($item['statusIzin'] != 'belum ada') echo "<button type='submit' name='buttonId' value='".encrypt($item['account']->id_user)."'>Preview</button>";
-        echo "<br>";
+            if($item['statusIzin'] != 'belum ada') echo "<button type='submit' name='buttonId' value='".encrypt($item['account']->id_user)."'>Preview</button>";
+            echo "<br>";
+        }   
     }
     echo "</form>";
 

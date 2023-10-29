@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 class LoginValidation extends Controller
 {
     public function validateLogin(){
-        $id = '3202116006';
-        // $id = '197302061995011001';
+        // $id = '3202116006';
+        $id = '197302061995011001';
         $waktu = '07:00:00';
         $hari = 'senin';
         $tanggal = '2023-10-28';
