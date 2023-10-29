@@ -60,6 +60,18 @@
             color: #fff;
             font-size: 1em;
         }
+
+        .profile-images {
+    text-align: center;
+    position: relative;
+
+    background-image: url("{{ asset('assets/img/bg-profile.svg') }}");
+    width: 330px;
+    /* Sesuaikan ukuran gambar sesuai kebutuhan */
+    height: 250px;
+    /* Sesuaikan tinggi gambar sesuai kebutuhan */
+    background-size: cover;
+}
     </style>
 </head>
 
@@ -68,7 +80,7 @@
     <!-- Pembatas Sidebar -->
     <div class="sidebar">
         <div class="profile-images">
-            <img src="{{ asset('assets/img/Photo%20Dosen.svg') }}" alt="Foto Anda" class="photo-dosen">
+            <img src="{{ asset('assets/img/photo-dosen.svg') }}" alt="Foto Anda" class="photo-dosen">
             <div class="text-overlay">Ferry Faisal, S.ST., M.T.</div>
             <div class="text-overlay2">19730206 199501 1 001</div>
 
@@ -76,20 +88,20 @@
 
         <div class="nav">
             <a href="dashboard">
-                <img src="{{ asset('assets/icon/table%201.svg') }}" alt="Absen">
+                <img src="{{ asset('assets/icon/table1.svg') }}" alt="Absen">
                 <span>Absen</span>
             </a>
             <a class="active" href="perizinan">
-                <img src="{{ asset('assets/icon/mail%201.svg') }}" alt="Perizinan">
+                <img src="{{ asset('assets/icon/mail1.svg') }}" alt="Perizinan">
                 <span>Perizinan</span>
             </a>
             <a href="#contact">
-                <img src="{{ asset('assets/icon/lock%201.svg') }}" alt="Ganti Password">
+                <img src="{{ asset('assets/icon/lock1.svg') }}" alt="Ganti Password">
                 <span>Ganti Password</span>
             </a>
             <hr>
-            <a href="#about">
-                <img src="{{ asset('assets/icon/log-out%201.svg') }}" alt="Log Out">
+            <a href="../login">
+                <img src="{{ asset('assets/icon/log-out1.svg') }}" alt="Log Out">
                 <span>Log Out</span>
             </a>
         </div>

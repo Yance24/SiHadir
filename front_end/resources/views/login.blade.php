@@ -74,7 +74,7 @@
 <body class="p-0 m-0">
     <div class="bg-custom">
         <div class="container d-flex flex-column align-items-center justify-content-center" style="z-index: 1;">
-            <img class="custom-logo mx-auto mb-3 mt-5" src="{{ asset('images/logo-polnep.png') }}" alt="logo polnep"
+            <img class="custom-logo mx-auto mb-3 mt-5" src="{{ asset('assets/logo/logo-polnep.png') }}" alt="logo polnep"
                 width="150px" style="padding-bottom: 24px;">
             <h1 class="custom-header text-center text-dark text-white font-weight-bolder mb-3" style="font-size: 64px;">
                 SiHadir</h1>

@@ -33,7 +33,7 @@ body {
     text-align: center;
     position: relative;
 
-    background-image: url("/front-end/images/BG Profile.svg");
+    background-image: url("{{ asset('assets/img/bg-profile.svg') }}");
     width: 330px;
     /* Sesuaikan ukuran gambar sesuai kebutuhan */
     height: 250px;

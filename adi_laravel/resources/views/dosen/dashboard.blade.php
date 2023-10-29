@@ -9,6 +9,19 @@
     {{-- <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> --}}
+   <style>
+   .profile-images {
+    text-align: center;
+    position: relative;
+
+    background-image: url("{{ asset('assets/img/bg-profile.svg') }}");
+    width: 330px;
+    /* Sesuaikan ukuran gambar sesuai kebutuhan */
+    height: 250px;
+    /* Sesuaikan tinggi gambar sesuai kebutuhan */
+    background-size: cover;
+}
+</style> 
 </head>
 
 
@@ -41,7 +54,7 @@
     <!-- Pembatas Sidebar -->
     <div class="sidebar">
         <div class="profile-images">
-            <img src="{{ asset('assets/img/Photo%20Dosen.svg') }}" alt="Foto Anda" class="photo-dosen">
+            <img src="{{ asset('assets/img/photo-dosen.svg') }}" alt="Foto Anda" class="photo-dosen">
 
             <!-- Contoh Penggunaan Data $account -->
             <!-- <div class="text-overlay">Ferry Faisal, S.ST., M.T.</div> -->
@@ -54,20 +67,20 @@
 
         <div class="nav">
             <a class="active" href="dashboard">
-                <img src="{{ asset('assets/icon/table%201.svg') }}" alt="Absen">
+                <img src="{{ asset('assets/icon/table1.svg') }}" alt="Absen">
                 <span>Absen</span>
             </a>
             <a href="perizinan">
-                <img src="{{ asset('assets/icon/mail%201.svg') }}" alt="Perizinan">
+                <img src="{{ asset('assets/icon/mail1.svg') }}" alt="Perizinan">
                 <span>Perizinan</span>
             </a>
-            <a href="#contact">
-                <img src="{{ asset('assets/icon/lock%201.svg') }}" alt="Ganti Password">
+            <a href="../ganti-password">
+                <img src="{{ asset('assets/icon/lock1.svg') }}" alt="Ganti Password">
                 <span>Ganti Password</span>
             </a>
             <hr>
-            <a href="#about">
-                <img src="{{ asset('assets/icon/log-out%201.svg') }}" alt="Log Out">
+            <a href="../login">
+                <img src="{{ asset('assets/icon/log-out1.svg') }}" alt="Log Out">
                 <span>Log Out</span>
             </a>
         </div>
@@ -106,11 +119,13 @@
         <div id="qr-patch" class="qr-patch">
             <h1>Generate QR Code</h1>
             <div class="container-fluid">
-            <div class="text-center">
-    <img src="{{ url('/generate-qr-code') }}" class="qr-code img-thumbnail img-responsive" alt="QR Code" />
-</div>
-
-
+                <div class="text-center">
+                    <!-- Get a Placeholder image initially,
+                   this will change with a unique QR Code
+                   every time the button is pressed -->
+                    <img src="https://chart.googleapis.com/chart?cht=qr&chl=UniqueQRCode&chs=160x160&chld=L|0"
+                        class="qr-code img-thumbnail img-responsive" alt="QR Code" />
+                </div>
 
                 <div class="form-horizontal">
                     <div class="form-group">
@@ -163,15 +178,12 @@
         $(function () {
             // Specify an onclick function for the generate button
             $('#generate-qr-button').click(function () {
-    // Mengambil data QR Code dari server
-    $.get('/generate-qr-code', function(data) {
-        // Mengganti src gambar QR Code dengan data dari server
-        $('.qr-code').attr('src', 'data:image/png;base64,' + data);
-    });
-});
-
-
-            
+                // Generate a unique QR Code with a random value
+                let randomValue = Math.random().toString(36).substr(2, 5);
+                let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + randomValue + '&chs=160x160&chld=L|0';
+                // Replace the src of the image with the new QR code
+                $('.qr-code').attr('src', finalURL);
+            });
         });
 
 
