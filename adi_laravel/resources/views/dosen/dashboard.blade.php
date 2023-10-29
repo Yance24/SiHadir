@@ -9,6 +9,8 @@
     {{-- <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <style>
    .profile-images {
     text-align: center;
@@ -21,6 +23,27 @@
     /* Sesuaikan tinggi gambar sesuai kebutuhan */
     background-size: cover;
 }
+
+
+       /* CSS untuk SweetAlert2 */
+       .swal2-popup {
+            text-align: center;
+        }
+        .swal2-title {
+            left: 10px;
+            text-align: center; /* Menengahkan teks judul */
+            font-size: 24px; /* Ubah ukuran font judul */
+            color: #333; /* Ubah warna judul */
+            margin-bottom: 20px; /* Atur margin bawah judul */
+        }
+        .swal2-actions {
+            display: flex;
+            justify-content: center;
+        }
+        .swal2-confirm, .swal2-cancel {
+            width: 100px;
+            margin: 5px;
+        }
 </style> 
 </head>
 
@@ -79,7 +102,7 @@
                 <span>Ganti Password</span>
             </a>
             <hr>
-            <a href="../login">
+            <a href="../login" id="logoutLink">
                 <img src="{{ asset('assets/icon/log-out1.svg') }}" alt="Log Out">
                 <span>Log Out</span>
             </a>
@@ -187,7 +210,33 @@
         });
 
 
+    
+    //untuk popup alert log out
+     // Fungsi untuk menampilkan popup SweetAlert2
+     document.getElementById('logoutLink').addEventListener('click', function(event) {
+            event.preventDefault(); // Mencegah perilaku default dari tag anchor
 
+            Swal.fire({
+                title: 'Ingin keluar dari aplikasi?',
+                icon: 'warning',
+                showCancelButton: true, // Menampilkan tombol "Batal"
+                confirmButtonColor: '#7ACC78',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'YA',
+                cancelButtonText: 'TIDAK',
+                reverseButtons: true // Memutar urutan tombol
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Menangani klik tombol "Ya"
+                    Swal.fire('Anda telah keluar', '', 'success');
+                    // Tambahkan fungsi logout atau redirect ke halaman logout di sini
+                    window.location.href = "../login"; // Ganti dengan URL logout Anda
+                } else {
+                    // Menangani klik tombol "Batal"
+                    // Lakukan sesuatu atau berikan perilaku kustom
+                }
+            });
+        });
 
     </script>
 </body>
