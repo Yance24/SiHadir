@@ -66,7 +66,7 @@
             </div>
         </div>
     </div>
-    <script>
+    {{-- <script>
         // UNTUK PINDAH KE PEMINDAI PAGE - UNTUK TOMBOL ABSEN
        /* document.addEventListener('DOMContentLoaded', function() {
             const absenButton = document.getElementById('absenButton');
@@ -75,4 +75,4 @@
                 window.location.href = "{{ route('mahasiswa.barcode.index') }}";
             });
         }); */
-    </script>
+    </script> --}}
