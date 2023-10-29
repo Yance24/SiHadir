@@ -75,11 +75,11 @@
         </div>
 
         <div class="nav">
-            <a href="dashboard.html">
+            <a href="dashboard">
                 <img src="{{ asset('assets/icon/table%201.svg') }}" alt="Absen">
                 <span>Absen</span>
             </a>
-            <a class="active" href="perizinan.html">
+            <a class="active" href="perizinan">
                 <img src="{{ asset('assets/icon/mail%201.svg') }}" alt="Perizinan">
                 <span>Perizinan</span>
             </a>
