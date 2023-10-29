@@ -20,13 +20,28 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
         return view('login');
     });
 
+    // MAHASISWA
+
     Route::get('/mahasiswa/profil', function(){
         return view('mahasiswa.profil');
+    });
+    Route::get('/mahasiswa/perizinan', function(){
+        return view('mahasiswa.perizinan');
     });
 
     Route::get('/mahasiswa/dashboard', function(){
         return view('mahasiswa.dashboard');
     });
+
+    Route::get('/mahasiswa/profil', function(){
+        return view('mahasiswa.profil');
+    });
+
+    Route::get('/mahasiswa/pemindai', function(){
+        return view('mahasiswa.pemindai');
+    });
+
+    // END
 
     Route::post('/login-validation',[LoginValidation::class,'validateLogin'])->name('login-validation');
 
