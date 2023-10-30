@@ -187,11 +187,16 @@
             <!-- Contoh Mahasiswa 2 -->
             <div class="mahasiswa">
                 <div class="mahasiswa-info">
-                <div class="nama-mahasiswa" id="nama-mahasiswa">Adi Suryadi</div>
-<div class="nim-mahasiswa" id="nim-mahasiswa">3202116005</div>
+                <div class="nama-mahasiswa">Weldy Flamingo</div>
+                    <div class="nim-mahasiswa">3202116123</div>
 
                     <div class="photo-mail">
-                        <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda" class="photo-mail-perizinan">
+                    <button class="previewButton" onclick="previewPDF('3202116005')">
+                            <div class="icon-text-container"> 
+                                <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
+                                <span>Pratinjau Izin</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -200,9 +205,14 @@
         <div class="mahasiswa">
                 <div class="mahasiswa-info">
                     <div class="nama-mahasiswa">Rizky Ramadhan</div>
-                    <div class="nim-mahasiswa">3202116085</div>
+                    <div class="nim-mahasiswa">3202116003</div>
                     <div class="photo-mail">
-                        <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda" class="photo-mail-perizinan">
+                    <button class="previewButton" onclick="previewPDF('3202116005')">
+                            <div class="icon-text-container"> 
+                                <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
+                                <span>Pratinjau Izin</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -212,7 +222,12 @@
                     <div class="nama-mahasiswa">Agustia Lita</div>
                     <div class="nim-mahasiswa">3202116085</div>
                     <div class="photo-mail">
-                        <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda" class="photo-mail-perizinan">
+                    <button class="previewButton" onclick="previewPDF('3202116005')">
+                            <div class="icon-text-container"> 
+                                <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
+                                <span>Pratinjau Izin</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -220,9 +235,14 @@
              <div class="mahasiswa">
                 <div class="mahasiswa-info">
                     <div class="nama-mahasiswa">Fahryan</div>
-                    <div class="nim-mahasiswa">3202116085</div>
+                    <div class="nim-mahasiswa">3202116032</div>
                     <div class="photo-mail">
-                        <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda" class="photo-mail-perizinan">
+                    <button class="previewButton" onclick="previewPDF('3202116005')">
+                            <div class="icon-text-container"> 
+                                <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
+                                <span>Pratinjau Izin</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>
