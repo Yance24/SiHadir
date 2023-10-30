@@ -93,6 +93,17 @@
             width: 100px;
             margin: 5px;
         }
+
+        .previewButton {
+            position:relative;
+
+            right:100px;
+        border-radius: 25px; /* Mengatur border-radius agar tombol memiliki bentuk elips */
+        padding: 10px 20px; /* Padding untuk memberi ruang di dalam tombol */
+        background-color: #78A2CC;
+        width: 236px;
+        cursor:pointer;
+    }
     </style>
 </head>
 
@@ -129,131 +140,99 @@
     </div>
     <!-- Pembatas Sidebar -->
     <div class="content-perizinan">
-        <div class="jadwal-container-perizinan">
-            <div class="jadwal-info-perizinan">
-                <div class="mata-kuliah-perizinan1">PBL</div>
-                <div class="jam-perizinan1">07:00 - 12:00</div>
-                <hr class="gariscontainer-perizinan1">
-            </div>
-            <div class="mahasiswa-container">
-                <div class="mahasiswa">
-                    <div class="mahasiswa-info">
-                        <div class="nama-mahasiswa">Adi Suryadi</div>
-                        <div class="nim-mahasiswa">3202116005</div>
-                        <div class="photo-mail">
-                            <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda"
-                                class="photo-mail-perizinan">
-                        </div>
-                    </div>
-                    <div class="expand-content">
-                        <button class="invalidButton" onclick="invalidButton()">Invalid</button>
-                        <button class="validButton" onclick="validButton()">Valid</button>
-                    </div>
-                </div>
-
-                <div class="mahasiswa">
-                    <div class="mahasiswa-info">
-                        <div class="nama-mahasiswa">Agustia Lita</div>
-                        <div class="nim-mahasiswa">3202116085</div>
-                        <div class="photo-mail">
-                            <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda"
-                                class="photo-mail-perizinan">
-                        </div>
-                    </div>
-                    <div class="expand-content">
-                        <button class="invalidButton" onclick="invalidButton()">Invalid</button>
-                        <button class="validButton" onclick="validButton()">Valid</button>
-                    </div>
-                </div>
-                <div class="mahasiswa">
-                    <div class="mahasiswa-info">
-                        <div class="nama-mahasiswa">Rizky Ramadhan</div>
-                        <div class="nim-mahasiswa">3202116004</div>
-                        <div class="photo-mail">
-                            <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda"
-                                class="photo-mail-perizinan">
-                        </div>
-                    </div>
-                    <div class="expand-content">
-                        <button class="invalidButton" onclick="invalidButton()">Invalid</button>
-                        <button class="validButton" onclick="validButton()">Valid</button>
-                    </div>
-
-                </div>
-                <div class="mahasiswa">
-                    <div class="mahasiswa-info">
-                        <div class="nama-mahasiswa">Fahryan</div>
-                        <div class="nim-mahasiswa">3202116051</div>
-                        <div class="photo-mail">
-                            <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda"
-                                class="photo-mail-perizinan">
-                        </div>
-                    </div>
-                    <div class="expand-content">
-                        <button class="invalidButton" onclick="invalidButton()">Invalid</button>
-                        <button class="validButton" onclick="validButton()">Valid</button>
-                    </div>
-                </div>
-                <div class="mahasiswa">
-                    <div class="mahasiswa-info">
-                        <div class="nama-mahasiswa">Fahryan</div>
-                        <div class="nim-mahasiswa">3202116051</div>
-                        <div class="photo-mail">
-                            <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda"
-                                class="photo-mail-perizinan">
-                        </div>
-                    </div>
-                    <div class="expand-content">
-                        <button class="invalidButton" onclick="invalidButton()">Invalid</button>
-                        <button class="validButton" onclick="validButton()">Valid</button>
-                    </div>
-                </div>
-            </div>
+    <div class="jadwal-container-perizinan">
+        <div class="jadwal-info-perizinan">
+            <div class="mata-kuliah-perizinan1">PBL</div>
+            <div class="jam-perizinan1">07:00 - 12:00</div>
+            <hr class="gariscontainer-perizinan1">
         </div>
 
-        <br>
-        <br>
-        <br>
-        
-        <div class="jadwal-container-perizinan2">
-            <div class="jadwal-info-perizinan">
-                <div class="mata-kuliah-perizinan2">Pemrograman Web</div>
-                <hr class="gariscontainer-perizinan2">
-                <div class="jam-perizinan2">14:00 - 16:00</div>
+        <div class="mahasiswa-container">
+            <!-- Contoh Mahasiswa 1 -->
+            <div class="mahasiswa">
+                <div class="mahasiswa-info">
+                    <div class="nama-mahasiswa">Adi Suryadi</div>
+                    <div class="nim-mahasiswa">3202116005</div>
+                    <div class="photo-mail">
+                        <button class="previewButton" onclick="previewPDF('3202116005')">
+                            <div class="icon-text-container"> 
+                                <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
+                                <span>Pratinjau Izin</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contoh Mahasiswa 2 -->
+            <div class="mahasiswa">
+                <div class="mahasiswa-info">
+                    <div class="nama-mahasiswa">Weldy Flamingo</div>
+                    <div class="nim-mahasiswa">3202116085</div>
+                    <div class="photo-mail">
+                        <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda" class="photo-mail-perizinan">
+                    </div>
+                </div>
+            </div>
+
+        <!-- Contoh Mahasiswa 2 -->
+        <div class="mahasiswa">
+                <div class="mahasiswa-info">
+                    <div class="nama-mahasiswa">Rizky Ramadhan</div>
+                    <div class="nim-mahasiswa">3202116085</div>
+                    <div class="photo-mail">
+                        <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda" class="photo-mail-perizinan">
+                    </div>
+                </div>
+            </div>
+             <!-- Contoh Mahasiswa 2 -->
+             <div class="mahasiswa">
+                <div class="mahasiswa-info">
+                    <div class="nama-mahasiswa">Agustia Lita</div>
+                    <div class="nim-mahasiswa">3202116085</div>
+                    <div class="photo-mail">
+                        <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda" class="photo-mail-perizinan">
+                    </div>
+                </div>
+            </div>
+             <!-- Contoh Mahasiswa 2 -->
+             <div class="mahasiswa">
+                <div class="mahasiswa-info">
+                    <div class="nama-mahasiswa">Fahryan</div>
+                    <div class="nim-mahasiswa">3202116085</div>
+                    <div class="photo-mail">
+                        <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda" class="photo-mail-perizinan">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Modal untuk pratinjau/preview PDF -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <iframe id="pdfPreview" width="100%" height="500"></iframe>
+            <button class="invalidButton" onclick="invalidButton()">Invalid</button>
+            <button class="validButton" onclick="validButton()">Valid</button>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="jadwal-container-perizinan2">
+        <div class="jadwal-info-perizinan">
+            <div class="mata-kuliah-perizinan2">Pemrograman Web</div>
+            <hr class="gariscontainer-perizinan2">
+            <div class="jam-perizinan2">14:00 - 16:00</div>
+        </div>
+    </div>
+</div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const mahasiswaElements = document.querySelectorAll(".mahasiswa");
-            console.log(mahasiswaElements);
-            mahasiswaElements.forEach(function (mahasiswa) {
-                const expandContent = mahasiswa.querySelector(".expand-content");
-                const validButton = mahasiswa.querySelector(".valid-button");
-                const invalidButton = mahasiswa.querySelector(".invalid-button");
-                mahasiswa.addEventListener("click", function () {
-
-                    mahasiswaElements.forEach(function (element) {
-                        if (element !== mahasiswa) {
-                            element.querySelector(".expand-content").style.display = "none";
-                        }
-                    });
-
-                    if (expandContent.style.display === "none" || expandContent.style.display === "") {
-                        expandContent.style.display = "block";
-                        validButton.style.display = "inline";
-                        invalidButton.style.display = "inline";
-                    } else {
-                        expandContent.style.display = "none";
-                        validButton.style.display = "none";
-                        invalidButton.style.display = "none";
-                    }
-                });
-
-            });
-        });
+      
 
 
 
@@ -331,6 +310,48 @@
                 }
             });
         });
+
+
+
+// buat pratinjau PDF
+        function previewPDF(studentID) {
+    // Mendapatkan iframe tempat pratinjau PDF akan ditampilkan
+    const pdfPreview = document.getElementById('pdfPreview');
+
+    // Mengganti atribut src iframe dengan URL PDF yang sesuai berdasarkan ID mahasiswa
+    const pdfURL = `https://docs.google.com/document/d/1rl-zyxwSaFXnMSvHUiNH_N76rIWv33WQEZcxOT79qWU/edit`;
+    pdfPreview.src = pdfURL;
+
+    // Menampilkan modal pratinjau PDF
+    const modal = document.getElementById('previewModal');
+    modal.style.display = 'block';
+}
+
+ // Mengatur fungsi untuk tombol "Invalid" di dalam pratinjau
+ const invalidBtn = document.querySelector('.invalidButton');
+    invalidBtn.onclick = function() {
+        invalidButton();
+    };
+
+    // Mengatur fungsi untuk tombol "Valid" di dalam pratinjau
+    const validBtn = document.querySelector('.validButton');
+    validBtn.onclick = function() {
+        validButton();
+    };
+
+
+function closeModal() {
+    // Menutup modal saat tombol close ditekan
+    const modal = document.getElementById('previewModal');
+    modal.style.display = 'none';
+
+    // Menghentikan pratinjau PDF
+    const pdfPreview = document.getElementById('pdfPreview');
+    pdfPreview.src = '';
+}
+
+   
+
     </script>
 
 </body>
