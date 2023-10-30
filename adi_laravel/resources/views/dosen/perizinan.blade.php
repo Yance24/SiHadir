@@ -61,7 +61,10 @@
             position:relative;
             bottom:610px;
         }
-
+        .icon-text-container {
+            display:flex;
+        }
+    
 
 
 
@@ -176,8 +179,8 @@
                     <div class="photo-mail">
                         <button class="previewButton" onclick="previewPDF('3202116005')">
                             <div class="icon-text-container"> 
+                            <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
                                 <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                                <span>Pratinjau Izin</span>
                             </div>
                         </button>
                     </div>
@@ -193,8 +196,8 @@
                     <div class="photo-mail">
                     <button class="previewButton" onclick="previewPDF('3202116005')">
                             <div class="icon-text-container"> 
+                            <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
                                 <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                                <span>Pratinjau Izin</span>
                             </div>
                         </button>
                     </div>
@@ -209,8 +212,8 @@
                     <div class="photo-mail">
                     <button class="previewButton" onclick="previewPDF('3202116005')">
                             <div class="icon-text-container"> 
+                            <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
                                 <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                                <span>Pratinjau Izin</span>
                             </div>
                         </button>
                     </div>
@@ -224,8 +227,8 @@
                     <div class="photo-mail">
                     <button class="previewButton" onclick="previewPDF('3202116005')">
                             <div class="icon-text-container"> 
+                            <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
                                 <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                                <span>Pratinjau Izin</span>
                             </div>
                         </button>
                     </div>
@@ -239,8 +242,8 @@
                     <div class="photo-mail">
                     <button class="previewButton" onclick="previewPDF('3202116005')">
                             <div class="icon-text-container"> 
+                            <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
                                 <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                                <span>Pratinjau Izin</span>
                             </div>
                         </button>
                     </div>
@@ -254,7 +257,7 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <iframe id="pdfPreview" width="424px" height="619px"></iframe>
-            <div class="keterangan-surat">Apakah dokumen tersebut VALID?</div>
+            <div class="keterangan-surat"><span>Apakah dokumen tersebut <b>VALID?</b></span></div>
             <button class="invalidButton" onclick="invalidButton()">Invalid</button>
             <button class="validButton" onclick="validButton()">Valid</button>
         </div>
