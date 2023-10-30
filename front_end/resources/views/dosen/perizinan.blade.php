@@ -24,16 +24,16 @@
         }
 
         .modal-content {
-            position:relative;
+            position: relative;
             background-color: #fff;
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
             width: 450px;
-            height:750px;
-            bottom:220px;
-            right:150px;
-            border-radius:15px;
+            height: 750px;
+            bottom: 220px;
+            right: 150px;
+            border-radius: 15px;
         }
 
         .modal-button-container {
@@ -48,27 +48,28 @@
             border: none;
             cursor: pointer;
         }
-        
+
         .keterangan-surat {
-            font-size:24px;
-           display:flex;
-           justify-content:center;
-           margin-top:10px;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
 
         }
 
         .close {
-            position:relative;
-            font-size:30px;
+            position: relative;
+            font-size: 30px;
             right: 10px;
-            bottom:610px;
-            cursor:pointer;
-           
+            bottom: 610px;
+            cursor: pointer;
+
         }
+
         .icon-text-container {
-            display:flex;
+            display: flex;
         }
-    
+
 
 
 
@@ -88,49 +89,60 @@
             font-size: 1em;
         }
 
-        
+
 
         .profile-images {
-    text-align: center;
-    position: relative;
+            text-align: center;
+            position: relative;
 
-    background-image: url("{{ asset('assets/img/bg-profile.svg') }}");
-    width: 330px;
-    /* Sesuaikan ukuran gambar sesuai kebutuhan */
-    height: 250px;
-    /* Sesuaikan tinggi gambar sesuai kebutuhan */
-    background-size: cover;
-}
-     /* CSS untuk SweetAlert2 */
-     .swal2-popup {
+            background-image: url("{{ asset('assets/img/bg-profile.svg') }}");
+            width: 330px;
+            /* Sesuaikan ukuran gambar sesuai kebutuhan */
+            height: 250px;
+            /* Sesuaikan tinggi gambar sesuai kebutuhan */
+            background-size: cover;
+        }
+
+        /* CSS untuk SweetAlert2 */
+        .swal2-popup {
             text-align: center;
         }
+
         .swal2-title {
             left: 10px;
-            text-align: center; /* Menengahkan teks judul */
-            font-size: 24px; /* Ubah ukuran font judul */
-            color: #333; /* Ubah warna judul */
-            margin-bottom: 20px; /* Atur margin bawah judul */
+            text-align: center;
+            /* Menengahkan teks judul */
+            font-size: 24px;
+            /* Ubah ukuran font judul */
+            color: #333;
+            /* Ubah warna judul */
+            margin-bottom: 20px;
+            /* Atur margin bawah judul */
         }
+
         .swal2-actions {
             display: flex;
             justify-content: center;
         }
-        .swal2-confirm, .swal2-cancel {
+
+        .swal2-confirm,
+        .swal2-cancel {
             width: 100px;
             margin: 5px;
         }
 
         .previewButton {
-            position:relative;
+            position: relative;
 
-            right:100px;
-        border-radius: 25px; /* Mengatur border-radius agar tombol memiliki bentuk elips */
-        padding: 10px 20px; /* Padding untuk memberi ruang di dalam tombol */
-        background-color: #78A2CC;
-        width: 236px;
-        cursor:pointer;
-    }
+            right: 100px;
+            border-radius: 25px;
+            /* Mengatur border-radius agar tombol memiliki bentuk elips */
+            padding: 10px 20px;
+            /* Padding untuk memberi ruang di dalam tombol */
+            background-color: #78A2CC;
+            width: 236px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -167,125 +179,121 @@
     </div>
     <!-- Pembatas Sidebar -->
     <div class="content-perizinan">
-    <div class="jadwal-container-perizinan">
-        <div class="jadwal-info-perizinan">
-            <div class="mata-kuliah-perizinan1">PBL</div>
-            <div class="jam-perizinan1">07:00 - 12:00</div>
-            <hr class="gariscontainer-perizinan1">
+        <div class="jadwal-container-perizinan">
+            <div class="jadwal-info-perizinan">
+                <div class="mata-kuliah-perizinan1">PBL</div>
+                <div class="jam-perizinan1">07:00 - 12:00</div>
+                <hr class="gariscontainer-perizinan1">
+            </div>
+
+            <div class="mahasiswa-container">
+
+                <div class="mahasiswa">
+                    <div class="mahasiswa-info">
+                        <div class="nama-mahasiswa">Adi Suryadi</div>
+                        <div class="nim-mahasiswa">3202116005</div>
+                        <div class="photo-mail">
+                            <button class="previewButton" onclick="previewPDF('3202116005')">
+                                <div class="icon-text-container">
+                                    <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
+                                    <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mahasiswa">
+                    <div class="mahasiswa-info">
+                        <div class="nama-mahasiswa">Weldy Flamingo</div>
+                        <div class="nim-mahasiswa">3202116123</div>
+
+                        <div class="photo-mail">
+                            <button class="previewButton" onclick="previewPDF('3202116005')">
+                                <div class="icon-text-container">
+                                    <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
+                                    <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mahasiswa">
+                    <div class="mahasiswa-info">
+                        <div class="nama-mahasiswa">Rizky Ramadhan</div>
+                        <div class="nim-mahasiswa">3202116003</div>
+                        <div class="photo-mail">
+                            <button class="previewButton" onclick="previewPDF('3202116005')">
+                                <div class="icon-text-container">
+                                    <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
+                                    <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mahasiswa">
+                    <div class="mahasiswa-info">
+                        <div class="nama-mahasiswa">Agustia Lita</div>
+                        <div class="nim-mahasiswa">3202116085</div>
+                        <div class="photo-mail">
+                            <button class="previewButton" onclick="previewPDF('3202116005')">
+                                <div class="icon-text-container">
+                                    <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
+                                    <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mahasiswa">
+                    <div class="mahasiswa-info">
+                        <div class="nama-mahasiswa">Fahryan</div>
+                        <div class="nim-mahasiswa">3202116032</div>
+                        <div class="photo-mail">
+                            <button class="previewButton" onclick="previewPDF('3202116005')">
+                                <div class="icon-text-container">
+                                    <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
+                                    <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="mahasiswa-container">
-
-            <div class="mahasiswa">
-                <div class="mahasiswa-info">
-                    <div class="nama-mahasiswa">Adi Suryadi</div>
-                    <div class="nim-mahasiswa">3202116005</div>
-                    <div class="photo-mail">
-                        <button class="previewButton" onclick="previewPDF('3202116005')">
-                            <div class="icon-text-container"> 
-                            <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
-                                <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                            </div>
-                        </button>
-                    </div>
-                </div>
+        <!-- Modal untuk pratinjau/preview PDF -->
+        <div id="previewModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <iframe id="pdfPreview" width="424px" height="619px"></iframe>
+                <div class="keterangan-surat"><span>Apakah dokumen tersebut <b>VALID?</b></span></div>
+                <button class="invalidButton" onclick="invalidButton()">Invalid</button>
+                <button class="validButton" onclick="validButton()">Valid</button>
             </div>
+        </div>
 
-     
-            <div class="mahasiswa">
-                <div class="mahasiswa-info">
-                <div class="nama-mahasiswa">Weldy Flamingo</div>
-                    <div class="nim-mahasiswa">3202116123</div>
+        <br>
+        <br>
+        <br>
 
-                    <div class="photo-mail">
-                    <button class="previewButton" onclick="previewPDF('3202116005')">
-                            <div class="icon-text-container"> 
-                            <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
-                                <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
- 
-        <div class="mahasiswa">
-                <div class="mahasiswa-info">
-                    <div class="nama-mahasiswa">Rizky Ramadhan</div>
-                    <div class="nim-mahasiswa">3202116003</div>
-                    <div class="photo-mail">
-                    <button class="previewButton" onclick="previewPDF('3202116005')">
-                            <div class="icon-text-container"> 
-                            <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
-                                <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-             <div class="mahasiswa">
-                <div class="mahasiswa-info">
-                    <div class="nama-mahasiswa">Agustia Lita</div>
-                    <div class="nim-mahasiswa">3202116085</div>
-                    <div class="photo-mail">
-                    <button class="previewButton" onclick="previewPDF('3202116005')">
-                            <div class="icon-text-container"> 
-                            <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
-                                <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-             <div class="mahasiswa">
-                <div class="mahasiswa-info">
-                    <div class="nama-mahasiswa">Fahryan</div>
-                    <div class="nim-mahasiswa">3202116032</div>
-                    <div class="photo-mail">
-                    <button class="previewButton" onclick="previewPDF('3202116005')">
-                            <div class="icon-text-container"> 
-                            <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
-                                <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                            </div>
-                        </button>
-                    </div>
-                </div>
+        <div class="jadwal-container-perizinan2">
+            <div class="jadwal-info-perizinan">
+                <div class="mata-kuliah-perizinan2">Pemrograman Web</div>
+                <hr class="gariscontainer-perizinan2">
+                <div class="jam-perizinan2">14:00 - 16:00</div>
             </div>
         </div>
     </div>
-
-    <!-- Modal untuk pratinjau/preview PDF -->
-    <div id="previewModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <iframe id="pdfPreview" width="424px" height="619px"></iframe>
-            <div class="keterangan-surat"><span>Apakah dokumen tersebut <b>VALID?</b></span></div>
-            <button class="invalidButton" onclick="invalidButton()">Invalid</button>
-            <button class="validButton" onclick="validButton()">Valid</button>
-        </div>
-    </div>
-
-    <br>
-    <br>
-    <br>
-
-    <div class="jadwal-container-perizinan2">
-        <div class="jadwal-info-perizinan">
-            <div class="mata-kuliah-perizinan2">Pemrograman Web</div>
-            <hr class="gariscontainer-perizinan2">
-            <div class="jam-perizinan2">14:00 - 16:00</div>
-        </div>
-    </div>
-</div>
 
     <script>
-      
-
-
-
         //untuk popup alert invalid dan valid
-         // Function to display the SweetAlert2 popup
-         function invalidButton() {
+        // Function to display the SweetAlert2 popup
+        function invalidButton() {
             Swal.fire({
                 title: 'Anda tidak mengizinkan izin tersebut?',
                 icon: 'warning',
@@ -299,7 +307,7 @@
                 if (result.isConfirmed) {
                     // Handle "Ya" button click
                     Swal.fire('Validasi berhasil terkirim', '', 'success');
-closeModal();
+                    closeModal();
 
                     // Clear the name data here
                 } else {
@@ -331,9 +339,9 @@ closeModal();
                 }
             });
         }
-         //untuk popup alert log out
-     // Fungsi untuk menampilkan popup SweetAlert2
-     document.getElementById('logoutLink').addEventListener('click', function(event) {
+        //untuk popup alert log out
+        // Fungsi untuk menampilkan popup SweetAlert2
+        document.getElementById('logoutLink').addEventListener('click', function(event) {
             event.preventDefault(); // Mencegah perilaku default dari tag anchor
 
             Swal.fire({
@@ -360,42 +368,39 @@ closeModal();
 
 
 
-// buat pratinjau PDF
+        // buat pratinjau PDF
         function previewPDF(studentID) {
-    // Mendapatkan iframe tempat pratinjau PDF akan ditampilkan
-    const pdfPreview = document.getElementById('pdfPreview');
+            // Mendapatkan iframe tempat pratinjau PDF akan ditampilkan
+            const pdfPreview = document.getElementById('pdfPreview');
 
-    // Mengganti atribut src iframe dengan URL PDF yang sesuai berdasarkan ID mahasiswa
-    const pdfURL = `https://docs.google.com/document/d/1rl-zyxwSaFXnMSvHUiNH_N76rIWv33WQEZcxOT79qWU/edit`;
-    pdfPreview.src = pdfURL;
+            // Mengganti atribut src iframe dengan URL PDF yang sesuai berdasarkan ID mahasiswa
+            const pdfURL = `https://docs.google.com/document/d/1rl-zyxwSaFXnMSvHUiNH_N76rIWv33WQEZcxOT79qWU/edit`;
+            pdfPreview.src = pdfURL;
 
-    // Menampilkan modal pratinjau PDF
-    const modal = document.getElementById('previewModal');
-    modal.style.display = 'block';
-}
+            // Menampilkan modal pratinjau PDF
+            const modal = document.getElementById('previewModal');
+            modal.style.display = 'block';
+        }
 
- // Mengatur fungsi untuk tombol "Invalid" di dalam pratinjau
- const invalidBtn = document.querySelector('.invalidButton');
-    invalidBtn.onclick = function() {
-        invalidButton();
-    };
+        // Mengatur fungsi untuk tombol "Invalid" di dalam pratinjau
+        const invalidBtn = document.querySelector('.invalidButton');
+        invalidBtn.onclick = function() {
+            invalidButton();
+        };
 
-    // Mengatur fungsi untuk tombol "Valid" di dalam pratinjau
-    const validBtn = document.querySelector('.validButton');
-    validBtn.onclick = function() {
-        validButton();
-    };
-
-
-function closeModal() {
-    const modal = document.getElementById('previewModal');
-    modal.style.display = 'none';
-    const pdfPreview = document.getElementById('pdfPreview');
-    pdfPreview.src = ''; // Hentikan pratinjau PDF
-}
+        // Mengatur fungsi untuk tombol "Valid" di dalam pratinjau
+        const validBtn = document.querySelector('.validButton');
+        validBtn.onclick = function() {
+            validButton();
+        };
 
 
-
+        function closeModal() {
+            const modal = document.getElementById('previewModal');
+            modal.style.display = 'none';
+            const pdfPreview = document.getElementById('pdfPreview');
+            pdfPreview.src = ''; // Hentikan pratinjau PDF
+        }
     </script>
 
 </body>
