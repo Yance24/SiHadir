@@ -175,7 +175,7 @@
         </div>
 
         <div class="mahasiswa-container">
-            <!-- Contoh Mahasiswa 1 -->
+
             <div class="mahasiswa">
                 <div class="mahasiswa-info">
                     <div class="nama-mahasiswa">Adi Suryadi</div>
@@ -191,7 +191,7 @@
                 </div>
             </div>
 
-            <!-- Contoh Mahasiswa 2 -->
+     
             <div class="mahasiswa">
                 <div class="mahasiswa-info">
                 <div class="nama-mahasiswa">Weldy Flamingo</div>
@@ -208,7 +208,7 @@
                 </div>
             </div>
 
-        <!-- Contoh Mahasiswa 2 -->
+ 
         <div class="mahasiswa">
                 <div class="mahasiswa-info">
                     <div class="nama-mahasiswa">Rizky Ramadhan</div>
@@ -223,7 +223,6 @@
                     </div>
                 </div>
             </div>
-             <!-- Contoh Mahasiswa 2 -->
              <div class="mahasiswa">
                 <div class="mahasiswa-info">
                     <div class="nama-mahasiswa">Agustia Lita</div>
@@ -238,7 +237,6 @@
                     </div>
                 </div>
             </div>
-             <!-- Contoh Mahasiswa 2 -->
              <div class="mahasiswa">
                 <div class="mahasiswa-info">
                     <div class="nama-mahasiswa">Fahryan</div>
@@ -397,20 +395,6 @@ function closeModal() {
 }
 
 
-
-   // Fungsi untuk menghapus data terpilih
-function deleteSelectedData() {
-    // Ambil elemen kontainer/data yang dipilih
-    const selectedContainer = document.getElementById(selectedStudentID);
-    
-    if (selectedContainer) {
-        // Hapus elemen kontainer/data yang dipilih
-        selectedContainer.remove();
-        
-        // Tutup modal pratinjau PDF
-        closeModal();
-    }
-}
 
     </script>
 
