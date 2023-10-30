@@ -9,12 +9,16 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
-    <title>Document</title>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="sweetalert2.min.js"></script>
 
+    <title></title>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
 
     <style>
         .appbar {
@@ -48,7 +52,9 @@
         }
 
         .custom-profile {
-            background: url({{ asset('assets/img/bg-profile.png') }})
+            background: url({{ asset('assets/img/bg-profile.png') }});
+            background-size: cover;
+            background-position: center;
         }
 
         .sidebar a:hover {
@@ -64,7 +70,7 @@
         }
 
         #menuToggle:checked+.appbar+.sidebar {
-            width: 200px;
+            width: 350px;
         }
 
         #menuToggle:checked+.appbar label {
@@ -84,12 +90,24 @@
             background-size: cover;
         }
 
-        @media (min-width: 951px) {
-           
+        @media (min-width: 951px) {}
+
+        @media (max-width: 676px) {
+
+            #menuToggle:checked+.appbar+.sidebar {
+                width: 250px;
+            }
         }
 
-        @media (max-width: 950px) {
-           
+        @media (max-width: 448px) {
+
+            #menuToggle:checked+.appbar+.sidebar {
+                width: 180px;
+            }
+
+            .nav-custom {
+                font-size: 10px;
+            }
         }
     </style>
 </head>
@@ -97,9 +115,10 @@
 <body>
     <input type="checkbox" id="menuToggle">
     <div class="appbar fixed-top">
-        <label for="menuToggle" class="mt-5 ps-2">
+        <label for="menuToggle" class="mt-5 ps-2" onclick="toggleSidebar()">
             <i class="fa-solid fa-2xl fa-bars" style="color: #ffffff;"></i>
         </label>
+
         <div class="mx-auto mt-5">
             <h1 class="text-white">Sihadir</h1>
         </div>
@@ -111,48 +130,77 @@
                 <img src="{{ asset('assets/img/profile-pict.png') }}" alt="profile" class="rounded-circle"
                     width="80px" height="80px">
             </div>
-            <div class="" style="z-index: 2">
-                <span class="fw-bold">Ferry Faisal, S.ST., M.T.</span><br>
-                <span>19730206 199501 1 001</span>
+            <div class="p-2" style="z-index: 2">
+                <span class="fw-bold nama">Weldy Flaminggo</span><br>
+                <span class="nim">123456789</span>
             </div>
         </div>
 
-        <div class="d-flex flex-column gap-2 p-1">
+        <div class="d-flex flex-column gap-2 p-1 nav-custom">
             <div>
                 <a href="/" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
-                    <span style="font-size: 17px"> Absen</span>
+                    <span style="font-size: 15px"> Absen</span>
                 </a>
             </div>
-            <div class="disabled" style="background-color: #B2D2F2;">
-                <a href="/" class="text-decoration-none text-white ">
+            <div>
+                <a href="" class="text-decoration-none text-white ">
                     <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
-                    <span class="text-dark" style="font-size: 17px"> Profil</span>
+                    <span style="font-size: 17px"> Profil</span>
                 </a>
             </div>
             <div>
                 <a href="/" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class=" nav-custom">
-                    <span style="font-size: 17px"> Perizinan</span>
+                    <span style="font-size: 15px"> Perizinan</span>
                 </a>
             </div>
             <div>
                 <a href="/" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/change-password.svg') }}" alt="" class=" nav-custom">
-                    <span style="font-size: 17px"> Ganti Password</span>
+                    <span style="font-size: 15px"> Ganti Password</span>
                 </a>
 
             </div>
 
             <hr>
-            <div></div>
-            <a href="/" class="text-decoration-none text-white">
+            <a href="/" class="text-decoration-none text-white" id="logout">
                 <img src="{{ asset('assets/icon/logout.svg') }}" alt="" class=" nav-custom">
-                <span style="font-size: 17px"> Logout</span>
+                <span style="font-size: 15px"> Logout</span>
             </a>
         </div>
     </div>
+    <script>
+        < script >
+            function toggleSidebar() {
+                var sidebar = document.querySelector('.sidebar');
+                var appbar = document.querySelector('.appbar');
+                var menuToggle = document.querySelector('#menuToggle');
 
+                if (menuToggle.checked) {
+                    sidebar.style.width = '350px';
+                    appbar.style.marginLeft = '350px';
+                } else {
+                    sidebar.style.width = '0';
+                    appbar.style.marginLeft = '0';
+                }
+            }
+        // Event handler untuk tombol logout
+        document.getElementById('logout').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Do you want to log out?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Log Out',
+                denyButtonText: `Cancel`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan tindakan logout di sini
+                    Swal.fire('Logged Out!', '', 'success');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
