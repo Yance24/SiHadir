@@ -11,7 +11,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         .bg-custom {
-            background: url("{{ asset('images/bg-main.jpeg') }}") center;
+            background: url("{{ asset('assets/img/bg-main.jpeg') }}") center;
             background-size: cover;
             background-repeat: no-repeat;
             background-color: #99BBEC;
@@ -61,7 +61,7 @@
             .custom-logo {
                 width: 113px;
             }
-        }
+        }w
 
         @media screen and (max-height: 700px) {
             form {
