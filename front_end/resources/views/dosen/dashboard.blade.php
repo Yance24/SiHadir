@@ -143,8 +143,13 @@
             <button id="generate-qr-button">
                 <img src="{{ asset('assets/icon/qr-code%201.svg') }}" alt="Generate QR" style="width: 45px; height: 50px;">
                 <span style="margin-left: 12px; font-size: 34px;">Generate QR</span>
+            </button>
+            <!-- Formulir Tersembunyi untuk Redirect -->
+            <form id="redirect-form" action="qr_dosen.php" method="post">
+                <input type="hidden" name="parameter_name" value="parameter_value">
+                <!-- Tambahkan parameter sesuai kebutuhan -->
+            </form>
         </div>
-        </button>
         <!-- Patch Generate QR -->
         <div id="qr-patch" class="qr-patch">
             <h1>Generate QR Code</h1>
@@ -241,6 +246,16 @@
                     // Lakukan sesuatu atau berikan perilaku kustom
                 }
             });
+        });
+
+        //buat redirect generate qr code
+        // Tambahkan event listener ke tombol "Generate QR"
+        document.getElementById("generate-qr-button").addEventListener("click", function() {
+            // Dapatkan formulir tersembunyi
+            var form = document.getElementById("redirect-form");
+
+            // Submit formulir tersembunyi dengan metode POST
+            form.submit();
         });
     </script>
 </body>
