@@ -16,7 +16,6 @@
             display: none;
             position: fixed;
             z-index: 1;
-            left: 0;
             top: 0;
             width: 100%;
             height: 100%;
@@ -25,11 +24,16 @@
         }
 
         .modal-content {
+            position:relative;
             background-color: #fff;
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 50%;
+            width: 450px;
+            height:750px;
+            bottom:220px;
+            right:150px;
+            border-radius:15px;
         }
 
         .modal-button-container {
@@ -44,6 +48,22 @@
             border: none;
             cursor: pointer;
         }
+        
+        .keterangan-surat {
+            font-size:24px;
+           display:flex;
+           justify-content:center;
+           margin-top:10px;
+
+        }
+
+        .close {
+            position:relative;
+            bottom:610px;
+        }
+
+
+
 
         /* Gaya CSS untuk pesan validasi */
         .validation-message {
@@ -167,8 +187,9 @@
             <!-- Contoh Mahasiswa 2 -->
             <div class="mahasiswa">
                 <div class="mahasiswa-info">
-                    <div class="nama-mahasiswa">Weldy Flamingo</div>
-                    <div class="nim-mahasiswa">3202116085</div>
+                <div class="nama-mahasiswa" id="nama-mahasiswa">Adi Suryadi</div>
+<div class="nim-mahasiswa" id="nim-mahasiswa">3202116005</div>
+
                     <div class="photo-mail">
                         <img src="{{ asset('assets/icon/icon-mail-perizinan.svg') }}" alt="Foto Anda" class="photo-mail-perizinan">
                     </div>
@@ -212,7 +233,8 @@
     <div id="previewModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <iframe id="pdfPreview" width="100%" height="500"></iframe>
+            <iframe id="pdfPreview" width="424px" height="619px"></iframe>
+            <div class="keterangan-surat">Apakah dokumen tersebut VALID?</div>
             <button class="invalidButton" onclick="invalidButton()">Invalid</button>
             <button class="validButton" onclick="validButton()">Valid</button>
         </div>
@@ -277,7 +299,6 @@
                 if (result.isConfirmed) {
                     // Handle "Ya" button click
                     Swal.fire('Validasi berhasil terkirim', '', 'success');
-                    // Clear the name data here
                 } else {
                     // Handle "Tidak" button click
                     // Do nothing or provide custom behavior
@@ -341,13 +362,10 @@
 
 
 function closeModal() {
-    // Menutup modal saat tombol close ditekan
     const modal = document.getElementById('previewModal');
     modal.style.display = 'none';
-
-    // Menghentikan pratinjau PDF
     const pdfPreview = document.getElementById('pdfPreview');
-    pdfPreview.src = '';
+    pdfPreview.src = ''; // Hentikan pratinjau PDF
 }
 
    
