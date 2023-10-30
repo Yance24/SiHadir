@@ -59,7 +59,11 @@
 
         .close {
             position:relative;
+            font-size:30px;
+            right: 10px;
             bottom:610px;
+            cursor:pointer;
+           
         }
         .icon-text-container {
             display:flex;
@@ -297,7 +301,7 @@
                 if (result.isConfirmed) {
                     // Handle "Ya" button click
                     Swal.fire('Validasi berhasil terkirim', '', 'success');
-
+closeModal();
 
                     // Clear the name data here
                 } else {
@@ -322,6 +326,7 @@
                 if (result.isConfirmed) {
                     // Handle "Ya" button click
                     Swal.fire('Validasi berhasil terkirim', '', 'success');
+                    closeModal();
                 } else {
                     // Handle "Tidak" button click
                     // Do nothing or provide custom behavior
@@ -391,7 +396,21 @@ function closeModal() {
     pdfPreview.src = ''; // Hentikan pratinjau PDF
 }
 
-   
+
+
+   // Fungsi untuk menghapus data terpilih
+function deleteSelectedData() {
+    // Ambil elemen kontainer/data yang dipilih
+    const selectedContainer = document.getElementById(selectedStudentID);
+    
+    if (selectedContainer) {
+        // Hapus elemen kontainer/data yang dipilih
+        selectedContainer.remove();
+        
+        // Tutup modal pratinjau PDF
+        closeModal();
+    }
+}
 
     </script>
 
