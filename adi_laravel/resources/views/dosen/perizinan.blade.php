@@ -148,6 +148,26 @@
 
 
 <body>
+
+    <!-- <?php
+
+            // $urlPdf = 'urlgfdgf';
+            // $dataMahasiswa;
+
+            // foreach ($dataMahasiswa as $item) {
+            //     $item->nama;
+            //     $item->id_user;
+
+            // }
+
+            // if (isset($urlPdf)) {
+
+            // }
+
+
+            ?> -->
+
+
     <!-- Pembatas Sidebar -->
     <div class="sidebar">
         <div class="profile-images">
@@ -210,7 +230,7 @@
                         <div class="nim-mahasiswa">3202116123</div>
 
                         <div class="photo-mail">
-                            <button class="previewButton" onclick="previewPDF('3202116005')">
+                            <button class="previewButton" onclick="previewPDF('3202116123')">
                                 <div class="icon-text-container">
                                     <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
                                     <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
@@ -226,7 +246,7 @@
                         <div class="nama-mahasiswa">Rizky Ramadhan</div>
                         <div class="nim-mahasiswa">3202116003</div>
                         <div class="photo-mail">
-                            <button class="previewButton" onclick="previewPDF('3202116005')">
+                            <button class="previewButton" onclick="previewPDF('3202116003')">
                                 <div class="icon-text-container">
                                     <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
                                     <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
@@ -235,12 +255,13 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="mahasiswa">
                     <div class="mahasiswa-info">
                         <div class="nama-mahasiswa">Agustia Lita</div>
                         <div class="nim-mahasiswa">3202116085</div>
                         <div class="photo-mail">
-                            <button class="previewButton" onclick="previewPDF('3202116005')">
+                            <button class="previewButton" onclick="previewPDF('3202116085')">
                                 <div class="icon-text-container">
                                     <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
                                     <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
@@ -254,7 +275,7 @@
                         <div class="nama-mahasiswa">Fahryan</div>
                         <div class="nim-mahasiswa">3202116032</div>
                         <div class="photo-mail">
-                            <button class="previewButton" onclick="previewPDF('3202116005')">
+                            <button class="previewButton" onclick="previewPDF('3202116032')">
                                 <div class="icon-text-container">
                                     <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
                                     <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">

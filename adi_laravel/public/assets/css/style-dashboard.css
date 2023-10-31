@@ -1,6 +1,5 @@
 html {
     width: 100%;
-    overflow: hidden;
 }
 
 div.content {
@@ -64,7 +63,7 @@ h2 {
     /* Lebar elemen */
     height: 100px;
     right: 170px;
-    bottom: 205px;
+    bottom: 490px;
     /* Tinggi elemen */
     /* Menghilangkan margin kanan dan mengatur margin atas dan bawah */
     cursor: pointer;

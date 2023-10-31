@@ -63,6 +63,9 @@
 
     //$account menyimpan informasi dari akun dosen yang terlogin
     //data dari $account akan berupa field-field dari database dummyny backend
+
+    use function PHPUnit\Framework\isEmpty;
+
     $account = session()->get('account');
 
     //$schedule menyimpan informasi dari jadwal-jadwal yang ada
@@ -76,10 +79,16 @@
     // dd($account);
 
     //buat melihat data dari variable $schedule
-    //dd($schedule);
+    // dd($schedule);
+
+    // if ($dashBoard->isEmpty()) {
+    //     echo "<h1>tidak ada jadwal hari ini</h1>";
+    // }
+
+    // dd();
 
     //buat melihat data dari variable $dashBoard
-    //dd($dashBoard);
+    // dd($dashBoard);
     ?>
 
     <!-- Pembatas Sidebar -->
@@ -120,7 +129,7 @@
 
     <div class="content">
         <br>
-        <p style="font-size: 32px; ;">Halo, <b>Ferry Faisal, S.ST., M.T.</b></p>
+        <p style="font-size: 32px; ;">Halo, <b><?php echo $account->nama; ?></b></p>
         <br>
         <br>
         <h2 style="display: flex; align-items: center;">
@@ -128,26 +137,32 @@
             Jadwal Sekarang
         </h2>
 
+        @foreach ($dashBoard as $item)
+        <br>
+        <br>
         <div class="jadwal-container">
             <div class="jadwal-info">
-                <div class="mata-kuliah">PBL</div>
+                <div class="mata-kuliah"><?php echo $item->mataKuliah->nama_makul; ?></div>
                 <hr class="gariscontainer">
-                <div class="jam">07:00 - 11:00</div>
+                <div class="jam"><?php echo $item->jam_mulai . ' - ' . $item->jam_selesai; ?></div>
             </div>
         </div>
+        @endforeach
         <br>
         <br>
         <br>
 
         <div class="center-content">
-            <button id="generate-qr-button">
-                <img src="{{ asset('assets/icon/qr-code%201.svg') }}" alt="Generate QR" style="width: 45px; height: 50px;">
-                <span style="margin-left: 12px; font-size: 34px;">Generate QR</span>
-            </button>
+
             <!-- Formulir Tersembunyi untuk Redirect -->
-            <form id="redirect-form" action="qr_dosen.php" method="post">
+            <form id="redirect-form" action="qr_dosen" method="post">
+                @csrf
                 <input type="hidden" name="parameter_name" value="parameter_value">
                 <!-- Tambahkan parameter sesuai kebutuhan -->
+                <button id="generate-qr-button" type='submit'>
+                    <img src="{{ asset('assets/icon/qr-code%201.svg') }}" alt="Generate QR" style="width: 45px; height: 50px;">
+                    <span style="margin-left: 12px; font-size: 34px;">Generate QR</span>
+                </button>
             </form>
         </div>
         <!-- Patch Generate QR -->
@@ -169,7 +184,7 @@
         </div>
 
 
-        <h2 style="display: flex; align-items: center;">
+        <!-- <h2 style="display: flex; align-items: center;">
             <img src="{{ asset('assets/icon/table%204.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
             Jadwal Selanjutnya
         </h2>
@@ -179,7 +194,7 @@
                 <hr class="gariscontainer">
                 <div class="jam">12:00 - 16:00</div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js">
@@ -187,37 +202,37 @@
 
     <script>
         // Ambil tombol Generate QR dan patch Generate QR
-        var generateQRButton = document.getElementById("generate-qr-button");
-        var qrPatch = document.getElementById("qr-patch");
+        // var generateQRButton = document.getElementById("generate-qr-button");
+        // var qrPatch = document.getElementById("qr-patch");
 
-        // Tambahkan event listener untuk tombol Generate QR
-        generateQRButton.addEventListener("click", function() {
-            // Tampilkan patch Generate QR saat tombol ditekan
-            qrPatch.style.display = "block";
-            // Di sini Anda dapat menambahkan konten untuk patch Generate QR sesuai kebutuhan Anda
-        });
+        // // Tambahkan event listener untuk tombol Generate QR
+        // generateQRButton.addEventListener("click", function() {
+        //     // Tampilkan patch Generate QR saat tombol ditekan
+        //     qrPatch.style.display = "block";
+        //     // Di sini Anda dapat menambahkan konten untuk patch Generate QR sesuai kebutuhan Anda
+        // });
 
 
-        // untuk qr code generate
-        // Function to HTML encode the text
-        // This creates a new hidden element,
-        // inserts the given text into it 
-        // and outputs it out as HTML
-        function htmlEncode(value) {
-            return $('<div/>').text(value)
-                .html();
-        }
+        // // untuk qr code generate
+        // // Function to HTML encode the text
+        // // This creates a new hidden element,
+        // // inserts the given text into it 
+        // // and outputs it out as HTML
+        // function htmlEncode(value) {
+        //     return $('<div/>').text(value)
+        //         .html();
+        // }
 
-        $(function() {
-            // Specify an onclick function for the generate button
-            $('#generate-qr-button').click(function() {
-                // Generate a unique QR Code with a random value
-                let randomValue = Math.random().toString(36).substr(2, 5);
-                let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + randomValue + '&chs=160x160&chld=L|0';
-                // Replace the src of the image with the new QR code
-                $('.qr-code').attr('src', finalURL);
-            });
-        });
+        // $(function() {
+        //     // Specify an onclick function for the generate button
+        //     $('#generate-qr-button').click(function() {
+        //         // Generate a unique QR Code with a random value
+        //         let randomValue = Math.random().toString(36).substr(2, 5);
+        //         let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + randomValue + '&chs=160x160&chld=L|0';
+        //         // Replace the src of the image with the new QR code
+        //         $('.qr-code').attr('src', finalURL);
+        //     });
+        // });
 
 
 
@@ -250,13 +265,13 @@
 
         //buat redirect generate qr code
         // Tambahkan event listener ke tombol "Generate QR"
-        document.getElementById("generate-qr-button").addEventListener("click", function() {
-            // Dapatkan formulir tersembunyi
-            var form = document.getElementById("redirect-form");
+        // document.getElementById("generate-qr-button").addEventListener("click", function() {
+        //     // Dapatkan formulir tersembunyi
+        //     var form = document.getElementById("redirect-form");
 
-            // Submit formulir tersembunyi dengan metode POST
-            form.submit();
-        });
+        //     // Submit formulir tersembunyi dengan metode POST
+        //     form.submit();
+        // });
     </script>
 </body>
 
