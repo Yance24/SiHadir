@@ -374,7 +374,7 @@
             const pdfPreview = document.getElementById('pdfPreview');
 
             // Mengganti atribut src iframe dengan URL PDF yang sesuai berdasarkan ID mahasiswa
-            const pdfURL = `https://docs.google.com/document/d/1rl-zyxwSaFXnMSvHUiNH_N76rIWv33WQEZcxOT79qWU/edit`;
+            const pdfURL = `{{ asset('assets/img/uud.pdf') }}`;
             pdfPreview.src = pdfURL;
 
             // Menampilkan modal pratinjau PDF
