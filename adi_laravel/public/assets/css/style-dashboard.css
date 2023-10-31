@@ -1,6 +1,6 @@
 html {
     width: 100%;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 div.content {

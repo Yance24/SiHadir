@@ -394,6 +394,7 @@
             validButton();
         };
 
+        //untuk menutup preview pdf saat tekan yes
 
         function closeModal() {
             const modal = document.getElementById('previewModal');
