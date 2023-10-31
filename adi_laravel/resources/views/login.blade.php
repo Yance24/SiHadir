@@ -83,7 +83,7 @@
                     <input type="text" name="username" placeholder="USERNAME" class="form-control rounded-pill">
                 </div>
                 <div class="mb-3 form-group input-group password-toggle position-relative">
-                    <input type="password" class="form-control rounded-pill" placeholder="PASSWORD" name="password">
+                    <input type="password" id="password" class="form-control rounded-pill" placeholder="PASSWORD" name="password">
                     <i class="far fa-eye fa-lg pe-auto position-absolute top-50" id="password-toggle" type="button"></i>
                 </div>
                 <div class="text-start p-2" style="margin-bottom: 100px">
