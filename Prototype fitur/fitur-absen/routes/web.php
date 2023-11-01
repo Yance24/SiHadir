@@ -31,3 +31,5 @@ Route::get('/Home',[LoginValidation::class,'processView']);
 Route::post('/sqanQR',[AbsensiController::class,'scanQr'])->name('sqanQR');
 
 Route::post('/generateQr',[AbsensiController::class,'generateQr'])->name('generateQr');
+
+Route::post('/tutupMakul',[AbsensiController::class,'closeClass'])->name('tutupMakul');

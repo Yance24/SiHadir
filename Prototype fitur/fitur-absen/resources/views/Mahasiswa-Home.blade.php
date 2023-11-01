@@ -7,7 +7,7 @@
         <h3>Login Sebagai mahasiswa!</h3>
         <br><br>
         <?php
-        $homeSchedule = session('homeSchedule');
+        $homeSchedule = session()->get('schedule');
         foreach($homeSchedule as $item){
             echo "===========<br>";
             echo "nama makul : ".$item->mataKuliah->nama_makul."<br>";
@@ -25,7 +25,6 @@
             <button type="submit"
                 <?php
                 use App\Http\Controllers\AbsensiController;
-                // if($homeSchedule->count() == 0 || TimeControl::compareTime(TimeControl::getTime(),$homeSchedule->first()->jam_mulai,'<')) echo "disabled";
                 if(AbsensiController::checkEnableQR()) echo "disabled";
                 ?>
             >

@@ -7,7 +7,6 @@ use Illuminate\Support\Carbon;
 class TimeControl extends Controller
 {
     public static function getTime(){
-
         return date('H:i:s',time());
     }
 

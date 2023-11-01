@@ -11,6 +11,7 @@
             Nim : <input type="text" name="id"><br>
             Hari : <input type="text" name="hari"><br>
             Waktu : <input type="text" name="waktu"><br>
+            Tanggal : <input type="text" name="tanggal"><br>
             <br>
             <input type="submit">
         </form>

@@ -10,7 +10,7 @@
 
         use App\Http\Controllers\AbsensiController;
 
-        $homeSchedule = session('homeSchedule');
+        $homeSchedule = session()->get('schedule');
         foreach($homeSchedule as $item){
             echo "===========<br>";
             echo "Nama makul : ".$item->mataKuliah->nama_makul."<br>";
@@ -30,6 +30,14 @@
             >
                 Generate Qr
             </button>
+        </form>
+
+        <form action="<?php echo route('tutupMakul');?>" method='POST'>
+            @csrf
+            <button type="submit">
+                Tutup Makul
+            </button>
+            
         </form>
     </body>
 </html>
