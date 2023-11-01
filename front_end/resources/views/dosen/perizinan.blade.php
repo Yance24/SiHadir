@@ -328,6 +328,7 @@
                 if (result.isConfirmed) {
                     // Handle "Ya" button click
                     Swal.fire('Validasi berhasil terkirim', '', 'success');
+                    removeData(); // Panggil removeData setelah popup ditutup
                     closeModal();
 
                     // Clear the name data here
@@ -353,6 +354,7 @@
                 if (result.isConfirmed) {
                     // Handle "Ya" button click
                     Swal.fire('Validasi berhasil terkirim', '', 'success');
+                    removeData(); // Panggil removeData setelah popup ditutup
                     closeModal();
                 } else {
                     // Handle "Tidak" button click
@@ -391,17 +393,22 @@
 
         // buat pratinjau PDF
         function previewPDF(studentID) {
-            // Mendapatkan iframe tempat pratinjau PDF akan ditampilkan
-            const pdfPreview = document.getElementById('pdfPreview');
-
             // Mengganti atribut src iframe dengan URL PDF yang sesuai berdasarkan ID mahasiswa
             const pdfURL = `{{ asset('assets/img/uud.pdf') }}`;
-            pdfPreview.src = pdfURL;
+            document.getElementById('pdfPreview').src = pdfURL;
 
             // Menampilkan modal pratinjau PDF
             const modal = document.getElementById('previewModal');
             modal.style.display = 'block';
+
+            // Menambahkan kelas 'active' ke elemen mahasiswa yang dipilih
+            const selectedMahasiswa = document.querySelector(`[onclick="previewPDF('${studentID}')"]`).closest('.mahasiswa');
+            if (selectedMahasiswa) {
+                selectedMahasiswa.querySelector('.mahasiswa-info').classList.add('active');
+            }
         }
+
+
 
         // Mengatur fungsi untuk tombol "Invalid" di dalam pratinjau
         const invalidBtn = document.querySelector('.invalidButton');
@@ -422,6 +429,25 @@
             modal.style.display = 'none';
             const pdfPreview = document.getElementById('pdfPreview');
             pdfPreview.src = ''; // Hentikan pratinjau PDF
+        }
+
+
+        // function removeData() {
+        //     // Cari elemen yang ingin dihapus
+        //     const containerToRemove = document.querySelector('.mahasiswa-info.active');
+
+        //     if (containerToRemove) {
+        //         containerToRemove.parentNode.remove(); // Hapus container
+        //     }
+        // }
+
+        // function untuk menghapus data atau container yang dipilih,dan dipanggil di dalam IF alert
+        function removeData() {
+            // Cari elemen yang ingin dihapus
+            const containerToRemove = document.querySelector('.mahasiswa-info.active');
+            if (containerToRemove) {
+                containerToRemove.closest('.mahasiswa').remove(); // Hapus container
+            }
         }
     </script>
 
