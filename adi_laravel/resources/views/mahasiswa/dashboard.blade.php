@@ -11,7 +11,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous">
+        <link rel="stylesheet" href="asset('assets/js/pemindai.js')">
     </section>
+
+    <style>
+        @media (min-width: 1025px) {
+          .content {
+            display: none;
+          }
+        }
+        @media (max-width: 1024px) {
+          .content {
+            display: block;
+          }
+        }
+      </style>
 
     <div class="content container" style="margin-top:100px; overflow-x:hidden;">
         <div class="mb-5 pl-3 pt-3" style="">
