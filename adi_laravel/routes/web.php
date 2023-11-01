@@ -32,25 +32,29 @@
 
     // MAHASISWA
 
-    Route::get('/mahasiswa/profil', function () {
+    Route::get('/mahasiswa/profil', function(){
         return view('mahasiswa.profil');
     });
-    Route::get('/mahasiswa/perizinan', function () {
+    Route::get('/mahasiswa/perizinan', function(){
         return view('mahasiswa.perizinan');
     });
 
-    Route::get('/mahasiswa/dashboard', function () {
+    Route::get('/mahasiswa/dashboard', function(){
         return view('mahasiswa.dashboard');
     });
 
-    Route::get('/mahasiswa/profil', function () {
+    Route::get('/mahasiswa/profil', function(){
         return view('mahasiswa.profil');
     });
 
     Route::post('scanner', [PemindaiController::class, 'scanner']);
 
-    Route::get('/mahasiswa/test', function () {
+    Route::get('/mahasiswa/test', function(){
         return view('mahasiswa.test');
+    });
+
+    Route::get('/mahasiswa/testCamera', function(){
+        return view('mahasiswa.testCamera');
     });
 
     Route::get('/pemindai', 'PemindaiController@scanner')->name('pemindai::class.scanner');
