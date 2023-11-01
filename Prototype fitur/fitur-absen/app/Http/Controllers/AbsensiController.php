@@ -12,11 +12,12 @@ class AbsensiController extends Controller
 {
 
     public function scanQr(Request $request){
-        if($request->session()->get('account')['loginSebagai'] != 'mahasiswa') return redirect('/Home');
-        $idJadwal = $request->session()->get('homeSchedule')->first()->id_jadwal;
+        if($request->session()->get('loginAs') != 'mahasiswa') return redirect()->back();
+        $idJadwal = $request->session()->get('schedule')->first()->id_jadwal;
         $absenDosen = AbsenDosen::where('id_jadwal','=',$idJadwal)->first();
         if($absenDosen != null){
             $waktu = TimeControl::getTime();
+            $tanggal = session()->get('tanggal');
             $lateTime = TimeControl::operateTime($absenDosen->waktu_dosen, 900,'+');
             if(TimeControl::compareTime(TimeControl::getTime(),$lateTime,'>'))
             $status = 'Telat';
@@ -24,25 +25,45 @@ class AbsensiController extends Controller
             DB::table('absen mahasiswa')->insert([
                 'keterangan' => $status,
                 'waktu_mahasiswa' => $waktu,
-                'id_user' => $request->session()->get('account')['account']->id_user,
+                'id_user' => $request->session()->get('account')->id_user,
                 'id_jadwal' => $idJadwal,
+                'tanggal' => $tanggal,
             ]);
         }
         return redirect('/Home');
     }
 
     public function generateQr(Request $request){
-        if($request->session()->get('account')['loginSebagai'] != 'dosen') return redirect('/Home');
-        $idJadwal = $request->session()->get('homeSchedule')->first()->id_jadwal;
+        if($request->session()->get('loginAs') != 'dosen') return redirect()->back();
+        $idJadwal = $request->session()->get('schedule')->first()->id_jadwal;
         $absenDosen = AbsenDosen::where('id_jadwal','=',$idJadwal)->first();
         if($absenDosen == null){
             $idQr = Str::random(5);
             $waktu = TimeControl::getTime();
+            $tanggal = session()->get('tanggal');
             DB::table('absen_dosen')->insert([
                 'id_jadwal' => $idJadwal,
-                'id_userdosen' => $request->session()->get('account')['account']->id_userdosen,
+                'id_userdosen' => $request->session()->get('account')->id_userdosen,
                 'waktu_dosen' => $waktu,
                 'id_QR' => $idQr,
+                'tanggal' => $tanggal,
+            ]);
+        }
+        return redirect('/Home');
+    }
+
+    public function closeClass(Request $request){
+        if($request->session()->get('loginAs') != 'dosen') return redirect()->back();
+        $idJadwal = $request->session()->get('schedule')->first()->id_jadwal;
+        $absenDosen = AbsenDosen::where('id_jadwal','=',$idJadwal)->first();
+        if($absenDosen != null){
+            $tanggal = session()->get('tanggal');
+            $waktu = TimeControl::getTime();
+            DB::table('absen_dosen')
+            ->where('id_jadwal','=',$idJadwal)
+            ->where('tanggal','=',$tanggal)
+            ->update([
+                'waktu_selesai' => $waktu
             ]);
         }
         return redirect('/Home');
@@ -66,5 +87,10 @@ class AbsensiController extends Controller
             )return true;
             else return false;
         }
+    }
+
+    public static function checkEnableTutupMakul(){
+        $account = session()->get('account');
+        
     }
 }

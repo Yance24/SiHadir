@@ -43,7 +43,7 @@
         }
 
         .custom-profile {
-            background: url({{ asset('assets/img/bg-sidebar.png') }})
+            background: url('<?php echo asset(asset('assets/img/bg-sidebar.png')) ?>')
         }
 
         .sidebar a:hover {

@@ -9,11 +9,17 @@ use Illuminate\Http\Request;
 class LoginValidation extends Controller
 {
     public function validateLogin(Request $request){
-        // $account = MahasiswaAccounts::where('id_user','=',$request->input('id'))->first();
-        // if($account != null){
-        //     if($account->password == $request->input('pass'))
-        //         return redirect("/")->with(['account' => $account, 'as' => 'mahasiswa']);
-        // }
+        $account = MahasiswaAccounts::where('id_user','=',$request->input('username'))->first();
+        if($account != null){
+            if($account->password == $request->input('password')){
+                session()->put([
+                    'account' => $account,
+                    'loginAs' => 'Mahasiswa',
+                ]);
+                return redirect("/mahasiswa/dashboard");
+            }
+        }
+
         $account = DosenAccounts::where('id_userdosen','=',$request->input('username'))->first();
         if($account != null){
             if($account->password == $request->input('password')){

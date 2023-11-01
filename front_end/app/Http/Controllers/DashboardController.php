@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function processDosenView(Request $request){
-        if(!LoginValidation::validateUser("Dosen")) return redirect('/login');
+        if(!LoginValidation::validateUser("Dosen")) return redirect()->back();
 
         ScheduleController::getSchedule("Senin");
         ScheduleController::getDashboardSchedule("07:00:00");
@@ -15,9 +15,10 @@ class DashboardController extends Controller
     }
 
     public function processMahasiswaView(Request $request){
-        if(!LoginValidation::validateUser("Mahasiswa")) return redirect('/login');
+        if(!LoginValidation::validateUser("Mahasiswa")) return redirect()->back();
 
-        //will be uncommented after the frontend create the dashboard for the mahasiswa
-        //return view('mahasiswa.dashboard');
+        ScheduleController::getSchedule("Senin");
+        ScheduleController::getDashboardSchedule("07:00:00");
+        return view('mahasiswa.dashboard');
     }
 }

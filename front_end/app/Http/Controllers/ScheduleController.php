@@ -33,7 +33,6 @@ class ScheduleController extends Controller
             $data = Schedule::where('hari','=',$hari)->where('kelas','=',$account->kelas)->orderBy('jam_mulai','asc')->get();
         else if($loginAs == 'Dosen')
             $data = Schedule::where('id_userdosen','=',$account->id_userdosen)->where('hari','=',$hari)->orderBy('jam_mulai','asc')->get();
-        
         session()->put(['schedule' => $data]);
     }
 }
