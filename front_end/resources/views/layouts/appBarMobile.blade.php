@@ -11,7 +11,9 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
 
+
     <title></title>
+    
 
     <style>
         .appbar {
@@ -79,7 +81,7 @@
         }
 
         .bg-custom {
-            background: url({{ asset('assets/img/bg-sidebar.png') }}) center no-repeat;
+            background: url({{ asset('assets/img/bg-profile.png') }}) center no-repeat;
             background-size: cover;
         }
 
@@ -106,78 +108,77 @@
 </head>
 
 <body>
-    <header>
-        <input type="checkbox" id="menuToggle">
-        <div class="appbar fixed-top">
-            <label for="menuToggle" class="mt-5 ps-2" onclick="toggleSidebar()">
-                <i class="fa-solid fa-2xl fa-bars" style="color: #ffffff;"></i>
-            </label>
-            <div class="mx-auto mt-5">
-                <h1 class="text-white">Sihadir</h1>
+    <input type="checkbox" id="menuToggle">
+    <div class="appbar fixed-top">
+        <label for="menuToggle" class="mt-5 ps-2" onclick="toggleSidebar()">
+            <i class="fa-solid fa-2xl fa-bars" style="color: #ffffff;"></i>
+        </label>
+        <div class="mx-auto mt-5">
+            <h1 class="text-white">Sihadir</h1>
+        </div>
+    </div>
+
+    <div class="sidebar text-white">
+        <div class="header-box custom-profile mb-3 pb-3">
+            <div class="mb-2 p-3" style="z-index: 2">
+                <img src="{{ asset('assets/img/profile-pict.png') }}" alt="profile" class="rounded-circle"
+                    width="80px" height="80px">
+            </div>
+            <div class="p-2" style="z-index: 2">
+                <span class="fw-bold nama">Weldy Flaminggo</span><br>
+                <span class="nim">123456789</span>
             </div>
         </div>
 
-        <div class="sidebar text-white">
-            <div class="header-box custom-profile mb-3 pb-3">
-                <div class="mb-2 p-3" style="z-index: 2">
-                    <img src="{{ asset('assets/img/profile-pict.png') }}" alt="profile" class="rounded-circle"
-                        width="80px" height="80px">
-                </div>
-                <div class="p-2" style="z-index: 2">
-                    <span class="fw-bold nama">Weldy Flaminggo</span><br>
-                    <span class="nim">123456789</span>
-                </div>
-            </div>
-
-            <div class="d-flex flex-column gap-2 p-1 nav-custom">
-                <div>
-                    <a href="/" class="text-decoration-none text-white">
-                        <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
-                        <span style="font-size: 15px"> Absen</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="" class="text-decoration-none text-white ">
-                        <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
-                        <span style="font-size: 17px"> Profil</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="/" class="text-decoration-none text-white">
-                        <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class=" nav-custom">
-                        <span style="font-size: 15px"> Perizinan</span>
-                    </a>
-                </div>
-                <div>
-                    <a href="/" class="text-decoration-none text-white">
-                        <img src="{{ asset('assets/icon/change-password.svg') }}" alt="" class=" nav-custom">
-                        <span style="font-size: 15px"> Ganti Password</span>
-                    </a>
-
-                </div>
-
-                <hr>
-                <a href="/" class="text-decoration-none text-white" id="logout">
-                    <img src="{{ asset('assets/icon/logout.svg') }}" alt="" class=" nav-custom">
-                    <span style="font-size: 15px"> Logout</span>
+        <div class="d-flex flex-column gap-2 p-1 nav-custom">
+            <div>
+                <a href="/" class="text-decoration-none text-white">
+                    <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
+                    <span style="font-size: 15px"> Absen</span>
                 </a>
             </div>
-        </div>
-    </header>
-    <script>
-        function toggleSidebar() {
-            var sidebar = document.querySelector('.sidebar');
-            var appbar = document.querySelector('.appbar');
-            var menuToggle = document.querySelector('#menuToggle');
+            <div>
+                <a href="" class="text-decoration-none text-white ">
+                    <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
+                    <span style="font-size: 17px"> Profil</span>
+                </a>
+            </div>
+            <div>
+                <a href="/" class="text-decoration-none text-white">
+                    <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class=" nav-custom">
+                    <span style="font-size: 15px"> Perizinan</span>
+                </a>
+            </div>
+            <div>
+                <a href="/" class="text-decoration-none text-white">
+                    <img src="{{ asset('assets/icon/change-password.svg') }}" alt="" class=" nav-custom">
+                    <span style="font-size: 15px"> Ganti Password</span>
+                </a>
 
-            if (menuToggle.checked) {
-                sidebar.style.width = '350px';
-                appbar.style.marginLeft = '350px';
-            } else {
-                sidebar.style.width = '0';
-                appbar.style.marginLeft = '0';
+            </div>
+
+            <hr>
+            <a href="/" class="text-decoration-none text-white" id="logout">
+                <img src="{{ asset('assets/icon/logout.svg') }}" alt="" class=" nav-custom">
+                <span style="font-size: 15px"> Logout</span>
+            </a>
+        </div>
+    </div>
+    <script>
+        < script >
+            function toggleSidebar() {
+                var sidebar = document.querySelector('.sidebar');
+                var appbar = document.querySelector('.appbar');
+                var menuToggle = document.querySelector('#menuToggle');
+
+                if (menuToggle.checked) {
+                    sidebar.style.width = '350px';
+                    appbar.style.marginLeft = '350px';
+                } else {
+                    sidebar.style.width = '0';
+                    appbar.style.marginLeft = '0';
+                }
             }
-        }
         // Event handler untuk tombol logout
         document.getElementById('logout').addEventListener('click', function() {
             Swal.fire({
@@ -193,3 +194,4 @@
                 }
             });
         });
+    </>
