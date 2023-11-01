@@ -53,8 +53,8 @@
         return view('mahasiswa.test');
     });
 
-    Route::get('/mahasiswa/testCamera', function(){
-        return view('mahasiswa.testCamera');
+    Route::get('/mahasiswa/pemindai', function(){
+        return view('mahasiswa.pemindai');
     });
 
     Route::get('/pemindai', 'PemindaiController@scanner')->name('pemindai::class.scanner');
