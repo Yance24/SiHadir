@@ -6,15 +6,16 @@ use Illuminate\Support\Carbon;
 
 class TimeControl extends Controller
 {
-    public static function getTime(){
-        return date('H:i:s',time());
+    public static function getTime($time = null){
+        return ($time == null) ? date('H:i:s',time()):$time;
     }
 
-    public static function getDate(){
-        return date('Y-m-d',time());
+    public static function getDate($date = null){
+        return ($date == null) ? date('Y-m-d',time()):$date;
     }
 
-    public static function getDays(){
+    public static function getDays($days = null){
+        if($days != null) return $days;
         $dayNumber = Carbon::now()->dayOfWeek;
         switch ($dayNumber) {
             case 0: return 'Minggu';

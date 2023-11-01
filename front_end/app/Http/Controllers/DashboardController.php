@@ -11,8 +11,8 @@ class DashboardController extends Controller
         if(!LoginValidation::validateUser("Dosen")) return redirect()->back();
 
 
-        ScheduleController::getSchedule("Senin");
-        ScheduleController::getDashboardSchedule("07:00:00");
+        ScheduleController::getSchedule();
+        // ScheduleController::getDashboardSchedule();
         return view('dosen.dashboard');
     }
 
@@ -20,8 +20,8 @@ class DashboardController extends Controller
     public function processMahasiswaView(Request $request){
         if(!LoginValidation::validateUser("Mahasiswa")) return redirect()->back();
 
-        ScheduleController::getSchedule("Senin");
-        ScheduleController::getDashboardSchedule("07:00:00");
+        ScheduleController::getSchedule();
+        // ScheduleController::getDashboardSchedule();
         return view('mahasiswa.dashboard');
     }
 }

@@ -2,7 +2,10 @@
 
 
     use App\Http\Controllers\DashboardController;
+    use App\Http\Controllers\PemindaiController;
     use App\Http\Controllers\LoginValidation;
+    use App\Http\Controllers\AbsensiController;
+    use App\Http\Controllers\ScheduleController;
     use Illuminate\Support\Facades\Route;
     use Illuminate\Support\Facades\DB;
     use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -74,8 +77,10 @@
     // });
 
     //Route dashboard generate testing
-    Route::post('dosen/qr_dosen', function () {
-        echo 'tes';
+    Route::post('dosen/qr_dosen', [AbsensiController::class,'generateQR']);
+
+    Route::get('/Test-QR',function(){
+        echo("<img src='https://chart.googleapis.com/chart?cht=qr&chl=".session()->get('idQr')."&chs=160x160&chld=L|0'/>");
     });
 
     //Route untuk dosen

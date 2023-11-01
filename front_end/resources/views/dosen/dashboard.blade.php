@@ -72,23 +72,12 @@
     //mahasiswa dan dosen akan memiliki jadwal yang berbeda
     $schedule = session()->get('schedule');
 
-    //$dashBoard menyimpan informasi dari jadwal sekarang dan jadwal selanjutnya
-    $dashBoard = session()->get('dashboardSchedule');
-
     //buat melihat data dari variable $account
     // dd($account);
 
     //buat melihat data dari variable $schedule
     // dd($schedule);
 
-    // if ($dashBoard->isEmpty()) {
-    //     echo "<h1>tidak ada jadwal hari ini</h1>";
-    // }
-
-    // dd();
-
-    //buat melihat data dari variable $dashBoard
-    // dd($dashBoard);
     ?>
 
     <!-- Pembatas Sidebar -->
@@ -137,7 +126,7 @@
             Jadwal Sekarang
         </h2>
 
-        @foreach ($dashBoard as $item)
+        @foreach ($schedule as $item)
         <br>
         <br>
         <div class="jadwal-container">
