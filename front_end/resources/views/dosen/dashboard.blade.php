@@ -11,50 +11,61 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   <style>
-   .profile-images {
-    text-align: center;
-    position: relative;
+    <style>
+        .profile-images {
+            text-align: center;
+            position: relative;
 
-    background-image: url("{{ asset('assets/img/bg-profile.svg') }}");
-    width: 330px;
-    /* Sesuaikan ukuran gambar sesuai kebutuhan */
-    height: 250px;
-    /* Sesuaikan tinggi gambar sesuai kebutuhan */
-    background-size: cover;
-}
+            background-image: url("{{ asset('assets/img/bg-profile.svg') }}");
+            width: 330px;
+            /* Sesuaikan ukuran gambar sesuai kebutuhan */
+            height: 250px;
+            /* Sesuaikan tinggi gambar sesuai kebutuhan */
+            background-size: cover;
+        }
 
 
-       /* CSS untuk SweetAlert2 */
-       .swal2-popup {
+        /* CSS untuk SweetAlert2 */
+        .swal2-popup {
             text-align: center;
         }
+
         .swal2-title {
             left: 10px;
-            text-align: center; /* Menengahkan teks judul */
-            font-size: 24px; /* Ubah ukuran font judul */
-            color: #333; /* Ubah warna judul */
-            margin-bottom: 20px; /* Atur margin bawah judul */
+            text-align: center;
+            /* Menengahkan teks judul */
+            font-size: 24px;
+            /* Ubah ukuran font judul */
+            color: #333;
+            /* Ubah warna judul */
+            margin-bottom: 20px;
+            /* Atur margin bawah judul */
         }
+
         .swal2-actions {
             display: flex;
             justify-content: center;
         }
-        .swal2-confirm, .swal2-cancel {
+
+        .swal2-confirm,
+        .swal2-cancel {
             width: 100px;
             margin: 5px;
         }
-</style> 
+    </style>
 </head>
 
 
 
 <body>
 
-    <?php 
+    <?php
 
     //$account menyimpan informasi dari akun dosen yang terlogin
     //data dari $account akan berupa field-field dari database dummyny backend
+
+    use function PHPUnit\Framework\isEmpty;
+
     $account = session()->get('account');
 
     //$schedule menyimpan informasi dari jadwal-jadwal yang ada
@@ -66,12 +77,18 @@
 
     //buat melihat data dari variable $account
     // dd($account);
-    
+
     //buat melihat data dari variable $schedule
-    //dd($schedule);
+    // dd($schedule);
+
+    // if ($dashBoard->isEmpty()) {
+    //     echo "<h1>tidak ada jadwal hari ini</h1>";
+    // }
+
+    // dd();
 
     //buat melihat data dari variable $dashBoard
-    //dd($dashBoard);
+    // dd($dashBoard);
     ?>
 
     <!-- Pembatas Sidebar -->
@@ -112,32 +129,42 @@
 
     <div class="content">
         <br>
-        <p style="font-size: 32px; ;">Halo, <b>Ferry Faisal, S.ST., M.T.</b></p>
+        <p style="font-size: 32px; ;">Halo, <b><?php echo $account->nama; ?></b></p>
         <br>
         <br>
         <h2 style="display: flex; align-items: center;">
-            <img src="{{ asset('assets/icon/table%204.png') }}" alt="Jadwal Sekarang"
-                style="width: 45px; height: 50px; margin-right: 10px;">
+            <img src="{{ asset('assets/icon/table%204.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
             Jadwal Sekarang
         </h2>
 
+        @foreach ($dashBoard as $item)
+        <br>
+        <br>
         <div class="jadwal-container">
             <div class="jadwal-info">
-                <div class="mata-kuliah">PBL</div>
+                <div class="mata-kuliah"><?php echo $item->mataKuliah->nama_makul; ?></div>
                 <hr class="gariscontainer">
-                <div class="jam">07:00 - 11:00</div>
+                <div class="jam"><?php echo $item->jam_mulai . ' - ' . $item->jam_selesai; ?></div>
             </div>
         </div>
+        @endforeach
         <br>
         <br>
         <br>
 
         <div class="center-content">
-            <button id="generate-qr-button">
-                <img src="{{ asset('assets/icon/qr-code%201.svg') }}" alt="Generate QR" style="width: 45px; height: 50px;">
-                <span style="margin-left: 12px; font-size: 34px;">Generate QR</span>
+
+            <!-- Formulir Tersembunyi untuk Redirect -->
+            <form id="redirect-form" action="qr_dosen" method="post">
+                @csrf
+                <input type="hidden" name="parameter_name" value="parameter_value">
+                <!-- Tambahkan parameter sesuai kebutuhan -->
+                <button id="generate-qr-button" type='submit'>
+                    <img src="{{ asset('assets/icon/qr-code%201.svg') }}" alt="Generate QR" style="width: 45px; height: 50px;">
+                    <span style="margin-left: 12px; font-size: 34px;">Generate QR</span>
+                </button>
+            </form>
         </div>
-        </button>
         <!-- Patch Generate QR -->
         <div id="qr-patch" class="qr-patch">
             <h1>Generate QR Code</h1>
@@ -146,8 +173,7 @@
                     <!-- Get a Placeholder image initially,
                    this will change with a unique QR Code
                    every time the button is pressed -->
-                    <img src="https://chart.googleapis.com/chart?cht=qr&chl=UniqueQRCode&chs=160x160&chld=L|0"
-                        class="qr-code img-thumbnail img-responsive" alt="QR Code" />
+                    <img src="https://chart.googleapis.com/chart?cht=qr&chl=UniqueQRCode&chs=160x160&chld=L|0" class="qr-code img-thumbnail img-responsive" alt="QR Code" />
                 </div>
 
                 <div class="form-horizontal">
@@ -157,10 +183,9 @@
             </div>
         </div>
 
-        
-        <h2 style="display: flex; align-items: center;">
-            <img src="{{ asset('assets/icon/table%204.png') }}" alt="Jadwal Sekarang"
-                style="width: 45px; height: 50px; margin-right: 10px;">
+
+        <!-- <h2 style="display: flex; align-items: center;">
+            <img src="{{ asset('assets/icon/table%204.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
             Jadwal Selanjutnya
         </h2>
         <div class="jadwal-container">
@@ -169,7 +194,7 @@
                 <hr class="gariscontainer">
                 <div class="jam">12:00 - 16:00</div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js">
@@ -177,43 +202,43 @@
 
     <script>
         // Ambil tombol Generate QR dan patch Generate QR
-        var generateQRButton = document.getElementById("generate-qr-button");
-        var qrPatch = document.getElementById("qr-patch");
+        // var generateQRButton = document.getElementById("generate-qr-button");
+        // var qrPatch = document.getElementById("qr-patch");
 
-        // Tambahkan event listener untuk tombol Generate QR
-        generateQRButton.addEventListener("click", function () {
-            // Tampilkan patch Generate QR saat tombol ditekan
-            qrPatch.style.display = "block";
-            // Di sini Anda dapat menambahkan konten untuk patch Generate QR sesuai kebutuhan Anda
-        });
-
-
-        // untuk qr code generate
-        // Function to HTML encode the text
-        // This creates a new hidden element,
-        // inserts the given text into it 
-        // and outputs it out as HTML
-        function htmlEncode(value) {
-            return $('<div/>').text(value)
-                .html();
-        }
-
-        $(function () {
-            // Specify an onclick function for the generate button
-            $('#generate-qr-button').click(function () {
-                // Generate a unique QR Code with a random value
-                let randomValue = Math.random().toString(36).substr(2, 5);
-                let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + randomValue + '&chs=160x160&chld=L|0';
-                // Replace the src of the image with the new QR code
-                $('.qr-code').attr('src', finalURL);
-            });
-        });
+        // // Tambahkan event listener untuk tombol Generate QR
+        // generateQRButton.addEventListener("click", function() {
+        //     // Tampilkan patch Generate QR saat tombol ditekan
+        //     qrPatch.style.display = "block";
+        //     // Di sini Anda dapat menambahkan konten untuk patch Generate QR sesuai kebutuhan Anda
+        // });
 
 
-    
-    //untuk popup alert log out
-     // Fungsi untuk menampilkan popup SweetAlert2
-     document.getElementById('logoutLink').addEventListener('click', function(event) {
+        // // untuk qr code generate
+        // // Function to HTML encode the text
+        // // This creates a new hidden element,
+        // // inserts the given text into it 
+        // // and outputs it out as HTML
+        // function htmlEncode(value) {
+        //     return $('<div/>').text(value)
+        //         .html();
+        // }
+
+        // $(function() {
+        //     // Specify an onclick function for the generate button
+        //     $('#generate-qr-button').click(function() {
+        //         // Generate a unique QR Code with a random value
+        //         let randomValue = Math.random().toString(36).substr(2, 5);
+        //         let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + randomValue + '&chs=160x160&chld=L|0';
+        //         // Replace the src of the image with the new QR code
+        //         $('.qr-code').attr('src', finalURL);
+        //     });
+        // });
+
+
+
+        //untuk popup alert log out
+        // Fungsi untuk menampilkan popup SweetAlert2
+        document.getElementById('logoutLink').addEventListener('click', function(event) {
             event.preventDefault(); // Mencegah perilaku default dari tag anchor
 
             Swal.fire({
@@ -238,6 +263,15 @@
             });
         });
 
+        //buat redirect generate qr code
+        // Tambahkan event listener ke tombol "Generate QR"
+        // document.getElementById("generate-qr-button").addEventListener("click", function() {
+        //     // Dapatkan formulir tersembunyi
+        //     var form = document.getElementById("redirect-form");
+
+        //     // Submit formulir tersembunyi dengan metode POST
+        //     form.submit();
+        // });
     </script>
 </body>
 
