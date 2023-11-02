@@ -22,7 +22,7 @@ class AbsensiController extends Controller
             if(TimeControl::compareTime(TimeControl::getTime(),$lateTime,'>'))
             $status = 'Telat';
             else $status = 'Hadir';
-            DB::table('absen mahasiswa')->insert([
+            DB::table('absen_mahasiswa')->insert([
                 'keterangan' => $status,
                 'waktu_mahasiswa' => $waktu,
                 'tanggal' => $tanggal,
