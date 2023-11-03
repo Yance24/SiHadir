@@ -1,0 +1,420 @@
+[2023-10-24 04:15:37] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#12 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#12 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#13 {main}
+"} 
+[2023-10-24 04:15:37] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#8 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#9 {main}
+"} 
+[2023-10-24 04:15:43] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#12 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#12 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#13 {main}
+"} 
+[2023-10-24 04:15:43] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#8 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#9 {main}
+"} 
+[2023-10-24 04:16:01] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#12 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#12 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#13 {main}
+"} 
+[2023-10-24 04:16:02] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#8 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#9 {main}
+"} 
+[2023-10-24 04:16:08] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#12 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#12 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#13 {main}
+"} 
+[2023-10-24 04:16:08] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#8 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#9 {main}
+"} 
+[2023-10-24 04:16:11] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#12 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#12 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#13 {main}
+"} 
+[2023-10-24 04:16:11] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#8 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#9 {main}
+"} 
+[2023-10-24 04:17:34] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#12 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#12 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#13 {main}
+"} 
+[2023-10-24 04:17:34] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#8 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#9 {main}
+"} 
+[2023-10-24 04:18:28] production.ERROR: No arguments expected for "serve" command, got "__port=8181". {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): No arguments expected for \"serve\" command, got \"__port=8181\". at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\symfony\\console\\Input\\ArgvInput.php:196)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\symfony\\console\\Input\\ArgvInput.php(89): Symfony\\Component\\Console\\Input\\ArgvInput->parseArgument('__port=8181')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\symfony\\console\\Input\\ArgvInput.php(74): Symfony\\Component\\Console\\Input\\ArgvInput->parseToken('__port=8181', true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\symfony\\console\\Input\\Input.php(55): Symfony\\Component\\Console\\Input\\ArgvInput->parse()
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\symfony\\console\\Command\\Command.php(285): Symfony\\Component\\Console\\Input\\Input->bind(Object(Symfony\\Component\\Console\\Input\\InputDefinition))
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\symfony\\console\\Application.php(1081): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\symfony\\console\\Application.php(320): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Foundation\\Console\\ServeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\symfony\\console\\Application.php(174): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 {main}
+"} 
+[2023-10-24 04:18:51] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#12 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(169): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(116): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#9 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#10 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#11 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#12 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#13 {main}
+"} 
+[2023-10-24 04:18:51] production.ERROR: Target class [Fruitcake\Cors\HandleCors] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [Fruitcake\\Cors\\HandleCors] does not exist. at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:914)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#8 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class \"Fruitcake\\Cors\\HandleCors\" does not exist at C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:912)
+[stacktrace]
+#0 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(912): ReflectionClass->__construct('Fruitcake\\\\Cors\\\\...')
+#1 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Fruitcake\\\\Cors\\\\...')
+#2 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(937): Illuminate\\Container\\Container->resolve('Fruitcake\\\\Cors\\\\...', Array, true)
+#3 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Fruitcake\\\\Cors\\\\...', Array)
+#4 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(922): Illuminate\\Container\\Container->make('Fruitcake\\\\Cors\\\\...', Array)
+#5 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(255): Illuminate\\Foundation\\Application->make('Fruitcake\\\\Cors\\\\...')
+#6 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(213): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#8 C:\\Users\\Nathaniel\\Documents\\GitHub\\SiHadir\\testPHP\\server.php(21): require_once('C:\\\\Users\\\\Nathan...')
+#9 {main}
+"} 
