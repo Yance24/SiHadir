@@ -10,15 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="sweetalert2.min.css">
-    <script src="sweetalert2.min.js"></script>
+
 
     <title></title>
-    <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
+    
 
     <style>
         .appbar {
@@ -70,7 +65,7 @@
         }
 
         #menuToggle:checked+.appbar+.sidebar {
-            width: 350px;
+            width: 50%;
         }
 
         #menuToggle:checked+.appbar label {
@@ -118,7 +113,6 @@
         <label for="menuToggle" class="mt-5 ps-2" onclick="toggleSidebar()">
             <i class="fa-solid fa-2xl fa-bars" style="color: #ffffff;"></i>
         </label>
-
         <div class="mx-auto mt-5">
             <h1 class="text-white">Sihadir</h1>
         </div>
@@ -200,7 +194,4 @@
                 }
             });
         });
-    </script>
-</body>
-
-</html>
+    </>

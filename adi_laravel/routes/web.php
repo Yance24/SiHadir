@@ -30,13 +30,41 @@
         return view('login');
     });
 
-    Route::get('/mahasiswa/profil', function () {
+    // MAHASISWA
+
+    Route::get('/mahasiswa/profil', function(){
+        return view('mahasiswa.profil');
+    });
+    Route::get('/mahasiswa/perizinan', function(){
+        return view('mahasiswa.perizinan');
+    });
+
+    Route::get('/mahasiswa/dashboard', function(){
+        return view('mahasiswa.dashboard');
+    });
+
+    Route::get('/mahasiswa/profil', function(){
         return view('mahasiswa.profil');
     });
 
-    Route::get('/mahasiswa/dashboard', function () {
-        return view('mahasiswa.dashboard');
+    Route::post('scanner', [PemindaiController::class, 'scanner']);
+
+    Route::get('/mahasiswa/test', function(){
+        return view('mahasiswa.test');
     });
+
+    Route::get('/mahasiswa/testCamera', function(){
+        return view('mahasiswa.testCamera');
+    });
+
+    Route::get('/pemindai', 'PemindaiController@scanner')->name('pemindai::class.scanner');
+
+    Route::view('/profil', 'NavigasiController@profil')->name('profil::class.profil');
+
+    Route::view('/profil', 'NavigasiController@dashboard')->name('dashboard::class.dashboard');
+
+
+    // END
 
     Route::post('/login-validation', [LoginValidation::class, 'validateLogin'])->name('login-validation');
 
