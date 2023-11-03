@@ -41,6 +41,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
     Route::post('/login-validation',[LoginValidation::class,'validateLogin'])->name('login-validation');
 
+    Route::post('/redirect',function(){
+        dd('test');
+    });
+
     // Route login untuk mahasiswa sama dengan login untuk dosen
     // Route::get('/mahasiswa/login', function(){
     //     return view('mahasiswa.login');

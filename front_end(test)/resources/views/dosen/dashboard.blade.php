@@ -53,11 +53,11 @@
         </div>
 
         <div class="nav">
-            <a class="active" href="dashboard.html">
+            <a class="active" href="dashboard">
                 <img src="{{ asset('assets/icon/table%201.svg') }}" alt="Absen">
                 <span>Absen</span>
             </a>
-            <a href="perizinan.html">
+            <a href="perizinan">
                 <img src="{{ asset('assets/icon/mail%201.svg') }}" alt="Perizinan">
                 <span>Perizinan</span>
             </a>
@@ -96,12 +96,14 @@
         <br>
         <br>
 
+        <!-- tombol qr -->
         <div class="center-content">
             <button id="generate-qr-button">
                 <img src="{{ asset('assets/icon/qr-code%201.svg') }}" alt="Generate QR" style="width: 45px; height: 50px;">
                 <span style="margin-left: 12px; font-size: 34px;">Generate QR</span>
+            </button>
         </div>
-        </button>
+
         <!-- Patch Generate QR -->
         <div id="qr-patch" class="qr-patch">
             <h1>Generate QR Code</h1>
