@@ -1,82 +1,25 @@
-<!doctype html>
-<html lang="en-US" xmlns:fb="https://www.facebook.com/2008/fbml" xmlns:addthis="https://www.addthis.com/help/api-spec"  prefix="og: http://ogp.me/ns#" class="no-js">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title></title>
-	<link rel="shortcut icon" href="https://learncodeweb.com/demo/favicon.ico">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<script>
-	  (adsbygoogle = window.adsbygoogle || []).push({
-		google_ad_client: "ca-pub-6724419004010752",
-		enable_page_level_ads: true
-	  });
-	</script>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131906273-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	  gtag('config', 'UA-131906273-1');
-	</script>
-</head>
+@extends('layouts.appbar')
 
-<body>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col">
-				<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-				<div class="col-sm-12">
-					<video id="preview" class="p-1 border" style="width:100%;"></video>
-				</div>
-				<script type="text/javascript">
-					var scanner = new Instascan.Scanner({ video: document.getElementById('preview'), scanPeriod: 5, mirror: false });
-					scanner.addListener('scan',function(content){
-						alert(content);
-						//window.location.href=content;
-					});
-					Instascan.Camera.getCameras().then(function (cameras){
-						if(cameras.length>0){
-							scanner.start(cameras[0]);
-							$('[name="options"]').on('change',function(){
-								if($(this).val()==1){
-									if(cameras[0]!=""){
-										scanner.start(cameras[0]);
-									}else{
-										alert('No Front camera found!');
-									}
-								}else if($(this).val()==2){
-									if(cameras[1]!=""){
-										scanner.start(cameras[1]);
-									}else{
-										alert('No Back camera found!');
-									}
-								}
-							});
-						}else{
-							console.error('No cameras found.');
-							alert('No cameras found.');
-						}
-					}).catch(function(e){
-						console.error(e);
-						alert(e);
-					});
-				</script>
-				<div class="btn-group btn-group-toggle mb-5" data-toggle="buttons">
-				  <label class="btn btn-primary active">
-					<input type="radio" name="options" value="1" autocomplete="off" checked> Front Camera
-				  </label>
-				  <label class="btn btn-secondary">
-					<input type="radio" name="options" value="2" autocomplete="off"> Back Camera
-				  </label>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-</body>
-</html>
+@section('extra-css-js')
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous">
+    <!-- CSS -->
+    <link href="{{ asset('assets/css/mahasiswa/pemindai.css') }}" rel="stylesheet">
+    <!-- JS -->
+    <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/mahasiswa/pemindai.js') }}"></script>
+    </section>
+
+    <div>
+        <video id="previewKamera" style="width: 300px; height: 300px;"></video>
+        <br>
+        <select id="pilihKamera" style="max-width: 400px"></select>
+        <br>
+        <input type="text" id="hasilscan">
+        <a href="{{ route('dashboard') }}" class="btn btn-primary">Batal</a>
+    </div>

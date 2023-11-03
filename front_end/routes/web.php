@@ -21,48 +21,31 @@
         // echo $jadwal[1]->mataKuliah->nama_makul;
     });
 
-    Route::get('/change-password', function () {
-        return view('change-password');
-    });
+    Route::get('/ganti-password', function(){
+        return view('ganti-password');
+    })->name('ganti-password');
 
-    Route::get('/login', function () {
-        // session()->flush();
+    Route::get('/login', function(){
         return view('login');
-    });
+    })->name('login');
 
     // MAHASISWA
 
-    Route::get('/mahasiswa/profil', function(){
-        return view('mahasiswa.profil');
-    });
-    Route::get('/mahasiswa/perizinan', function(){
-        return view('mahasiswa.perizinan');
-    });
-
-    Route::get('/mahasiswa/dashboard', function(){
+    Route::get('dashboard', function () {
         return view('mahasiswa.dashboard');
-    });
+    })->name('dashboard');
 
-    Route::get('/mahasiswa/profil', function(){
+    Route::get('profil', function () {
         return view('mahasiswa.profil');
-    });
+    })->name('profil');
 
-    Route::post('scanner', [PemindaiController::class, 'scanner']);
-
-    Route::get('/mahasiswa/test', function(){
-        return view('mahasiswa.test');
-    });
+    Route::get('perizinan', function () {
+        return view('mahasiswa.perizinan');
+    })->name('perizinan');
 
     Route::get('/mahasiswa/pemindai', function(){
         return view('mahasiswa.pemindai');
-    });
-
-    Route::get('/pemindai', 'PemindaiController@scanner')->name('pemindai::class.scanner');
-
-    Route::view('/profil', 'NavigasiController@profil')->name('profil::class.profil');
-
-    Route::view('/profil', 'NavigasiController@dashboard')->name('dashboard::class.dashboard');
-
+    })->name('pemindai');
 
     // END
 

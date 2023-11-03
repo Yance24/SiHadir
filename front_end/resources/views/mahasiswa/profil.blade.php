@@ -11,10 +11,6 @@
         crossorigin="anonymous">
     </section>
 
-    <style>
-
-    </style>
-
     <div class="content-fluid" style="margin-top: 100px;">
         <div class="bg-custom mb-3 p-4">
             <div class="row align-items-center">
