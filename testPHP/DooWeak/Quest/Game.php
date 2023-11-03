@@ -67,11 +67,11 @@ class Musuh
 }
 
 // Contoh penggunaan kelas Player dan Musuh:
-$player = new Player(0, 2);
-$musuh = new Musuh(0, 2);
+$player = new Player(0, 0);
+$musuh = new Musuh(0, 8);
 
 // Player bergerak
-$player->gerak(0, 9);
+$player->gerak(0, 10);
 echo "Posisi player: ({$player->getX()}, {$player->getY()})\n";
 echo "Posisi musuh: ({$musuh->getX()}, {$musuh->getY()})\n";
 
