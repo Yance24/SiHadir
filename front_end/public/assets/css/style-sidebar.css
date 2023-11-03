@@ -10,7 +10,7 @@ body {
     background-color: #78a2cc;
     position: fixed;
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
     z-index: 1;
 }
 
@@ -57,19 +57,21 @@ body {
 }
 
 .text-overlay {
+    display: flex;
     font-size: 15px;
     position: relative;
     top: 190px;
-    right: 70px;
+    left: 15px;
     color: #ffffff;
     font-weight: bold;
 }
 
 .text-overlay2 {
     font-size: 15px;
+    display: flex;
     position: relative;
     top: 200px;
-    right: 70px;
+    left: 15px;
     color: #ffffff;
     font-weight: normal;
 }
