@@ -11,35 +11,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous">
-
-    <script>
-        // Fungsi untuk menampilkan popup SweetAlert2
-        document.getElementById('logoutLink').addEventListener('click', function(event) {
-            event.preventDefault(); // Mencegah perilaku default dari tag anchor
-
-            Swal.fire({
-                title: 'Ingin keluar dari aplikasi?',
-                icon: 'warning',
-                showCancelButton: true, // Menampilkan tombol "Batal"
-                confirmButtonColor: '#7ACC78',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'YA',
-                cancelButtonText: 'TIDAK',
-                reverseButtons: true // Memutar urutan tombol
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Menangani klik tombol "Ya"
-                    Swal.fire('Anda telah keluar', '', 'success');
-                    // Tambahkan fungsi logout atau redirect ke halaman logout di sini
-                    window.location.href = "../login"; // Ganti dengan URL logout Anda
-                } else {
-                    // Menangani klik tombol "Batal"
-                    // Lakukan sesuatu atau berikan perilaku kustom
-                }
-            });
-        });
-    </script>
+        <link rel="stylesheet" href="asset('assets/js/pemindai.js')">
     </section>
+
+    <style>
+        @media (min-width: 1025px) {
+          .content {
+            display: none;
+          }
+        }
+        @media (max-width: 1024px) {
+          .content {
+            display: block;
+          }
+        }
+      </style>
 
     <div class="content container" style="margin-top:100px; overflow-x:hidden;">
         <div class="mb-5 pl-3 pt-3" style="">
@@ -103,5 +89,3 @@
             </div>
         </div>
     </div>
-    </div>
-    <script></script>

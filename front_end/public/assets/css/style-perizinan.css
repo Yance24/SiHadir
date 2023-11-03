@@ -1,189 +1,197 @@
 .jadwal-container-perizinan {
-    position: relative;
-    left: 30px;
-    /* Atur left untuk menggeser container ke kanan */
-    border: 1px solid #78a2cc;
-    padding: 20px;
-    margin: 10px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    align-items: center;
-    width: 1460px;
-    /* Atur lebar maksimum sesuai keinginan Anda */
-    overflow: hidden;
-    /* Mengatur overflow ke "hidden" agar elemen dalam container tidak tertutup oleh container */
-    box-shadow: 0px 20px 4px 0px rgba(0, 0, 0, 0.25);
-    /* x-offset y-offset blur-radius spread-radius warna */
+  position: relative;
+  left: 30px;
+  /* Atur left untuk menggeser container ke kanan */
+  border: 1px solid #78a2cc;
+  padding: 20px;
+  margin: 10px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  align-items: center;
+  width: 1460px;
+  /* Atur lebar maksimum sesuai keinginan Anda */
+  overflow: hidden;
+  /* Mengatur overflow ke "hidden" agar elemen dalam container tidak tertutup oleh container */
+  box-shadow: 0px 20px 4px 0px rgba(0, 0, 0, 0.25);
+  /* x-offset y-offset blur-radius spread-radius warna */
 }
 
 .jadwal-container-perizinan2 {
-    position: relative;
-    left: 30px;
-    /* Atur left untuk menggeser container ke kanan */
-    border: 1px solid #78a2cc;
-    padding: 0px;
-    margin: 10px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    align-items: center;
-    width: 1500px;
-    /* Atur lebar maksimum sesuai keinginan Anda */
-    overflow: hidden;
-    /* Mengatur overflow ke "hidden" agar elemen dalam container tidak tertutup oleh container */
-    box-shadow: 0px 20px 4px 0px rgba(0, 0, 0, 0.25);
-    /* x-offset y-offset blur-radius spread-radius warna */
+  position: relative;
+  left: 30px;
+  /* Atur left untuk menggeser container ke kanan */
+  border: 1px solid #78a2cc;
+  padding: 0px;
+  margin: 10px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  align-items: center;
+  width: 1500px;
+  /* Atur lebar maksimum sesuai keinginan Anda */
+  overflow: hidden;
+  /* Mengatur overflow ke "hidden" agar elemen dalam container tidak tertutup oleh container */
+  box-shadow: 0px 20px 4px 0px rgba(0, 0, 0, 0.25);
+  /* x-offset y-offset blur-radius spread-radius warna */
 }
 
 .mata-kuliah-perizinan1 {
-    position: relative;
-    left: 70px;
-    top: 20px;
-    font-weight: bold;
-    font-size: 36px;
-    flex: 1;
-    /* Tambahkan ini untuk mengisi ruang tersisa */
+  position: relative;
+  left: 70px;
+  top: 20px;
+  font-weight: bold;
+  font-size: 36px;
+  flex: 1;
+  /* Tambahkan ini untuk mengisi ruang tersisa */
 }
 
 .jam-perizinan1 {
-    position: relative;
-    left: 70px;
-    top: 30px;
-    font-weight: bold;
-    font-size: 32px;
-    flex: 1;
-    /* Tambahkan ini untuk mengisi ruang tersisa */
+  position: relative;
+  left: 70px;
+  top: 30px;
+  font-weight: bold;
+  font-size: 32px;
+  flex: 1;
+  /* Tambahkan ini untuk mengisi ruang tersisa */
 }
 
 .mata-kuliah-perizinan2 {
-    position: relative;
-    left: 70px;
-    top: 35px;
-    font-weight: bold;
-    font-size: 36px;
-    flex: 1;
-    /* Tambahkan ini untuk mengisi ruang tersisa */
+  position: relative;
+  left: 70px;
+  top: 35px;
+  font-weight: bold;
+  font-size: 36px;
+  flex: 1;
+  /* Tambahkan ini untuk mengisi ruang tersisa */
 }
 
 .jam-perizinan2 {
-    position: relative;
-    left: 70px;
-    bottom: 35px;
-    font-weight: bold;
-    font-size: 32px;
-    flex: 1;
-    /* Tambahkan ini untuk mengisi ruang tersisa */
+  position: relative;
+  left: 70px;
+  bottom: 35px;
+  font-weight: bold;
+  font-size: 32px;
+  flex: 1;
+  /* Tambahkan ini untuk mengisi ruang tersisa */
 }
 
 .gariscontainer-perizinan1 {
-    position: relative;
-    left: 70px;
-    border: 4px solid #d9d9d9;
-    /* Atur ketebalan border sesuai preferensi (dalam contoh ini 2px) dan warna border (#000) */
-    margin: 40px 0;
-    /* Atur margin atas dan bawah sesuai keinginan Anda */
+  position: relative;
+  left: 70px;
+  border: 4px solid #d9d9d9;
+  /* Atur ketebalan border sesuai preferensi (dalam contoh ini 2px) dan warna border (#000) */
+  margin: 40px 0;
+  /* Atur margin atas dan bawah sesuai keinginan Anda */
 }
 
 .gariscontainer-perizinan2 {
-    position: relative;
-    width: 1300px;
-    left: 70px;
-    border: 4px solid #d9d9d9;
-    /* Atur ketebalan border sesuai preferensi (dalam contoh ini 2px) dan warna border (#000) */
-    margin: 40px 0;
-    /* Atur margin atas dan bawah sesuai keinginan Anda */
+  position: relative;
+  width: 1300px;
+  left: 70px;
+  border: 4px solid #d9d9d9;
+  /* Atur ketebalan border sesuai preferensi (dalam contoh ini 2px) dan warna border (#000) */
+  margin: 40px 0;
+  /* Atur margin atas dan bawah sesuai keinginan Anda */
 }
 
 div.content-perizinan {
-    margin-left: 330px;
-    padding: 1px 16px;
-    height: 1000px;
+  margin-left: 330px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+/* Gaya CSS awal untuk elemen ekspansi */
+.expand-content {
+  position: relative;
+  left: 30px;
+  display: none;
 }
 
 /* Gaya CSS untuk elemen mahasiswa */
 .mahasiswa {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #d9d9d9;
-    background-color: #f5f5f5;
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-left: 70px;
-    width: 1100px;
-    height: 80px;
-    border-radius: 150px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #d9d9d9;
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 70px;
+  width: 1100px;
+  height: 80px;
+  cursor: pointer;
+  border-radius: 150px;
 }
 
 .nama-mahasiswa {
-    margin-left: 55px;
-    margin-top: 10px;
-    font-size: 22px;
-    font-weight: bold;
+  margin-left: 55px;
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .nim-mahasiswa {
-    font-size: 13px;
-    margin-left: 55px;
-    margin-top: 10px;
-    font-weight: normal;
+  font-size: 13px;
+  margin-left: 55px;
+  margin-top: 10px;
+  font-weight: normal;
 }
 
 /* Gaya CSS untuk informasi mahasiswa (nama dan NIM) */
 .mahasiswa-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 /* Gaya CSS untuk tombol "Valid" dan "Invalid" */
 .valid-button,
 .invalid-button {
-    display: none;
-    margin-top: 10px;
+  display: none;
+  margin-top: 10px;
 }
 
 .jadwal-container-perizinan10 {
-    position: relative;
-    left: 120px;
-    /* Atur left untuk menggeser container ke kanan */
-    margin: 10px;
-    background-color: #ffffff;
-    align-items: center;
-    /* Atur lebar maksimum sesuai keinginan Anda */
+  position: relative;
+  left: 120px;
+  /* Atur left untuk menggeser container ke kanan */
+  margin: 10px;
+  background-color: #ffffff;
+  align-items: center;
+  /* Atur lebar maksimum sesuai keinginan Anda */
 }
 
 .photo-mail {
-    position: relative;
-    margin-left: 950px;
-    bottom: 50px;
+  position: relative;
+  margin-left: 1050px;
+  bottom: 50px;
 }
 
 .photo-mail-perizinan {
-    height: 57px;
-    width: 46px;
+  height: 57px;
+  width: 46px;
 }
 
 .invalidButton {
-    font-size: 20px;
-    font-weight: normal;
-    position: relative;
-    left: 40px;
-    top: 20px;
-    width: 100px;
-    height: 50px;
-    bottom: 10px;
-    border-radius: 10px;
-    background-color: #ff0000;
-    cursor: pointer;
+  font-size: 13px;
+  font-weight: normal;
+  position: relative;
+  left: 20px;
+  top: 20px;
+  width: 110px;
+  height: 28px;
+  bottom: 10px;
+  border-radius: 10px;
+  background-color: #ff0000;
+  cursor: pointer;
 }
 .validButton {
-    font-size: 20px;
-    font-weight: normal;
-    position: relative;
-    left: 180px;
-    top: 20px;
-    width: 100px;
-    height: 50px;
-    border-radius: 10px;
-    background-color: #0aff40;
-    cursor: pointer;
+  font-size: 13px;
+  font-weight: normal;
+  position: relative;
+  left: 150px;
+  bottom: 10px;
+  width: 110px;
+  height: 28px;
+  border-radius: 10px;
+  background-color: #0aff40;
+  cursor: pointer;
 }

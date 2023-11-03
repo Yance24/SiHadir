@@ -1,0 +1,82 @@
+if (navigator.serviceWorker) {
+    navigator.serviceWorker.register(`${window.location.pathname}{{asset('assets/js/sw.js')}`, {
+        scope: window.location.pathname,
+    });
+}
+
+const barcodeDetector = "BarcodeDetector" in window ? new BarcodeDetector() : null;
+let result;
+
+(async () => {
+    if (!barcodeDetector) {
+        document.querySelector(".console").innerText = "BarcodeDetector is not supported in this browser";
+        return;
+    }
+
+    const mediaStream = await navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: {
+            facingMode: "environment"
+        },
+    });
+
+    const video = document.querySelector("video");
+    video.srcObject = mediaStream;
+    video.onloadedmetadata = (e) => {
+        video.play();
+    };
+
+    while (true) {
+        await new Promise((resolve) => setTimeout(resolve, 100));
+        if (document.querySelector("video").readyState !== 4) continue;
+        const results = await barcodeDetector.detect(document.querySelector("video"));
+        if (results.length) {
+            result = results[0]?.rawValue ?? null;
+            document.querySelector(".console").innerText = result;
+
+            // Display a success alert using SweetAlert2
+            Swal.fire({
+                title: 'Berhasil absen!',
+                icon: 'success',
+            }).then(async () => {
+                // Kirim data hasil pemindaian ke backend
+                const dataToSend = {
+                    scannedData: result, // result adalah hasil pemindaian
+                };
+
+                try {
+                    const response = await fetch('/backend-endpoint', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(dataToSend),
+                    });
+
+                    if (response.ok) {
+                        // Redirect to the dashboard
+                        window.location.href = "/dashboard";
+                    } else {
+                        console.error('Gagal mengirim data ke backend');
+                        // Handle kesalahan jika diperlukan
+                    }
+                } catch (error) {
+                    console.error('Terjadi kesalahan dalam mengirim data ke backend', error);
+                    // Handle kesalahan jika diperlukan
+                }
+            });
+        } else {
+            document.querySelector(".console").innerText = "";
+        }
+    }
+})();
+
+document.querySelector(".console").addEventListener("click", async (e) => {
+    if (!result) return;
+    if (result.match(/https?:\/\//)) {
+        if (confirm(`Open URL?\n${result}`)) {
+            window.open(result);
+        }
+    }
+    await navigator.clipboard.writeText(result);
+});

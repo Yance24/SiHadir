@@ -9,16 +9,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="sweetalert2.min.css">
-    <script src="sweetalert2.min.js"></script>
-
-    <title></title>
-    <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
+        crossorigin="anonymous" referrerpolicy="no-referrer"> 
 
     <style>
         .appbar {
@@ -70,7 +61,7 @@
         }
 
         #menuToggle:checked+.appbar+.sidebar {
-            width: 350px;
+            width: 55%;
         }
 
         #menuToggle:checked+.appbar label {
@@ -90,19 +81,20 @@
             background-size: cover;
         }
 
-        @media (min-width: 951px) {}
-
-        @media (max-width: 676px) {
+        @media (max-width: 1024px) {
 
             #menuToggle:checked+.appbar+.sidebar {
-                width: 250px;
+                width: 60%;
+            }
+            .nav-custom{
+                font-size: 50px;
             }
         }
 
-        @media (max-width: 448px) {
+        @media (max-width: 767px) {
 
             #menuToggle:checked+.appbar+.sidebar {
-                width: 180px;
+                width: 60%;
             }
 
             .nav-custom {
@@ -118,7 +110,6 @@
         <label for="menuToggle" class="mt-5 ps-2" onclick="toggleSidebar()">
             <i class="fa-solid fa-2xl fa-bars" style="color: #ffffff;"></i>
         </label>
-
         <div class="mx-auto mt-5">
             <h1 class="text-white">Sihadir</h1>
         </div>
@@ -136,15 +127,15 @@
             </div>
         </div>
 
-        <div class="d-flex flex-column gap-2 p-1 nav-custom">
+        <div class="d-flex flex-column">
             <div>
-                <a href="/" class="text-decoration-none text-white">
+                <a href="../mahasiswa/dashboard" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
                     <span style="font-size: 15px"> Absen</span>
                 </a>
             </div>
             <div>
-                <a href="" class="text-decoration-none text-white ">
+                <a href="mahasiswa.profile" class="text-decoration-none text-white ">
                     <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
                     <span style="font-size: 17px"> Profil</span>
                 </a>
@@ -200,7 +191,4 @@
                 }
             });
         });
-    </script>
-</body>
-
-</html>
+    </>

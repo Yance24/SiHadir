@@ -1,145 +1,149 @@
 html {
-  width: 100%;
+    width: 100%;
 }
 
 body {
-  margin: 0;
-  font-family: "Lato", sans-serif;
-  background-color: #ffffff; /* Warna latar belakang putih, karena biasanya perangkat Android menggunakan latar belakang putih. */
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    background-color: #ffffff; /* Warna latar belakang putih, karena biasanya perangkat Android menggunakan latar belakang putih. */
 }
 
 .sidebar {
-  margin: 0px;
-  padding: 0;
-  width: 100%; /* Lebar 100% agar memenuhi layar Android */
-  background-color: #78a2cc;
-  position: relative; /* Ubah menjadi relative agar tidak tetap di posisi fixed */
-  overflow: auto;
+    margin: 0px;
+    padding: 0;
+    width: 100%; /* Lebar 100% agar memenuhi layar Android */
+    background-color: #78a2cc;
+    position: relative; /* Ubah menjadi relative agar tidak tetap di posisi fixed */
+    overflow: auto;
 }
 
 .sidebar a {
-  display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
 }
 
 .sidebar a.active {
-  background-color: #b2d2f2;
-  color: white;
+    background-color: #b2d2f2;
+    color: white;
 }
 
 .sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
+    background-color: #555;
+    color: white;
 }
 
 div.content {
-  margin: 0; /* Menghapus margin agar tidak ada jarak dari sisi layar */
-  padding: 1px 16px;
+    margin: 0; /* Menghapus margin agar tidak ada jarak dari sisi layar */
+    padding: 1px 16px;
 }
 
 .profile-images {
-  text-align: center;
-  background-image: url("/images/BG Profile.svg");
-  width: 100%; /* Lebar 100% agar memenuhi layar Android */
-  height: 200px; /* Mengurangi tinggi gambar */
-  background-size: cover;
+    text-align: center;
+    background-image: url("/images/BG Profile.svg");
+    width: 100%; /* Lebar 100% agar memenuhi layar Android */
+    height: 200px; /* Mengurangi tinggi gambar */
+    background-size: cover;
 }
 
 .profile-images .photo-dosen {
-  margin-left: 50%; /* Memposisikan gambar di tengah layar */
-  transform: translateX(-50%); /* Menggeser gambar ke kiri 50% dari pusatnya */
-  width: 100px;
-  border-radius: 50%;
-  position: absolute;
-  right: auto; /* Menghapus posisi absolute */
-  top: 100px; /* Mengubah posisi top */
-  left: 50%; /* Mengubah posisi left */
-  transform: translateX(-50%); /* Menggeser gambar ke kiri 50% dari pusatnya */
-  z-index: 1;
+    margin-left: 50%; /* Memposisikan gambar di tengah layar */
+    transform: translateX(
+        -50%
+    ); /* Menggeser gambar ke kiri 50% dari pusatnya */
+    width: 100px;
+    border-radius: 50%;
+    position: absolute;
+    right: auto; /* Menghapus posisi absolute */
+    top: 100px; /* Mengubah posisi top */
+    left: 50px; /* Mengubah posisi left */
+    transform: translateX(
+        -50%
+    ); /* Menggeser gambar ke kiri 50% dari pusatnya */
+    z-index: 1;
 }
 
 .text-overlay {
-  font-size: 12px; /* Mengurangi ukuran font */
-  position: relative;
-  top: 120px; /* Mengubah posisi top */
-  right: 0; /* Menghapus posisi right */
-  color: #000000; /* Warna teks hitam */
-  font-weight: bold;
+    font-size: 12px; /* Mengurangi ukuran font */
+    position: relative;
+    top: 120px; /* Mengubah posisi top */
+    right: 0; /* Menghapus posisi right */
+    color: #000000; /* Warna teks hitam */
+    font-weight: bold;
 }
 
 .text-overlay2 {
-  font-size: 12px; /* Mengurangi ukuran font */
-  position: relative;
-  top: 10px; /* Mengubah posisi top */
-  right: 0; /* Menghapus posisi right */
-  color: #000000; /* Warna teks hitam */
-  font-weight: normal;
+    font-size: 12px; /* Mengurangi ukuran font */
+    position: relative;
+    top: 10px; /* Mengubah posisi top */
+    right: 0; /* Menghapus posisi right */
+    color: #000000; /* Warna teks hitam */
+    font-weight: normal;
 }
 
 .nav hr {
-  border: none;
-  border-top: 1px solid #000000; /* Warna garis hitam */
-  margin: 1px 0;
+    border: none;
+    border-top: 1px solid #000000; /* Warna garis hitam */
+    margin: 1px 0;
 }
 
 .nav a {
-  display: block; /* Mengubah tampilan menjadi blok */
-  color: #000000; /* Warna teks hitam */
-  padding: 10px; /* Mengurangi padding */
-  text-decoration: none;
+    display: block; /* Mengubah tampilan menjadi blok */
+    color: #000000; /* Warna teks hitam */
+    padding: 10px; /* Mengurangi padding */
+    text-decoration: none;
 }
 
 span {
-  font-size: 14px; /* Mengubah ukuran font */
-  color: #000000; /* Warna teks hitam */
-  padding-left: 15px;
+    font-size: 14px; /* Mengubah ukuran font */
+    color: #000000; /* Warna teks hitam */
+    padding-left: 15px;
 }
 
 .jadwal-container {
-  margin: 10px; /* Menambah margin untuk memberikan jarak */
-  padding: 0px;
-  background-color: #f0f0f0;
-  border-radius: 10px; /* Mengurangi radius sudut */
-  width: 100%; /* Lebar 100% agar memenuhi layar Android */
-  box-shadow: 0px 10px 4px 0px rgba(0, 0, 0, 0.25); /* Mengurangi ukuran bayangan */
+    margin: 10px; /* Menambah margin untuk memberikan jarak */
+    padding: 0px;
+    background-color: #f0f0f0;
+    border-radius: 10px; /* Mengurangi radius sudut */
+    width: 100%; /* Lebar 100% agar memenuhi layar Android */
+    box-shadow: 0px 10px 4px 0px rgba(0, 0, 0, 0.25); /* Mengurangi ukuran bayangan */
 }
 
 .mata-kuliah {
-  font-weight: bold;
-  font-size: 24px; /* Mengurangi ukuran font */
+    font-weight: bold;
+    font-size: 24px; /* Mengurangi ukuran font */
 }
 
 .jam {
-  font-weight: normal;
-  font-size: 20px; /* Mengurangi ukuran font */
+    font-weight: normal;
+    font-size: 20px; /* Mengurangi ukuran font */
 }
 
 h2 {
-  font-size: 20px; /* Mengurangi ukuran font */
+    font-size: 20px; /* Mengurangi ukuran font */
 }
 
 .generate-qr {
-  background-color: #78a2cc;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 10px 0;
-  width: 100%; /* Lebar 100% agar memenuhi layar Android */
-  cursor: pointer;
+    background-color: #78a2cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 10px 0;
+    width: 100%; /* Lebar 100% agar memenuhi layar Android */
+    cursor: pointer;
 }
 
 .gariscontainer {
-  border: 2px solid #757575; /* Mengurangi ketebalan border */
-  margin: 10px 0; /* Menambah margin */
+    border: 2px solid #757575; /* Mengurangi ketebalan border */
+    margin: 10px 0; /* Menambah margin */
 }
 
 .center-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
