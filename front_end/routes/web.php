@@ -103,9 +103,14 @@ use App\Http\Controllers\PerizinanController;
     Route::post('dosen/qr_dosen', [AbsensiController::class,'generateQR']);
 
 
+    //Redirect for close class
+    Route::post('dosen/close-class',[AbsensiController::class,'closeClass'])->name('close-class');
+
+
     //url for displaying generated qr
     Route::get('/dosen/dashboard/displayQr',[DashboardController::class,'processQrView']);
     
+
     //url for perizinan dosen
     Route::get('/dosen/perizinan',[PerizinanController::class,'processDosenView']);
 

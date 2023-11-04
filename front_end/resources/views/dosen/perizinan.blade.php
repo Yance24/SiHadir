@@ -199,7 +199,7 @@
     </div>
     <!-- Pembatas Sidebar -->
     <div class="content-perizinan">
-        <div class="jadwal-container-perizinan">
+        <!-- <div class="jadwal-container-perizinan">
             <div class="jadwal-info-perizinan">
                 <div class="mata-kuliah-perizinan1">PBL</div>
                 <div class="jam-perizinan1">07:00 - 12:00</div>
@@ -285,7 +285,39 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+
+        <!-- Jadwal serta daftar Mahasiswa yang izin-->
+        @foreach($parsedPerizinan as $item)
+        <!-- info jadwal -->
+        <div class="jadwal-container-perizinan">
+            <div class="jadwal-info-perizinan">
+                <div class="mata-kuliah-perizinan1"><?php echo $item['jadwal']->mataKuliah->nama_makul;?></div>
+                <div class="jam-perizinan1"><?php echo date('H:i',strtotime($item['jadwal']->jam_mulai)) . ' - ' . date('H:i',strtotime($item['jadwal']->jam_selesai)); ?></div>
+                <hr class="gariscontainer-perizinan1">
+            </div>
+            
+            <!-- Mahasiswa yang izin pada saat jadwal ini -->
+            <div class="mahasiswa-container">
+                @foreach($item['mahasiswa'] as $absenMahasiswa)
+                <div class="mahasiswa">
+                    <div class="mahasiswa-info">
+                        <div class="nama-mahasiswa"><?php echo $absenMahasiswa->mahasiswa->nama?></div>
+                        <div class="nim-mahasiswa"><?php echo $absenMahasiswa->mahasiswa->id_user?></div>
+                        <div class="photo-mail">
+                            <button class="previewButton" onclick="previewPDF('3202116005')">
+                                <div class="icon-text-container">
+                                    <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
+                                    <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
         </div>
+        @endforeach
 
         <!-- Modal untuk pratinjau/preview PDF -->
         <div id="previewModal" class="modal">
@@ -302,13 +334,13 @@
         <br>
         <br>
 
-        <div class="jadwal-container-perizinan2">
+        <!-- <div class="jadwal-container-perizinan2">
             <div class="jadwal-info-perizinan">
                 <div class="mata-kuliah-perizinan2">Pemrograman Web</div>
                 <hr class="gariscontainer-perizinan2">
                 <div class="jam-perizinan2">14:00 - 16:00</div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <script>

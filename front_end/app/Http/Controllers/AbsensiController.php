@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AbsenDosen;
 use App\Models\AbsenMahasiswa;
 use Illuminate\Http\Request;
+use App\Models\MahasiswaAccounts;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -56,6 +57,34 @@ class AbsensiController extends Controller
         ]);
     }
 
+    public function closeClass(Request $request){
+        if(!LoginValidation::validateUser('Dosen')) return redirect()->back();
+
+
+        $jadwal = $request->session()->get('schedule')->first();
+        $idJadwal = $jadwal->id_jadwal;
+        $tanggal = TimeControl::getDate();
+        $absenDosen = AbsenDosen::where('id_jadwal','=',$idJadwal)->where('tanggal','=',$tanggal)->first();
+        if($absenDosen != null){
+            $waktu = TimeControl::getTime();
+            DB::table('absen_dosen')
+            ->where('id_jadwal','=',$idJadwal)
+            ->where('tanggal','=',$tanggal)
+            ->update([
+                'waktu_selesai' => $waktu,  
+                'id_QR' => 'INVALID',
+            ]);
+            
+            // $mahasiswa = MahasiswaAccounts::where('kelas','=',$jadwal->kelas)->get();
+            // foreach($mahasiswa as $item){
+            //     $this->accumulateData($item, $absenDosen, $tanggal);
+            //     $this->operateStatusChange($item);
+            // }
+            // dd();
+        }        
+        return redirect('/dosen/dashboard');
+    }
+
     public static function checkEnableQR(){
         $account = session()->get('account');
         $loginAs = session()->get('loginAs');
@@ -78,5 +107,19 @@ class AbsensiController extends Controller
             )return true;
             else return false;
         }
+    }
+
+    public static function checkEnableTutupMakul(){
+        $account = session()->get('account');
+        $tanggal = TimeControl::getDate();
+        $homeSchedule = session()->get('schedule');
+
+        if($homeSchedule->count() == 0)return true;
+        
+        $absenDosen = AbsenDosen::where('tanggal','=',$tanggal)
+        ->where('id_jadwal','=',$homeSchedule[0]->id_jadwal)
+        ->first();
+        if(!($absenDosen != null && $absenDosen->waktu_selesai == null)) return true;
+        else return false;
     }
 }

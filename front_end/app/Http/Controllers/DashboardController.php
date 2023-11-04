@@ -11,8 +11,10 @@ class DashboardController extends Controller
         if(!LoginValidation::validateUser("Dosen")) return redirect()->back();
         ScheduleController::getSchedule();
         $enableAbsent = AbsensiController::checkEnableQR();
+        $enableCloseClass = AbsensiController::checkEnableTutupMakul();
         return view('dosen.dashboard',[
             'enableGenerateButton' => !$enableAbsent,
+            'enableCloseClass' => !$enableCloseClass,
         ]);
     }
 

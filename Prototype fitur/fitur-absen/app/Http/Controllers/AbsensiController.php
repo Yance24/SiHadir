@@ -202,6 +202,15 @@ class AbsensiController extends Controller
 
     public static function checkEnableTutupMakul(){
         $account = session()->get('account');
-        
+        $tanggal = session()->get('tanggal');
+        $homeSchedule = session()->get('schedule');
+        $absenDosen = AbsenDosen::where('tanggal','=',$tanggal)
+        ->where('id_jadwal','=',$homeSchedule[0]->id_jadwal)
+        ->first();
+        if(
+            $homeSchedule->count() == 0 ||
+            !($absenDosen != null && $absenDosen->waktu_selesai == null)
+        ) return true;
+        else return false;
     }
 }

@@ -170,6 +170,20 @@
         </div>
         @endif
 
+        <!-- Tombol tutup kelas -->
+        @if($enableCloseClass)
+        <div class="closeClass-container">
+            <form action="<?php echo route('close-class')?>" method="POST">
+            @csrf
+                <button type="submit">
+                    Close Class
+                </button>
+            </form>
+        </div>
+        @else
+        <!-- Jika tombol close classnya di disable -->
+        @endif
+
         <!-- Patch Generate QR -->
         <div id="qr-patch" class="qr-patch">
             <h1>Generate QR Code</h1>

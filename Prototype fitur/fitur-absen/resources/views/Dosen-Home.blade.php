@@ -34,7 +34,11 @@
 
         <form action="<?php echo route('tutupMakul');?>" method='POST'>
             @csrf
-            <button type="submit">
+            <button type="submit"
+                <?php
+                if(AbsensiController::checkEnableTutupMakul()) echo "disabled";
+                ?>
+            >
                 Tutup Makul
             </button>
             

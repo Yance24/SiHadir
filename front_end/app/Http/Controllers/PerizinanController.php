@@ -19,7 +19,9 @@ class PerizinanController extends Controller
 
         ScheduleController::getSchedule();
         $data = $this->getAndParsePerizinan();
-        return view('dosen.perizinan');
+        return view('dosen.perizinan',[
+            'parsedPerizinan' => $data,
+        ]);
     }
 
 
@@ -33,15 +35,15 @@ class PerizinanController extends Controller
         
         foreach($jadwal as $item){
             $absenMahasiswa = AbsenMahasiswa::where('tanggal','=',$tanggal)
-            ->where('id_jadwal','=',$jadwal->item)
-            ->where('status','=','Pending')
+            ->where('id_jadwal','=',$item->id_jadwal)
+            ->where('keterangan','=','Pending')
             ->get();
+            // dd($absenMahasiswa);
             $data->push([
                 'jadwal' => $item,
                 'mahasiswa' => $absenMahasiswa,
             ]);
         }
-        dd($data);
         return $data;
         
     }
