@@ -38,7 +38,7 @@ class PerizinanController extends Controller
             ->where('id_jadwal','=',$item->id_jadwal)
             ->where('keterangan','=','Pending')
             ->get();
-            // dd($absenMahasiswa);
+            
             $data->push([
                 'jadwal' => $item,
                 'mahasiswa' => $absenMahasiswa,

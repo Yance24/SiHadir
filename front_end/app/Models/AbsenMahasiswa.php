@@ -16,4 +16,8 @@ class AbsenMahasiswa extends Model
     public function mahasiswa(){
         return $this->belongsTo(MahasiswaAccounts::class,'id_user','id_user');
     }
+
+    public function perizinan(){
+        return $this->hasOne(Perizinan::class,'id_absenMahasiswa','id_absenMahasiswa')->where('status_izin','=','pending');
+    }
 }
