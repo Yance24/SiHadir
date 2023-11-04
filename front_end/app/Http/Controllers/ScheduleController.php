@@ -30,9 +30,9 @@ class ScheduleController extends Controller
         $loginAs = session()->get('loginAs');
         $account = session()->get('account');
         // ($hari == 'default') ? $hari = TimeControl::getDays(): $hari;
-        $hari = TimeControl::getDays('Senin');
-        $waktu = strtotime(TimeControl::getTime('07:00:00'));
-        $tanggal = TimeControl::getDate('2023-11-1');
+        $hari = TimeControl::getDays();
+        $waktu = TimeControl::getTime();
+        $tanggal = TimeControl::getDate();
 
         if($loginAs == 'Mahasiswa'){
             $data = Schedule::where('hari','=',$hari)
@@ -47,6 +47,7 @@ class ScheduleController extends Controller
             foreach($jadwal as $row){
                 $absenDosen = AbsenDosen::where('id_jadwal','=',$row->id_jadwal)
                 ->where('tanggal','=',$tanggal)->first();
+                if(TimeControl::compareTime($waktu,$row->jam_selesai,'>') && $absenDosen == null) break;
                 if($absenDosen == null || $absenDosen->waktu_selesai == null) $data->push($row);
             }
         }

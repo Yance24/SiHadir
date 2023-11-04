@@ -8,6 +8,7 @@
     use App\Http\Controllers\ScheduleController;
     use Illuminate\Support\Facades\Route;
     use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Carbon;
     use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
@@ -22,13 +23,7 @@
     });
 
     Route::get('/testing', function () {
-        $jadwal = session()->get('schedule');
-        $jadwal->shift();
-        foreach ($jadwal as $item) {
-            echo $item->mataKuliah->nama_makul . '<br>';
-        }
-        // echo $jadwal[0]->mataKuliah->nama_makul . '<br>';
-        // echo $jadwal[1]->mataKuliah->nama_makul;
+        dd(Carbon::now());
     });
 
     Route::get('/change-password', function () {
@@ -89,20 +84,24 @@
     //     return view('mahasiswa.login');
     // });
 
-    //Route dashboard generate testing
-    Route::post('dosen/qr_dosen', [AbsensiController::class,'generateQR']);
-
-    Route::get('/Test-QR',function(){
-        echo("<img src='https://chart.googleapis.com/chart?cht=qr&chl=".session()->get('idQr')."&chs=160x160&chld=L|0'/>");
-    });
+    // Route::get('/Test-QR',function(){
+    //     echo("<img src='https://chart.googleapis.com/chart?cht=qr&chl=".session()->get('idQr')."&chs=160x160&chld=L|0'/>");
+    // });
 
     //Route untuk dosen
+    
+    //url for dashboard dosen
+    Route::get('/dosen/dashboard', [DashboardController::class, 'processDosenView']);
+    
+    //Redirect for generating qr
+    Route::post('dosen/qr_dosen', [AbsensiController::class,'generateQR']);
 
+    //url for displaying generated qr
+    Route::get('/dosen/dashboard/displayQr',[DashboardController::class,'processQrView']);
+    
     Route::get('/dosen/perizinan', function () {
         return view('dosen.perizinan');
     });
-    Route::get('/dosen/dashboard', [DashboardController::class, 'processDosenView']);
-
 
     //Route untuk admin
 

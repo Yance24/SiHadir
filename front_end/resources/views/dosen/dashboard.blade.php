@@ -120,10 +120,19 @@
         <p style="font-size: 32px; ;">Halo, <b><?php echo $account->nama; ?></b></p>
         <br>
         <br>
+
+        <!-- Elemen untuk nampilin tulisan "jadwal sekarang" -->
+        @if($schedule->count() > 0)
+        <!-- Jika ad jadwal hari ini -->
         <h2 style="display: flex; align-items: center;">
             <img src="{{ asset('assets/icon/table%204.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
             Jadwal Sekarang
         </h2>
+        @else
+
+        <!-- jika tidak ad jadwal hari ini -->
+        Tidak ada jadwal hari ini
+        @endif
 
         @foreach ($schedule as $item)
         <br>
@@ -132,7 +141,7 @@
             <div class="jadwal-info">
                 <div class="mata-kuliah"><?php echo $item->mataKuliah->nama_makul; ?></div>
                 <hr class="gariscontainer">
-                <div class="jam"><?php echo $item->jam_mulai . ' - ' . $item->jam_selesai; ?></div>
+                <div class="jam"><?php echo date('H:i',strtotime($item->jam_mulai)) . ' - ' . date('H:i',strtotime($item->jam_selesai)); ?></div>
             </div>
         </div>
         @endforeach
@@ -140,8 +149,9 @@
         <br>
         <br>
 
+        @if($enableGenerateButton)
+        <!-- Jika dosen sudah bisa mengakses generate qr -->
         <div class="center-content">
-
             <!-- Formulir Tersembunyi untuk Redirect -->
             <form id="redirect-form" action="qr_dosen" method="post">
                 @csrf
@@ -153,6 +163,13 @@
                 </button>
             </form>
         </div>
+        @else
+        <!-- Jika dosen belum bisa mengakses generate qr -->
+        <div class="generateQr-container">
+            Tidak tersedia!!
+        </div>
+        @endif
+
         <!-- Patch Generate QR -->
         <div id="qr-patch" class="qr-patch">
             <h1>Generate QR Code</h1>
