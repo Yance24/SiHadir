@@ -13,7 +13,12 @@
 
     //Route untuk umum
     Route::get('/', function () {
-        return view('welcome');
+        if(session()->has('loginAs') && session()->get('loginAs') == 'Mahasiswa')
+            return redirect('/mahasiswa/dashboard');
+        else if(session()->has('loginAs') && session()->get('loginAs') == 'Dosen')
+            return redirect('/dosen/dashboard');
+        else return redirect('/login');
+        
     });
 
     Route::get('/testing', function () {
@@ -31,12 +36,13 @@
     });
 
     Route::get('/login', function () {
-        // session()->flush();
         return view('login');
     });
 
     //route untuk validasi login - Backend
     Route::post('/login-validation',[LoginValidation::class,'validateLogin'])->name('login-validation');
+
+    Route::get('/logout',[LoginValidation::class,'logout'])->name('logout');
 
     // MAHASISWA
 
@@ -99,4 +105,17 @@
 
 
     //Route untuk admin
+
+    //url login admin
+    Route::get('/admin/login',function(){
+        return view('admin.login-admin');
+    });
+
+    //url redirect validate admin login
+    Route::post('/admin/login-validation',[LoginValidation::class,'validateAdmin'])->name('login-admin');
+
+    Route::get('/admin/dashboard',[DashboardController::class,'processAdminView']);
+
+
+
     Route::get('/admin/jadwal-akademik', 'App\Http\Controllers\SiHadirController@index');

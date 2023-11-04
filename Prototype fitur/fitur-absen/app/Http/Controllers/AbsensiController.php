@@ -163,7 +163,7 @@ class AbsensiController extends Controller
         $mahasiswa = MahasiswaAccounts::where('id_user','=',$mahasiswa->id_user)->first();
         $status = '';
 
-        if($mahasiswa->jumlah_alpa >= 45) $status = 'DO';
+                        if($mahasiswa->jumlah_alpa >= 45) $status = 'DO';
         else if(($mahasiswa->jumlah_sakit + $mahasiswa->jumlah_izin) >= 114) $status = 'SO';
         else{
             if($mahasiswa->jumlah_alpa >= 16) $status = 'SP1';
