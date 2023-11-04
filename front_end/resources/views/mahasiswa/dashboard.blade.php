@@ -16,26 +16,43 @@
     <script src="{{ asset('assets/js/.js') }}"></script>
     </section>
 
+    <?php 
+        $account = session()->get('account');
+        $schedule = session()->get('schedule');
+        $firstSchedule = true;
+    ?>
+
     <div class="content container" style="margin-top:100px; overflow-x:hidden;">
-        <div class="mb-5 pl-3 pt-3" style="">
-            <span style="font-size: 14px;">halo, <b>Weldy Flaminggo</b></span>
+        <div class="mb-5 pl-3 pt-3">
+            <span style="font-size: 14px;">halo, <b><?php echo $account->nama;?></b></span>
         </div>
         <div class="main-content">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
                         <div id="content" class="content">
+                            
+                            @if($schedule->count() > 0)
+                            <!-- Jika jadwal ad maka akan muncul tulisan "Jadwal sekarang" -->
                             <div class="mb-3">
                                 <img src="{{ asset('assets/icon/table.svg') }}" alt="">
                                 <span class="fw-bold" style="font-size: 18px;">Jadwal Sekarang</span>
                             </div>
+                            @else
+                            <!-- jika tidak ada jadwal -->
+                            Tidak ada jadwal
+                            @endif
+
                             <!-- CURRENT JADWAL -->
+                            @foreach($schedule as $item)
                             <div class="col-sm-11 p-5 flex justify-content-center justify-content-lg-start mb-5"
                                 style="
                                 box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25); border-radius: 15px; border: 1px solid #78A2CC; ">
-                                <h1 class="ml-lg-2 fw-bold" style="font-size: 20px;">PBL</h1>
-                                <h1 class="ml-lg-2" style="font-size: 20px;">07.00 - 12.00</h1>
+                                <h1 class="ml-lg-2 fw-bold" style="font-size: 20px;"><?php echo $item->mataKuliah->nama_makul?></h1>
+                                <h1 class="ml-lg-2" style="font-size: 20px;"><?php echo date('H:i',strtotime($item->jam_mulai)) . ' - ' . date('H:i',strtotime($item->jam_selesai)); ?></h1>
                                 <hr>
+                                @if($firstSchedule && $enableScanButton)
+                                <?php $firstSchedule = false;?>
                                 <form action="/scanner" method="POST">
                                     @csrf
                                     <div class="text-center">
@@ -45,11 +62,13 @@
                                         </button>
                                     </div>
                                 </form>
+                                @endif
                             </div>
+                            @endforeach
                             <!-- END -->
 
                             <!-- NEXT JADWAL -->
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <img src="{{ asset('assets/icon/table.svg') }}" alt="">
                                 <span class="fw-bold" style="font-size: 18px;">Jadwal Selanjutnya</span>
                             </div>
@@ -70,7 +89,7 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- END -->
                         </div>
                     </div>

@@ -43,7 +43,7 @@
         }
 
         .custom-profile {
-            background: url({{ asset('assets/img/bg-profile.png') }});
+            background: url(<?php echo asset('assets/img/bg-profile.png') ?>);
             background-size: cover;
             background-position: center;
         }
@@ -77,7 +77,7 @@
         }
 
         .bg-custom {
-            background: url({{ asset('assets/img/bg-profile.png') }}) center no-repeat;
+            background: url(<?php echo asset('assets/img/bg-profile.png') ?>) center no-repeat;
             background-size: cover;
         }
 
@@ -129,25 +129,25 @@
 
         <div class="d-flex flex-column">
             <div>
-                <a href="../mahasiswa/dashboard" class="text-decoration-none text-white">
+                <a href="/mahasiswa/dashboard" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
                     <span style="font-size: 15px"> Absen</span>
                 </a>
             </div>
             <div>
-                <a href="mahasiswa.profile" class="text-decoration-none text-white ">
+                <a href="/mahasiswa/profile" class="text-decoration-none text-white ">
                     <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
                     <span style="font-size: 17px"> Profil</span>
                 </a>
             </div>
             <div>
-                <a href="/" class="text-decoration-none text-white">
+                <a href="/mahasiswa/perizinan" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class=" nav-custom">
                     <span style="font-size: 15px"> Perizinan</span>
                 </a>
             </div>
             <div>
-                <a href="/" class="text-decoration-none text-white">
+                <a href="/mahasiswa/gantiPassword" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/change-password.svg') }}" alt="" class=" nav-custom">
                     <span style="font-size: 15px"> Ganti Password</span>
                 </a>
@@ -188,6 +188,7 @@
                 if (result.isConfirmed) {
                     // Lakukan tindakan logout di sini
                     Swal.fire('Logged Out!', '', 'success');
+                    window.location.href = "<?php echo route('logout')?>";
                 }
             });
         });

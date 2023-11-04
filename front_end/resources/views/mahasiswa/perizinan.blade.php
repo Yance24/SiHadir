@@ -20,22 +20,31 @@
 
     </section>
 
+    <?php
+    $schedule = session()->get('schedule');
+    
+    ?>
+
     <div class="container" style="margin-top: 100px;">
         <div class="row justify-content-center">
+            
+            <!-- Menampilkan jadwal-jadwal pelajaran -->
+            @foreach($schedule as $item)
             <div class="row-md-6 mt-5">
                 <div class="first mb-5">
-                    <h1 class="fw-bold" style="font-size: 26px;">PBL</h1>
+                    <h1 class="fw-bold" style="font-size: 26px;"><?php echo $item->mataKuliah->nama_makul; ?></h1>
                     <hr>
-                    <span>07.00 AM - 12.00 AM</span>
+                    <span><?php echo date('H:i',strtotime($item->jam_mulai)) . ' - ' . date('H:i',strtotime($item->jam_selesai)); ?></span>
                 </div>
             </div>
-            <div class="row-md-6">
+            @endforeach
+            <!-- <div class="row-md-6">
                 <div class="second mb-5">
                     <h1 class="fw-bold" style="font-size: 26px;">PBL</h1>
                     <hr>
                     <span>07.00 AM - 12.00 AM</span>
                 </div>
-            </div>
+            </div> -->
             <div class="row">
                 <div class="input-group d-block justify-content-center">
                     <div class="mb-3">

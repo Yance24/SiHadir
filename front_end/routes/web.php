@@ -5,6 +5,7 @@
     use App\Http\Controllers\PemindaiController;
     use App\Http\Controllers\LoginValidation;
     use App\Http\Controllers\AbsensiController;
+    use App\Http\Controllers\PerizinanController;
     use App\Http\Controllers\ScheduleController;
     use Illuminate\Support\Facades\Route;
     use Illuminate\Support\Facades\DB;
@@ -46,9 +47,7 @@
     Route::get('/mahasiswa/profil', function(){
         return view('mahasiswa.profil');
     });
-    Route::get('/mahasiswa/perizinan', function(){
-        return view('mahasiswa.perizinan');
-    });
+    Route::get('/mahasiswa/perizinan',[PerizinanController::class,'processMahasiswaView']);
 
     Route::get('/mahasiswa/profil', function(){
         return view('mahasiswa.profil');
@@ -93,15 +92,18 @@
     //url for dashboard dosen
     Route::get('/dosen/dashboard', [DashboardController::class, 'processDosenView']);
     
+
     //Redirect for generating qr
     Route::post('dosen/qr_dosen', [AbsensiController::class,'generateQR']);
+
 
     //url for displaying generated qr
     Route::get('/dosen/dashboard/displayQr',[DashboardController::class,'processQrView']);
     
-    Route::get('/dosen/perizinan', function () {
-        return view('dosen.perizinan');
-    });
+    //url for perizinan dosen
+    Route::get('/dosen/perizinan',[PerizinanController::class,'processDosenView']);
+
+    
 
     //Route untuk admin
 

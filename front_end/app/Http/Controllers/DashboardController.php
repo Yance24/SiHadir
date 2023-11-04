@@ -32,7 +32,7 @@ class DashboardController extends Controller
         ScheduleController::getSchedule();
         $enableAbsent = AbsensiController::checkEnableQR();
         return view('mahasiswa.dashboard',[
-            'enableScanButton' => $enableAbsent,
+            'enableScanButton' => !$enableAbsent,
         ]);
     }
 
