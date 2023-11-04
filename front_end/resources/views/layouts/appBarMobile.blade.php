@@ -135,7 +135,7 @@
                 </a>
             </div>
             <div>
-                <a href="/mahasiswa/profile" class="text-decoration-none text-white ">
+                <a href="/mahasiswa/profil" class="text-decoration-none text-white ">
                     <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
                     <span style="font-size: 17px"> Profil</span>
                 </a>
