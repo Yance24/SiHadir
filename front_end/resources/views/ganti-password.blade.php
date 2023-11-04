@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/gantiPassword.css') }}">
     </section>
 
-
+    <form action="<?php echo route('validate-changePassword')?>" method="POST">
+    @csrf
     <div class="main-content container d-block mx-auto">
         <div class="logo text-center mb-3">
             <img src="https://github.com/Yance24/SiHadir/blob/frontend/Asset/Icon/key.png?raw=true" alt=""
@@ -67,6 +68,8 @@
         <div class="text-center">
             <button class="btn text-white" onclick=""
                 style="width: 200px; background-color: #757575; border-radius: 45px; font-size: 20px">Ganti
-                Password</button>
+                Password
+            </button>
         </div>
     </div>
+    </form>

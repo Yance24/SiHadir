@@ -5,7 +5,8 @@
     use App\Http\Controllers\PemindaiController;
     use App\Http\Controllers\LoginValidation;
     use App\Http\Controllers\AbsensiController;
-    use App\Http\Controllers\PerizinanController;
+use App\Http\Controllers\GantiPasswordController;
+use App\Http\Controllers\PerizinanController;
     use App\Http\Controllers\ScheduleController;
     use Illuminate\Support\Facades\Route;
     use Illuminate\Support\Facades\DB;
@@ -27,9 +28,13 @@
         dd(Carbon::now());
     });
 
-    Route::get('/change-password', function () {
-        return view('change-password');
-    });
+    //url untuk nampilin page ganti password buat mahasiswa dan dosen
+    Route::get('/change-password',[GantiPasswordController::class,'processView']);
+
+    //redirect buat validasi ganti passwordnya
+    Route::post('/validate-changePassword',[GantiPasswordController::class,'validateChangePassword'])->name('validate-changePassword');
+
+    // Route::get('',)
 
     Route::get('/login', function () {
         return view('login');
@@ -50,6 +55,7 @@
     Route::get('/mahasiswa/perizinan',[PerizinanController::class,'processMahasiswaView']);
 
     Route::get('/mahasiswa/profil', function(){
+        if(!LoginValidation::validateUser('Mahasiswa')) return redirect()->back();
         return view('mahasiswa.profil');
     });
 

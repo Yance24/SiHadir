@@ -71,6 +71,7 @@
             <span class="p-2 fw-bold">Security</span>
         </div>
 
+        <!-- Perlu buat button disini yang ngarahin ke semacam url untuk ganti password -->
         <div class="bg-transparent m-3">
             <img src="{{ asset('assets/icon/lock.png') }}" alt="">
             <span class="fw-bold">Ganti Password</span>

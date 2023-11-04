@@ -102,7 +102,7 @@
                 <img src="{{ asset('assets/icon/mail1.svg') }}" alt="Perizinan">
                 <span>Perizinan</span>
             </a>
-            <a href="../ganti-password">
+            <a href="/change-password">
                 <img src="{{ asset('assets/icon/lock1.svg') }}" alt="Ganti Password">
                 <span>Ganti Password</span>
             </a>
