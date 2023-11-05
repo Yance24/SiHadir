@@ -31,15 +31,15 @@
 
     // MAHASISWA
 
-    Route::get('/mahasiswa/dashboard', function () {
+    Route::get('dashboard', function () {
         return view('mahasiswa.dashboard');
     })->name('dashboard');
 
-    Route::get('/mahasiswa/profil', function () {
+    Route::get('profil', function () {
         return view('mahasiswa.profil');
     })->name('profil');
 
-    Route::get('/mahasiswa/perizinan', function () {
+    Route::get('perizinan', function () {
         return view('mahasiswa.perizinan');
     })->name('perizinan');
 
