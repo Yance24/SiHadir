@@ -113,7 +113,7 @@ h2 {
     /* Lebar elemen */
     height: 83px;
     right: 220px;
-    bottom: 540px;
+    bottom: 520px;
     /* Tinggi elemen */
     /* Menghilangkan margin kanan dan mengatur margin atas dan bawah */
     cursor: pointer;
@@ -140,9 +140,7 @@ h2 {
     /* Lebar elemen */
     height: 83px;
     right: 0;
-    left: 1400px;
-    bottom: 420px;
-
+    top: 120px;
     /* Tinggi elemen */
     /* Menghilangkan margin kanan dan mengatur margin atas dan bawah */
     cursor: pointer;

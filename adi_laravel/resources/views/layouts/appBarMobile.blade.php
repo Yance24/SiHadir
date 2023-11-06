@@ -11,10 +11,6 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
 
-
-    <title></title>
-    
-
     <style>
         .appbar {
             display: flex;
@@ -65,7 +61,7 @@
         }
 
         #menuToggle:checked+.appbar+.sidebar {
-            width: 50%;
+            width: 55%;
         }
 
         #menuToggle:checked+.appbar label {
@@ -85,19 +81,21 @@
             background-size: cover;
         }
 
-        @media (min-width: 951px) {}
-
-        @media (max-width: 676px) {
+        @media (max-width: 1024px) {
 
             #menuToggle:checked+.appbar+.sidebar {
-                width: 250px;
+                width: 55%;
+            }
+
+            .nav-custom {
+                font-size: 50px;
             }
         }
 
-        @media (max-width: 448px) {
+        @media (max-width: 767px) {
 
             #menuToggle:checked+.appbar+.sidebar {
-                width: 180px;
+                width: 80%;
             }
 
             .nav-custom {
@@ -110,7 +108,7 @@
 <body>
     <input type="checkbox" id="menuToggle">
     <div class="appbar fixed-top">
-        <label for="menuToggle" class="mt-5 ps-2" onclick="toggleSidebar()">
+        <label for="menuToggle" class="mt-5 ps-2">
             <i class="fa-solid fa-2xl fa-bars" style="color: #ffffff;"></i>
         </label>
         <div class="mx-auto mt-5">
@@ -130,56 +128,59 @@
             </div>
         </div>
 
-        <div class="d-flex flex-column gap-2 p-1 nav-custom">
+        <div class="d-flex flex-column">
             <div>
-                <a href="/" class="text-decoration-none text-white">
+                <a href="{{ route('dashboard') }}" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
                     <span style="font-size: 15px"> Absen</span>
                 </a>
             </div>
             <div>
-                <a href="" class="text-decoration-none text-white ">
+                <a href="{{ route('profil') }}" class="text-decoration-none text-white ">
                     <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
                     <span style="font-size: 17px"> Profil</span>
                 </a>
             </div>
             <div>
-                <a href="/" class="text-decoration-none text-white">
-                    <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class=" nav-custom">
-                    <span style="font-size: 15px"> Perizinan</span>
+                <a href="{{ route('perizinan') }}" class="text-decoration-none text-white">
+                    <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class="nav-custom">
+                    <span style="font-size: 15px">Perizinan</span>
                 </a>
+
             </div>
             <div>
-                <a href="/" class="text-decoration-none text-white">
+                <a href="{{ route('ganti-password') }}" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/change-password.svg') }}" alt="" class=" nav-custom">
                     <span style="font-size: 15px"> Ganti Password</span>
                 </a>
-
             </div>
 
             <hr>
-            <a href="/" class="text-decoration-none text-white" id="logout">
+            <a href="{{route('splashscreen')}}" class="text-decoration-none text-white" id="logout">
                 <img src="{{ asset('assets/icon/logout.svg') }}" alt="" class=" nav-custom">
                 <span style="font-size: 15px"> Logout</span>
             </a>
         </div>
     </div>
     <script>
-        < script >
-            function toggleSidebar() {
-                var sidebar = document.querySelector('.sidebar');
-                var appbar = document.querySelector('.appbar');
-                var menuToggle = document.querySelector('#menuToggle');
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            var appbar = document.querySelector('.appbar');
+            var menuToggle = document.querySelector('#menuToggle');
+            var content = document.getElementById('content'); // Added content reference
 
-                if (menuToggle.checked) {
-                    sidebar.style.width = '350px';
-                    appbar.style.marginLeft = '350px';
-                } else {
-                    sidebar.style.width = '0';
-                    appbar.style.marginLeft = '0';
-                }
+            if (menuToggle.checked) {
+                sidebar.style.width = '350px';
+                appbar.style.marginLeft = '350px';
+                content.style.marginLeft = '350px'; // Adjust content margin
+            } else {
+                sidebar.style.width = '0';
+                appbar.style.marginLeft = '0';
+                content.style.marginLeft = '0'; // Reset content margin
             }
-        // Event handler untuk tombol logout
+        }
+
+        // Event handler for the logout button
         document.getElementById('logout').addEventListener('click', function() {
             Swal.fire({
                 title: 'Do you want to log out?',
@@ -189,9 +190,9 @@
                 denyButtonText: `Cancel`,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Lakukan tindakan logout di sini
+                    // Perform the logout action here
                     Swal.fire('Logged Out!', '', 'success');
                 }
             });
         });
-    </>
+    </script>

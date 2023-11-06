@@ -137,12 +137,13 @@
                     <span style="margin-left: 12px; font-size: 24px;">Generate QR</span>
                 </button>
             </form>
+            <div class="close-class">
+                <button id="close-class-button" type='button' onclick="closeclassButton()">
+                    <span style="margin-left: 70px; font-size: 24px; ">Close Class</span>
+                </button>
+            </div>
         </div>
-        <div class="close-class">
-            <button id="close-class-button" type='button' onclick="closeclassButton()">
-                <span style="margin-left: 70px; font-size: 24px; ">Close Class</span>
-            </button>
-        </div>
+
 
 
         <!-- Patch Generate QR -->
