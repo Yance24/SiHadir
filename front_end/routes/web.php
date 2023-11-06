@@ -48,6 +48,10 @@
         return view('mahasiswa.pemindai');
     })->name('pemindai');
 
+    Route::get('/mahasiswa/jenis-absen', function(){
+        return view('mahasiswa.jenis-absen');
+    })->name('jenis-absen');
+
     
     //Route dashboard generate testing
     Route::post('dosen/qr_dosen', function () {
