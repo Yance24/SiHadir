@@ -10,6 +10,13 @@ use App\Models\Admin;
 class LoginValidation extends Controller
 {
     public function validateLogin(Request $request){
+
+        // $validateData = $request->validate([
+        //     'id'
+        // ]);
+
+        // dd($validateData);
+
         $account = MahasiswaAccounts::where('id_user','=',$request->input('username'))->first();
         if($account != null){
             if($account->password == $request->input('password')){

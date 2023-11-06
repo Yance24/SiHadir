@@ -25,6 +25,26 @@ class ScheduleController extends Controller
     //     session()->put(['dashboardSchedule' => $homeSchedule]);
     // }
 
+    public static function getTodaysSchedule(){
+        $loginAs = session()->get('loginAs');
+        $account = session()->get('account');
+        $hari = TimeControl::getDays();
+
+        $data = collect();
+
+        if($loginAs == 'Mahasiswa'){
+            $data = Schedule::where('hari','=',$hari)
+            ->where('kelas','=',$account->kelas)
+            ->orderBy('jam_mulai','asc')
+            ->get();
+        }else if($loginAs = 'Dosen'){
+            $data = Schedule::where('id_userdosen','=',$account->id_userdosen)
+            ->where('hari','=',$hari)
+            ->orderBy('jam_mulai','asc')
+            ->get();
+        }
+        return $data;
+    }
 
     public static function getSchedule(){
         $loginAs = session()->get('loginAs');

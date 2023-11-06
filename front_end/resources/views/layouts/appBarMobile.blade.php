@@ -105,6 +105,11 @@
 </head>
 
 <body>
+    <?php 
+
+    $account = session()->get('account');
+
+    ?>
     <input type="checkbox" id="menuToggle">
     <div class="appbar fixed-top">
         <label for="menuToggle" class="mt-5 ps-2" onclick="toggleSidebar()">
@@ -122,8 +127,8 @@
                     width="80px" height="80px">
             </div>
             <div class="p-2" style="z-index: 2">
-                <span class="fw-bold nama">Weldy Flaminggo</span><br>
-                <span class="nim">123456789</span>
+                <span class="fw-bold nama"><?php echo $account->nama?></span><br>
+                <span class="nim"><?php echo $account->id_user?></span>
             </div>
         </div>
 

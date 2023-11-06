@@ -25,7 +25,7 @@ use App\Http\Controllers\PerizinanController;
     });
 
     Route::get('/testing', function () {
-        dd(Carbon::now());
+        return view('mahasiswa.jenisPerizinan');
     });
 
     //url untuk nampilin page ganti password buat mahasiswa dan dosen
@@ -52,7 +52,12 @@ use App\Http\Controllers\PerizinanController;
     Route::get('/mahasiswa/profil', function(){
         return view('mahasiswa.profil');
     });
+
+    // url untuk perizinan
     Route::get('/mahasiswa/perizinan',[PerizinanController::class,'processMahasiswaView']);
+
+    // redirect url untuk ngirim file perizinan
+    Route::post('/mahasiswa/perizinan/send-file',[PerizinanController::class,'sendFile'])->name('sendPerizinan-file');
 
     Route::get('/mahasiswa/profil', function(){
         if(!LoginValidation::validateUser('Mahasiswa')) return redirect()->back();
