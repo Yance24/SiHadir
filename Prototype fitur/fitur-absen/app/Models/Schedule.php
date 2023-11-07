@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     protected $table = "jadwal";
-
+ 
     public function dosenAccounts(){
         return $this->belongsTo(DosenAccounts::class,'id_userdosen','id_userdosen');
     }

@@ -9,17 +9,44 @@ class DashboardController extends Controller
 
     public function processDosenView(Request $request){
         if(!LoginValidation::validateUser("Dosen")) return redirect()->back();
+        ScheduleController::getSchedule();
+        $enableAbsent = AbsensiController::checkEnableQR();
+        $enableCloseClass = AbsensiController::checkEnableTutupMakul();
+        return view('dosen.dashboard',[
+            'enableGenerateButton' => !$enableAbsent,
+            'enableCloseClass' => !$enableCloseClass,
+        ]);
+    }
 
-        ScheduleController::getSchedule("Senin");
-        ScheduleController::getDashboardSchedule("07:00:00");
-        return view('dosen.dashboard');
+    public function processQrView(Request $request){
+        if(
+            !LoginValidation::validateUser('Dosen') ||
+            !session()->has('idQr')
+        )
+        return redirect()->back();
+
+        return view('dosen.qrDisplay');
     }
 
     public function processMahasiswaView(Request $request){
         if(!LoginValidation::validateUser("Mahasiswa")) return redirect()->back();
 
-        ScheduleController::getSchedule("Senin");
-        ScheduleController::getDashboardSchedule("07:00:00");
-        return view('mahasiswa.dashboard');
+        ScheduleController::getSchedule();
+        $enableAbsent = AbsensiController::checkEnableQR();
+        return view('mahasiswa.dashboard',[
+            'enableScanButton' => !$enableAbsent,
+        ]);
+    }
+
+    public function processAdminView(Request $request){
+        if(!LoginValidation::validateUser("Admin")) return redirect()->back();
+
+        $totalDosen = AdministrateController::getTotalDosen();
+        $totalMahasiswa = AdministrateController::getTotalMahasiswa();
+
+        return view('admin.dashboard',[
+            'totalMahasiswa' => $totalMahasiswa,
+            'totalDosen' => $totalDosen,
+        ]);
     }
 }

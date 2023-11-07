@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class GantiPasswordController extends Controller
 {
-    public function processView(){
+    public function processView(){  
         return view('gantiPassword');
     }
 

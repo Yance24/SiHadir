@@ -64,16 +64,11 @@
     //$account menyimpan informasi dari akun dosen yang terlogin
     //data dari $account akan berupa field-field dari database dummyny backend
 
-    use function PHPUnit\Framework\isEmpty;
-
     $account = session()->get('account');
 
     //$schedule menyimpan informasi dari jadwal-jadwal yang ada
     //mahasiswa dan dosen akan memiliki jadwal yang berbeda
     $schedule = session()->get('schedule');
-
-    //$dashBoard menyimpan informasi dari jadwal sekarang dan jadwal selanjutnya
-    $dashBoard = session()->get('dashboardSchedule');
 
     //buat melihat data dari variable $account
     // dd($account);
@@ -81,14 +76,6 @@
     //buat melihat data dari variable $schedule
     // dd($schedule);
 
-    // if ($dashBoard->isEmpty()) {
-    //     echo "<h1>tidak ada jadwal hari ini</h1>";
-    // }
-
-    // dd();
-
-    //buat melihat data dari variable $dashBoard
-    // dd($dashBoard);
     ?>
 
     <!-- Pembatas Sidebar -->
@@ -115,7 +102,7 @@
                 <img src="{{ asset('assets/icon/mail1.svg') }}" alt="Perizinan">
                 <span>Perizinan</span>
             </a>
-            <a href="../ganti-password">
+            <a href="/change-password">
                 <img src="{{ asset('assets/icon/lock1.svg') }}" alt="Ganti Password">
                 <span>Ganti Password</span>
             </a>
@@ -133,19 +120,28 @@
         <p style="font-size: 32px; ;">Halo, <b><?php echo $account->nama; ?></b></p>
         <br>
         <br>
+
+        <!-- Elemen untuk nampilin tulisan "jadwal sekarang" -->
+        @if($schedule->count() > 0)
+        <!-- Jika ad jadwal hari ini -->
         <h2 style="display: flex; align-items: center;">
             <img src="{{ asset('assets/icon/table%204.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
             Jadwal Sekarang
         </h2>
+        @else
 
-        @foreach ($dashBoard as $item)
+        <!-- jika tidak ad jadwal hari ini -->
+        Tidak ada jadwal hari ini
+        @endif
+
+        @foreach ($schedule as $item)
         <br>
         <br>
         <div class="jadwal-container">
             <div class="jadwal-info">
                 <div class="mata-kuliah"><?php echo $item->mataKuliah->nama_makul; ?></div>
                 <hr class="gariscontainer">
-                <div class="jam"><?php echo $item->jam_mulai . ' - ' . $item->jam_selesai; ?></div>
+                <div class="jam"><?php echo date('H:i',strtotime($item->jam_mulai)) . ' - ' . date('H:i',strtotime($item->jam_selesai)); ?></div>
             </div>
         </div>
         @endforeach
@@ -153,8 +149,9 @@
         <br>
         <br>
 
+        @if($enableGenerateButton)
+        <!-- Jika dosen sudah bisa mengakses generate qr -->
         <div class="center-content">
-
             <!-- Formulir Tersembunyi untuk Redirect -->
             <form id="redirect-form" action="qr_dosen" method="post">
                 @csrf
@@ -166,6 +163,27 @@
                 </button>
             </form>
         </div>
+        @else
+        <!-- Jika dosen belum bisa mengakses generate qr -->
+        <div class="generateQr-container">
+            Tidak tersedia!!
+        </div>
+        @endif
+
+        <!-- Tombol tutup kelas -->
+        @if($enableCloseClass)
+        <div class="closeClass-container">
+            <form action="<?php echo route('close-class')?>" method="POST">
+            @csrf
+                <button type="submit">
+                    Close Class
+                </button>
+            </form>
+        </div>
+        @else
+        <!-- Jika tombol close classnya di disable -->
+        @endif
+
         <!-- Patch Generate QR -->
         <div id="qr-patch" class="qr-patch">
             <h1>Generate QR Code</h1>
@@ -256,7 +274,7 @@
                     // Menangani klik tombol "Ya"
                     Swal.fire('Anda telah keluar', '', 'success');
                     // Tambahkan fungsi logout atau redirect ke halaman logout di sini
-                    window.location.href = "../login"; // Ganti dengan URL logout Anda
+                    window.location.href = "<?php echo route('logout')?>"; // Ganti dengan URL logout Anda
                 } else {
                     // Menangani klik tombol "Batal"
                     // Lakukan sesuatu atau berikan perilaku kustom

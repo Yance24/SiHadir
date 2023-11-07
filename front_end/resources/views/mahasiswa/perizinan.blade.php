@@ -20,42 +20,66 @@
 
     </section>
 
+    <form action="<?php echo route('sendPerizinan-file')?>" method="post" enctype="multipart/form-data">
+    @csrf
     <div class="container" style="margin-top: 100px;">
         <div class="row justify-content-center">
+            
+            <!-- Menampilkan jadwal-jadwal pelajaran -->
+            @foreach($schedule as $item)
+            <label for="<?php echo 'jadwal_'.$item->id_jadwal?>">
             <div class="row-md-6 mt-5">
                 <div class="first mb-5">
-                    <h1 class="fw-bold" style="font-size: 26px;">PBL</h1>
+                <input type="checkbox" name="jadwal[]" value="<?php echo $item->id_jadwal?>" id="<?php echo 'jadwal_'.$item->id_jadwal?>">
+                    <h1 class="fw-bold" style="font-size: 26px;"><?php echo $item->mataKuliah->nama_makul; ?></h1>
                     <hr>
-                    <span>07.00 AM - 12.00 AM</span>
+                    <span><?php echo date('H:i',strtotime($item->jam_mulai)) . ' - ' . date('H:i',strtotime($item->jam_selesai)); ?></span>
                 </div>
             </div>
-            <div class="row-md-6">
+            </label>
+            @endforeach
+            <!-- <div class="row-md-6">
                 <div class="second mb-5">
                     <h1 class="fw-bold" style="font-size: 26px;">PBL</h1>
                     <hr>
                     <span>07.00 AM - 12.00 AM</span>
                 </div>
-            </div>
+            </div> -->
+            
+                <input type="hidden" name="jenisPerizinan" value="<?php echo $perizinan?>">
+
             <div class="row">
                 <div class="input-group d-block justify-content-center">
                     <div class="mb-3">
                         <input type="text" class="form-control" id="fileName" placeholder="Nama Berkas" readonly>
                     </div>
                     <div class="custom-file d-flex justify-content-end align-items-center ms-2">
-                        <a href="#" id="pratinjauButton"
-                            class="btn btn-primary rounded-pill text-center d-flex align-items-center justify-content-center fs-2"
-                            style="width: 200px; height: 70px;" disabled>Pratinjau</a>
-                        <div class="m-l-3 rounded-circle bg-primary border">
-                            <i class="fa-solid fa-paperclip fa-2xl" id="fileInputIcon"
-                                style="cursor: pointer; font-size: 50px;"></i>
-                        </div>
+
+                        <!-- <label for="pritinjau-input"> -->
+                            <a id="pratinjauButton"
+                                class="btn btn-primary rounded-pill text-center d-flex align-items-center justify-content-center fs-2"
+                                style="width: 200px; height: 70px;" disabled>Pratinjau</a>
+                            
+                            <!-- <input type="submit" id="pritinjau-input" style="display: none;"> -->
+                        <!-- </label> -->
+
+                        <label for="file-input">
+                            <div class="m-l-3 rounded-circle bg-primary border">
+                                <i class="fa-solid fa-paperclip fa-2xl" id="fileInputIcon"
+                                    style="cursor: pointer; font-size: 50px;"></i>
+                                <input type="file" id="file-input" name="file-izin" style="display: none;">
+                            </div>
+                        </label>
+
                         <div class="d-flex" style="opacity: 0;">
                             <input type="file" class="custom-file-input" id="fileInput"
                                 aria-describedby="fileInputAddon">
                         </div>
+
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -67,8 +91,9 @@
                 <canvas id="pdfCanvas"></canvas>
             </div>
             <div class="button-container">
-                <button id="sendButton" class="btn btn-primary">Kirim</button>
+                <button type="submit" id="sendButton" class="btn btn-primary">Kirim</button>
                 <button id="cancelButton" class="btn btn-secondary">Batal</button>
             </div>
         </div>
     </div>
+    </form>

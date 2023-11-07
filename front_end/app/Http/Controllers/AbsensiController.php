@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AbsenDosen;
 use App\Models\AbsenMahasiswa;
 use Illuminate\Http\Request;
+use App\Models\MahasiswaAccounts;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -12,61 +13,113 @@ class AbsensiController extends Controller
 {
 
     public function scanQr(Request $request){
-        if($request->session()->get('account')['loginSebagai'] != 'mahasiswa') return redirect('/Home');
-        $idJadwal = $request->session()->get('homeSchedule')->first()->id_jadwal;
+        if(!LoginValidation::validateUser('Mahasiswa')) return redirect()->back();
+        $idJadwal = $request->session()->get('schedule')->first()->id_jadwal;
         $absenDosen = AbsenDosen::where('id_jadwal','=',$idJadwal)->first();
         if($absenDosen != null){
             $waktu = TimeControl::getTime();
-            $lateTime = TimeControl::operateTime($absenDosen->waktu_dosen, 900,'+');
+            $tanggal = TimeControl::getDate();
+            $lateTime = TimeControl::operateTime($absenDosen->waktu_dosen, '00:15:00','+');
             if(TimeControl::compareTime(TimeControl::getTime(),$lateTime,'>'))
             $status = 'Telat';
             else $status = 'Hadir';
-            DB::table('absen mahasiswa')->insert([
+            DB::table('absen_mahasiswa')->insert([
                 'keterangan' => $status,
                 'waktu_mahasiswa' => $waktu,
-                'id_user' => $request->session()->get('account')['account']->id_user,
+                'tanggal' => $tanggal,
+                'id_user' => $request->session()->get('account')->id_user,
                 'id_jadwal' => $idJadwal,
             ]);
         }
         return redirect('/Home');
     }
 
-    public static function generateQr(){
-        if(LoginValidation::validateUser('Dosen')) return redirect('/login');
-        $idJadwal = session()->get('dashboardSchedule')->first()->id_jadwal;
+    public function generateQr(){
+        if(!LoginValidation::validateUser('Dosen')) return redirect()->back();
+        $idJadwal = session()->get('schedule')->first()->id_jadwal;
         $absenDosen = AbsenDosen::where('id_jadwal','=',$idJadwal)->first();
         if($absenDosen == null){
             $idQr = Str::random(5);
             $waktu = TimeControl::getTime();
+            $tanggal = TimeControl::getDate();
             DB::table('absen_dosen')->insert([
                 'id_jadwal' => $idJadwal,
                 'id_userdosen' => session()->get('account')->id_userdosen,
                 'waktu_dosen' => $waktu,
+                'tanggal' => $tanggal,
                 'id_QR' => $idQr,
             ]);
         }else{
             $idQr = $absenDosen->id_QR;
         }
-        return $idQr;
+        return redirect('/dosen/dashboard/displayQr')->with([
+            'idQr' => $idQr,
+        ]);
+    }
+
+    public function closeClass(Request $request){
+        if(!LoginValidation::validateUser('Dosen')) return redirect()->back();
+
+
+        $jadwal = $request->session()->get('schedule')->first();
+        $idJadwal = $jadwal->id_jadwal;
+        $tanggal = TimeControl::getDate();
+        $absenDosen = AbsenDosen::where('id_jadwal','=',$idJadwal)->where('tanggal','=',$tanggal)->first();
+        if($absenDosen != null){
+            $waktu = TimeControl::getTime();
+            DB::table('absen_dosen')
+            ->where('id_jadwal','=',$idJadwal)
+            ->where('tanggal','=',$tanggal)
+            ->update([
+                'waktu_selesai' => $waktu,  
+                'id_QR' => 'INVALID',
+            ]);
+            
+            // $mahasiswa = MahasiswaAccounts::where('kelas','=',$jadwal->kelas)->get();
+            // foreach($mahasiswa as $item){
+            //     $this->accumulateData($item, $absenDosen, $tanggal);
+            //     $this->operateStatusChange($item);
+            // }
+            // dd();
+        }        
+        return redirect('/dosen/dashboard');
     }
 
     public static function checkEnableQR(){
         $account = session()->get('account');
-        $homeSchedule = session()->get('homeSchedule');
-        if($account['loginSebagai'] == 'mahasiswa'){
+        $loginAs = session()->get('loginAs');
+        $tanggal = TimeControl::getDate();
+        $homeSchedule = session()->get('schedule');
+        if($loginAs == 'Mahasiswa'){
             if(
                 $homeSchedule->count() == 0 || 
                 TimeControl::compareTime(TimeControl::getTime(),$homeSchedule->first()->jam_mulai,'<') ||
-                AbsenMahasiswa::where('id_user','=',$account['account']->id_user)->where('id_jadwal','=',$homeSchedule[0]->id_jadwal)->first() != null
+                AbsenMahasiswa::where('id_user','=',$account->id_user)
+                ->where('id_jadwal','=',$homeSchedule[0]->id_jadwal)
+                ->first() != null
             )return true;
             else return false;
         }else
-        if($account['loginSebagai'] == 'dosen'){
+        if($loginAs == 'Dosen'){
             if(
                 $homeSchedule->count() == 0 || 
                 TimeControl::compareTime(TimeControl::getTime(),$homeSchedule->first()->jam_mulai,'<')
             )return true;
             else return false;
         }
+    }
+
+    public static function checkEnableTutupMakul(){
+        $account = session()->get('account');
+        $tanggal = TimeControl::getDate();
+        $homeSchedule = session()->get('schedule');
+
+        if($homeSchedule->count() == 0)return true;
+        
+        $absenDosen = AbsenDosen::where('tanggal','=',$tanggal)
+        ->where('id_jadwal','=',$homeSchedule[0]->id_jadwal)
+        ->first();
+        if(!($absenDosen != null && $absenDosen->waktu_selesai == null)) return true;
+        else return false;
     }
 }

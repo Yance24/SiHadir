@@ -43,7 +43,7 @@
         }
 
         .custom-profile {
-            background: url({{ asset('assets/img/bg-profile.png') }});
+            background: url(<?php echo asset('assets/img/bg-profile.png') ?>);
             background-size: cover;
             background-position: center;
         }
@@ -77,7 +77,7 @@
         }
 
         .bg-custom {
-            background: url({{ asset('assets/img/bg-profile.png') }}) center no-repeat;
+            background: url(<?php echo asset('assets/img/bg-profile.png') ?>) center no-repeat;
             background-size: cover;
         }
 
@@ -105,6 +105,11 @@
 </head>
 
 <body>
+    <?php 
+
+    $account = session()->get('account');
+
+    ?>
     <input type="checkbox" id="menuToggle">
     <div class="appbar fixed-top">
         <label for="menuToggle" class="mt-5 ps-2" onclick="toggleSidebar()">
@@ -122,32 +127,32 @@
                     width="80px" height="80px">
             </div>
             <div class="p-2" style="z-index: 2">
-                <span class="fw-bold nama">Weldy Flaminggo</span><br>
-                <span class="nim">123456789</span>
+                <span class="fw-bold nama"><?php echo $account->nama?></span><br>
+                <span class="nim"><?php echo $account->id_user?></span>
             </div>
         </div>
 
         <div class="d-flex flex-column">
             <div>
-                <a href="../mahasiswa/dashboard" class="text-decoration-none text-white">
+                <a href="/mahasiswa/dashboard" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
                     <span style="font-size: 15px"> Absen</span>
                 </a>
             </div>
             <div>
-                <a href="mahasiswa.profile" class="text-decoration-none text-white ">
+                <a href="/mahasiswa/profil" class="text-decoration-none text-white ">
                     <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
                     <span style="font-size: 17px"> Profil</span>
                 </a>
             </div>
             <div>
-                <a href="/" class="text-decoration-none text-white">
+                <a href="/mahasiswa/perizinan" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class=" nav-custom">
                     <span style="font-size: 15px"> Perizinan</span>
                 </a>
             </div>
             <div>
-                <a href="/" class="text-decoration-none text-white">
+                <a href="/mahasiswa/gantiPassword" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/change-password.svg') }}" alt="" class=" nav-custom">
                     <span style="font-size: 15px"> Ganti Password</span>
                 </a>
@@ -188,6 +193,7 @@
                 if (result.isConfirmed) {
                     // Lakukan tindakan logout di sini
                     Swal.fire('Logged Out!', '', 'success');
+                    window.location.href = "<?php echo route('logout')?>";
                 }
             });
         });
