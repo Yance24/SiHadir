@@ -22,5 +22,4 @@
         <select id="pilihKamera" style="max-width: 400px"></select>
         <br>
         <input type="text" id="hasilscan">
-        <a href="{{ route('dashboard') }}" class="btn btn-primary">Batal</a>
     </div>

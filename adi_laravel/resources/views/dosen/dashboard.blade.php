@@ -23,35 +23,6 @@
             /* Sesuaikan tinggi gambar sesuai kebutuhan */
             background-size: cover;
         }
-
-
-        /* CSS untuk SweetAlert2 */
-        .swal2-popup {
-            text-align: center;
-        }
-
-        .swal2-title {
-            left: 10px;
-            text-align: center;
-            /* Menengahkan teks judul */
-            font-size: 24px;
-            /* Ubah ukuran font judul */
-            color: #333;
-            /* Ubah warna judul */
-            margin-bottom: 20px;
-            /* Atur margin bawah judul */
-        }
-
-        .swal2-actions {
-            display: flex;
-            justify-content: center;
-        }
-
-        .swal2-confirm,
-        .swal2-cancel {
-            width: 100px;
-            margin: 5px;
-        }
     </style>
 </head>
 
@@ -134,38 +105,47 @@
         <br>
         <br>
         <h2 style="display: flex; align-items: center;">
-            <img src="{{ asset('assets/icon/table%204.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
+            <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
             Jadwal Sekarang
         </h2>
 
-        @foreach ($dashBoard as $item)
+
         <br>
         <br>
         <div class="jadwal-container">
             <div class="jadwal-info">
-                <div class="mata-kuliah"><?php echo $item->mataKuliah->nama_makul; ?></div>
+                <div class="mata-kuliah">PBL asdasdads asdsaadsdsadas adasd adi<?php //echo $item->mataKuliah->nama_makul; 
+                                                                                ?></div>
                 <hr class="gariscontainer">
-                <div class="jam"><?php echo $item->jam_mulai . ' - ' . $item->jam_selesai; ?></div>
+                <div class="jam">07.00 - 12.00<?php //echo //$item->jam_mulai . ' - ' . $item->jam_selesai; 
+                                                ?></div>
             </div>
         </div>
-        @endforeach
+
         <br>
         <br>
         <br>
 
         <div class="center-content">
-
             <!-- Formulir Tersembunyi untuk Redirect -->
             <form id="redirect-form" action="qr_dosen" method="post">
                 @csrf
                 <input type="hidden" name="parameter_name" value="parameter_value">
                 <!-- Tambahkan parameter sesuai kebutuhan -->
                 <button id="generate-qr-button" type='submit'>
-                    <img src="{{ asset('assets/icon/qr-code%201.svg') }}" alt="Generate QR" style="width: 45px; height: 50px;">
-                    <span style="margin-left: 12px; font-size: 34px;">Generate QR</span>
+                    <img src="{{ asset('assets/icon/qr-code1.svg') }}" alt="Generate QR" style="width: 45px; height: 50px; margin-right:30px; ">
+                    <span style="margin-left: 12px; font-size: 24px;">Generate QR</span>
                 </button>
             </form>
+            <div class="close-class">
+                <button id="close-class-button" type='button' onclick="closeclassButton()">
+                    <span style="margin-left: 70px; font-size: 24px; ">Close Class</span>
+                </button>
+            </div>
         </div>
+
+
+
         <!-- Patch Generate QR -->
         <div id="qr-patch" class="qr-patch">
             <h1>Generate QR Code</h1>
@@ -185,18 +165,32 @@
         </div>
 
 
-        <!-- <h2 style="display: flex; align-items: center;">
-            <img src="{{ asset('assets/icon/table%204.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
+        <h2 style="display: flex; align-items: center;">
+            <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
             Jadwal Selanjutnya
         </h2>
+        <br>
+        <br>
         <div class="jadwal-container">
             <div class="jadwal-info">
                 <div class="mata-kuliah">PEMROGRAMAN WEB</div>
                 <hr class="gariscontainer">
                 <div class="jam">12:00 - 16:00</div>
             </div>
-        </div> -->
+        </div>
+        <br>
+        <br>
+        <div class="jadwal-container">
+            <div class="jadwal-info">
+                <div class="mata-kuliah">JARINGAN KOMPUTER LANJUT</div>
+                <hr class="gariscontainer">
+                <div class="jam">16:20 - 18:00</div>
+            </div>
+        </div>
     </div>
+
+
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.js">
     </script>
@@ -257,12 +251,39 @@
                     Swal.fire('Anda telah keluar', '', 'success');
                     // Tambahkan fungsi logout atau redirect ke halaman logout di sini
                     window.location.href = "../login"; // Ganti dengan URL logout Anda
+                    // window.location.href = "<?php //echo route('logout') 
+                                                ?>"; // Ganti dengan URL logout Anda
                 } else {
                     // Menangani klik tombol "Batal"
                     // Lakukan sesuatu atau berikan perilaku kustom
                 }
             });
         });
+
+        // Function to display the SweetAlert2 popup untuk Close Class
+        function closeclassButton() {
+            Swal.fire({
+                title: 'Apa anda ingin menutup kelas ini?',
+                icon: 'warning',
+                showCancelButton: true, // Menampilkan tombol "Tidak"
+                confirmButtonColor: '#7ACC78',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+                reverseButtons: true // Memutar urutan tombol
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Handle "Ya" button click
+                    Swal.fire('Validasi berhasil terkirim', '', 'success');
+                    removeDataAndAdjustSchedule(); // Call the function to remove data and adjust the schedule
+
+                } else {
+                    // Handle "Tidak" button click
+                    // Do nothing or provide custom behavior
+                }
+            });
+        }
+
 
         //buat redirect generate qr code
         // Tambahkan event listener ke tombol "Generate QR"
@@ -273,6 +294,76 @@
         //     // Submit formulir tersembunyi dengan metode POST
         //     form.submit();
         // });
+
+        // Function to remove data and adjust the schedule
+        // Function to remove data and adjust the schedule
+        function removeDataAndAdjustSchedule() {
+            const containerToRemove = document.querySelector('.jadwal-container');
+            if (containerToRemove) {
+                const jadwalSekarangContainer = document.querySelector('.content');
+                const jadwalSelanjutnyaContainers = document.querySelectorAll('.jadwal-container');
+
+                const jadwalSekarang = jadwalSelanjutnyaContainers[0];
+                const jadwalSelanjutnya2 = jadwalSelanjutnyaContainers[1];
+
+                if (jadwalSekarang) {
+                    // Remove the current schedule
+                    jadwalSekarang.remove();
+
+                    // Move the "Jadwal Sekarang" label and details
+                    jadwalSekarangContainer.innerHTML = `
+    <br>
+    <p style="font-size: 32px;">Halo, <b><?php echo $account->nama; ?></b></p>
+    <br>
+    <br>
+    <h2 style="display: flex; align-items: center;">
+        <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
+        Jadwal Sekarang
+    </h2>
+    <br>
+    <br>
+    ${jadwalSelanjutnya2.outerHTML}
+    <br>
+    
+    <h2 style="display: flex; align-items: center;">
+        <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Selanjutnya" style="width: 45px; height: 50px; margin-right: 10px;">
+        Jadwal Selanjutnya
+    </h2>
+    <br>
+    <br>
+    `;
+
+
+
+                    // Show the remaining schedule(s)
+                    if (jadwalSelanjutnyaContainers.length > 2) {
+                        const remainingSchedules = Array.from(jadwalSelanjutnyaContainers).slice(2);
+                        remainingSchedules.forEach(schedule => {
+                            jadwalSekarangContainer.insertAdjacentElement('beforeend', schedule);
+                        });
+                    }
+                }
+
+                // Hide the "Generate QR" and "Close Class" buttons
+                const generateQRButton = document.getElementById('generate-qr-button');
+                const closeClassButton = document.getElementById('close-class-button');
+                generateQRButton.style.display = 'none';
+                closeClassButton.style.display = 'none';
+
+                // Set a timer to show the buttons when the new schedule starts
+                const nextScheduleTime = '12:00'; // Replace this with the next schedule time
+                const [hours, minutes] = nextScheduleTime.split(':');
+                const currentDate = new Date();
+                const nextScheduleDate = new Date();
+                nextScheduleDate.setHours(hours, minutes, 0, 0);
+                const timeUntilNextSchedule = nextScheduleDate - currentDate;
+
+                setTimeout(() => {
+                    generateQRButton.style.display = 'block';
+                    closeClassButton.style.display = 'block';
+                }, timeUntilNextSchedule);
+            }
+        }
     </script>
 </body>
 

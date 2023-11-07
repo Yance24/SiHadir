@@ -23,6 +23,10 @@ use App\Http\Controllers\PerizinanController;
         else return redirect('/login');
         
     });
+    Route::get('/login', function(){
+        return view('login');
+    })->name('login');
+    Route::post('/login-validation', [LoginValidation::class, 'validateLogin'])->name('login-validation');
 
     Route::get('/testing', function () {
         return view('mahasiswa.jenisPerizinan');
@@ -66,13 +70,11 @@ use App\Http\Controllers\PerizinanController;
     Route::get('/mahasiswa/profil', function(){
         if(!LoginValidation::validateUser('Mahasiswa')) return redirect()->back();
         return view('mahasiswa.profil');
-    });
+    })->name('profil');
 
-    Route::post('scanner', [PemindaiController::class, 'scanner']);
-
-    Route::get('/mahasiswa/test', function(){
-        return view('mahasiswa.test');
-    });
+    Route::get('/mahasiswa/perizinan', function () {
+        return view('mahasiswa.perizinan');
+    })->name('perizinan');
 
     Route::get('/mahasiswa/testCamera', function(){
         return view('mahasiswa.testCamera');
@@ -80,7 +82,7 @@ use App\Http\Controllers\PerizinanController;
 
     Route::get('/mahasiswa/pemindai', function(){
         return view('mahasiswa.pemindai');
-    });
+    })->name('pemindai');
 
     Route::get('/pemindai', 'PemindaiController@scanner')->name('pemindai::class.scanner');
 

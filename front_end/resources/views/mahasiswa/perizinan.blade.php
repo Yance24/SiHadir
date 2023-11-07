@@ -6,18 +6,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous">
-        
-    <!-- CSS -->
+    <!-- Tambahkan SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/mahasiswa/perizinan.css') }}">
 
-    <!-- JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.min.js"></script>
-
-    <script src="{{ asset('assets/js/mahasisiswa/perizinan.js') }}"></script>
-
+    <!-- Tambahkan SweetAlert2 JavaScript -->
     </section>
 
     <form action="<?php echo route('sendPerizinan-file')?>" method="post" enctype="multipart/form-data">
@@ -77,23 +70,14 @@
                         </div>
 
                     </div>
+
                 </div>
             </div>
 
         </div>
     </div>
-
-    <!-- Popup -->
-    <div id="pdfPopup" class="popup">
-        <div class="popup-content">
-            <span class="close" id="closePopupButton">&times;</span>
-            <div id="pdfPreview" class="pdf-preview">
-                <canvas id="pdfCanvas"></canvas>
-            </div>
-            <div class="button-container">
-                <button type="submit" id="sendButton" class="btn btn-primary">Kirim</button>
-                <button id="cancelButton" class="btn btn-secondary">Batal</button>
-            </div>
-        </div>
-    </div>
-    </form>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{asset('assets/js/mahasiswa/perizinan.js')}}"></script>
+    

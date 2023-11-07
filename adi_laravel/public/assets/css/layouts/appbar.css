@@ -1,0 +1,8 @@
+.appbar {
+    display: flex;
+    height: 100px;
+    background-color: #78A2CC;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}

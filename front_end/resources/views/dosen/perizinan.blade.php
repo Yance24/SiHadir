@@ -11,86 +11,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-        /* Gaya CSS untuk tampilan popup */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            position: relative;
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 450px;
-            height: 750px;
-            bottom: 220px;
-            right: 150px;
-            border-radius: 15px;
-        }
-
-        .modal-button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .modal-button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .keterangan-surat {
-            font-size: 24px;
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-
-        }
-
-        .close {
-            position: relative;
-            font-size: 30px;
-            right: 10px;
-            bottom: 610px;
-            cursor: pointer;
-
-        }
-
-        .icon-text-container {
-            display: flex;
-        }
-
-
-
-
-        /* Gaya CSS untuk pesan validasi */
-        .validation-message {
-            font-weight: bold;
-        }
-
-        .swal2-styled.swal2-confirm {
-            border: 0;
-            border-radius: .25em;
-            background: initial;
-            background-color: initial;
-            background-image: initial;
-            background-color: #7AAC78;
-            color: #fff;
-            font-size: 1em;
-        }
-
-
-
         .profile-images {
             text-align: center;
             position: relative;
@@ -102,52 +22,42 @@
             /* Sesuaikan tinggi gambar sesuai kebutuhan */
             background-size: cover;
         }
-
-        /* CSS untuk SweetAlert2 */
-        .swal2-popup {
-            text-align: center;
-        }
-
-        .swal2-title {
-            left: 10px;
-            text-align: center;
-            /* Menengahkan teks judul */
-            font-size: 24px;
-            /* Ubah ukuran font judul */
-            color: #333;
-            /* Ubah warna judul */
-            margin-bottom: 20px;
-            /* Atur margin bawah judul */
-        }
-
-        .swal2-actions {
-            display: flex;
-            justify-content: center;
-        }
-
-        .swal2-confirm,
-        .swal2-cancel {
-            width: 100px;
-            margin: 5px;
-        }
-
-        .previewButton {
-            position: relative;
-
-            right: 100px;
-            border-radius: 25px;
-            /* Mengatur border-radius agar tombol memiliki bentuk elips */
-            padding: 10px 20px;
-            /* Padding untuk memberi ruang di dalam tombol */
-            background-color: #78A2CC;
-            width: 236px;
-            cursor: pointer;
-        }
     </style>
 </head>
 
 
 <body>
+    <?php
+
+    //$account menyimpan informasi dari akun dosen yang terlogin
+    //data dari $account akan berupa field-field dari database dummyny backend
+
+    use function PHPUnit\Framework\isEmpty;
+
+    $account = session()->get('account');
+
+    //$schedule menyimpan informasi dari jadwal-jadwal yang ada
+    //mahasiswa dan dosen akan memiliki jadwal yang berbeda
+    $schedule = session()->get('schedule');
+
+    //$dashBoard menyimpan informasi dari jadwal sekarang dan jadwal selanjutnya
+    $dashBoard = session()->get('dashboardSchedule');
+
+    //buat melihat data dari variable $account
+    // dd($account);
+
+    //buat melihat data dari variable $schedule
+    // dd($schedule);
+
+    // if ($dashBoard->isEmpty()) {
+    //     echo "<h1>tidak ada jadwal hari ini</h1>";
+    // }
+
+    // dd();
+
+    //buat melihat data dari variable $dashBoard
+    // dd($dashBoard);
+    ?>
 
     <!-- <?php
 
@@ -172,8 +82,13 @@
     <div class="sidebar">
         <div class="profile-images">
             <img src="{{ asset('assets/img/photo-dosen.svg') }}" alt="Foto Anda" class="photo-dosen">
-            <div class="text-overlay">Ferry Faisal, S.ST., M.T.</div>
-            <div class="text-overlay2">19730206 199501 1 001</div>
+
+            <!-- Contoh Penggunaan Data $account -->
+            <!-- <div class="text-overlay">Ferry Faisal, S.ST., M.T.</div> -->
+            <div class="text-overlay"><?php echo $account->nama; ?></div>
+
+            <!-- <div class="text-overlay2">19730206 199501 1 001</div> -->
+            <div class="text-overlay2"><?php echo $account->id_userdosen; ?></div>
 
         </div>
 

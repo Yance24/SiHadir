@@ -4,13 +4,14 @@ body {
 }
 
 .sidebar {
-  margin: 0px;
-  padding: 0;
-  width: 330px;
-  background-color: #78a2cc;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
+    margin: 0px;
+    padding: 0;
+    width: 330px;
+    background-color: #78a2cc;
+    position: fixed;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .sidebar a {
@@ -56,21 +57,23 @@ body {
 }
 
 .text-overlay {
-  font-size: 15px;
-  position: relative;
-  top: 190px;
-  right: 70px;
-  color: #ffffff;
-  font-weight: bold;
+    display: flex;
+    font-size: 15px;
+    position: relative;
+    top: 190px;
+    left: 15px;
+    color: #ffffff;
+    font-weight: bold;
 }
 
 .text-overlay2 {
-  font-size: 15px;
-  position: relative;
-  top: 200px;
-  right: 70px;
-  color: #ffffff;
-  font-weight: normal;
+    font-size: 15px;
+    display: flex;
+    position: relative;
+    top: 200px;
+    left: 15px;
+    color: #ffffff;
+    font-weight: normal;
 }
 
 .nav hr {

@@ -195,3 +195,117 @@ div.content-perizinan {
   background-color: #0aff40;
   cursor: pointer;
 }
+
+/* Gaya CSS untuk tampilan popup */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 450px;
+    height: 750px;
+    bottom: 220px;
+    right: 150px;
+    border-radius: 15px;
+}
+
+.modal-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.modal-button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.keterangan-surat {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.close {
+    position: relative;
+    font-size: 30px;
+    right: 10px;
+    bottom: 610px;
+    cursor: pointer;
+}
+
+.icon-text-container {
+    display: flex;
+}
+
+/* Gaya CSS untuk pesan validasi */
+.validation-message {
+    font-weight: bold;
+}
+
+.swal2-styled.swal2-confirm {
+    border: 0;
+    border-radius: 0.25em;
+    background: initial;
+    background-color: initial;
+    background-image: initial;
+    background-color: #7aac78;
+    color: #fff;
+    font-size: 1em;
+}
+
+/* CSS untuk SweetAlert2 */
+.swal2-popup {
+    text-align: center;
+}
+
+.swal2-title {
+    left: 10px;
+    text-align: center;
+    /* Menengahkan teks judul */
+    font-size: 24px;
+    /* Ubah ukuran font judul */
+    color: #333;
+    /* Ubah warna judul */
+    margin-bottom: 20px;
+    /* Atur margin bawah judul */
+}
+
+.swal2-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    width: 100px;
+    margin: 5px;
+}
+
+.previewButton {
+    position: relative;
+    border: none;
+    right: 100px;
+    border-radius: 25px;
+    /* Mengatur border-radius agar tombol memiliki bentuk elips */
+    padding: 10px 20px;
+    /* Padding untuk memberi ruang di dalam tombol */
+    background-color: #78a2cc;
+    width: 236px;
+    cursor: pointer;
+}

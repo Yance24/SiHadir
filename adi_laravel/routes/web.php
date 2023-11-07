@@ -10,6 +10,10 @@
     Route::get('/', function () {
         return view('welcome');
     });
+    Route::get('/login', function(){
+        return view('login');
+    })->name('login');
+    Route::post('/login-validation', [LoginValidation::class, 'validateLogin'])->name('login-validation');
 
     Route::get('/testing', function () {
         $jadwal = session()->get('schedule');
@@ -21,58 +25,30 @@
         // echo $jadwal[1]->mataKuliah->nama_makul;
     });
 
-    Route::get('/change-password', function () {
-        return view('change-password');
-    });
+    Route::get('/ganti-password', function(){
+        return view('ganti-password');
+    })->name('ganti-password');
 
-    Route::get('/login', function () {
-        // session()->flush();
-        return view('login');
-    });
+    
 
-    // MAHASISWA
-
-    Route::get('/mahasiswa/profil', function(){
-        return view('mahasiswa.profil');
-    });
-    Route::get('/mahasiswa/perizinan', function(){
-        return view('mahasiswa.perizinan');
-    });
-
-    Route::get('/mahasiswa/dashboard', function(){
+    // Route untuk mahasiswa
+    Route::get('/mahasiswa/dashboard', function () {
         return view('mahasiswa.dashboard');
-    });
+    })->name('dashboard');
 
-    Route::get('/mahasiswa/profil', function(){
+    Route::get('/mahasiswa/profil', function () {
         return view('mahasiswa.profil');
-    });
+    })->name('profil');
 
-    Route::post('scanner', [PemindaiController::class, 'scanner']);
+    Route::get('/mahasiswa/perizinan', function () {
+        return view('mahasiswa.perizinan');
+    })->name('perizinan');
 
-    Route::get('/mahasiswa/test', function(){
-        return view('mahasiswa.test');
-    });
+    Route::get('/mahasiswa/pemindai', function(){
+        return view('mahasiswa.pemindai');
+    })->name('pemindai');
 
-    Route::get('/mahasiswa/testCamera', function(){
-        return view('mahasiswa.testCamera');
-    });
-
-    Route::get('/pemindai', 'PemindaiController@scanner')->name('pemindai::class.scanner');
-
-    Route::view('/profil', 'NavigasiController@profil')->name('profil::class.profil');
-
-    Route::view('/profil', 'NavigasiController@dashboard')->name('dashboard::class.dashboard');
-
-
-    // END
-
-    Route::post('/login-validation', [LoginValidation::class, 'validateLogin'])->name('login-validation');
-
-    // Route login untuk mahasiswa sama dengan login untuk dosen
-    // Route::get('/mahasiswa/login', function(){
-    //     return view('mahasiswa.login');
-    // });
-
+    
     //Route dashboard generate testing
     Route::post('dosen/qr_dosen', function () {
         echo 'tes';

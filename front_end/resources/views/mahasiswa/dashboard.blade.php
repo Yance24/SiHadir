@@ -5,16 +5,15 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous">
     <!-- CSS -->
-    <link href="{{ asset('assets/css/mahasiswa/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/mahasiswa/dashboard.css') }}" rel="stylesheet">    
 
     <!-- JS -->
-    <script src="{{ asset('assets/js/.js') }}"></script>
+    <script src="{{ asset('assets/js/mahasiswa/dashboard.js') }}"></script>
     </section>
+
+
 
     <?php 
         $account = session()->get('account');

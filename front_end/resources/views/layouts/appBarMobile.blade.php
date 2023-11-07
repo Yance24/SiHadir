@@ -159,42 +159,34 @@
 
             </div>
 
-            <hr>
-            <a href="/" class="text-decoration-none text-white" id="logout">
-                <img src="{{ asset('assets/icon/logout.svg') }}" alt="" class=" nav-custom">
-                <span style="font-size: 15px"> Logout</span>
-            </a>
+            <!-- NAVIGASI -->
+            <div class="d-flex flex-column m-0 ">
+                <div>
+                    <a href="{{ route('dashboard') }}" class="text-decoration-none text-white">
+                        <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
+                        <span style="font-size: 15px"> Absen</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ route('profil') }}" class="text-decoration-none text-white ">
+                        <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
+                        <span style="font-size: 17px"> Profil</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ route('jenis-absen') }}" class="text-decoration-none text-white">
+                        <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class="nav-custom">
+                        <span style="font-size: 15px">Perizinan</span>
+                    </a>
+                </div>
+                <hr class="m-0">
+                <a href="{{ route('splashscreen') }}" class="text-decoration-none text-white" id="logout">
+                    <img src="{{ asset('assets/icon/logout.svg') }}" alt="" class=" nav-custom">
+                    <span style="font-size: 15px"> Logout</span>
+                </a>
+            </div>
+            <!-- END -->
         </div>
-    </div>
-    <script>
-        < script >
-            function toggleSidebar() {
-                var sidebar = document.querySelector('.sidebar');
-                var appbar = document.querySelector('.appbar');
-                var menuToggle = document.querySelector('#menuToggle');
+    </header>
+    <script src="{{asset('assets/js/logout.js')}}"></script>
 
-                if (menuToggle.checked) {
-                    sidebar.style.width = '350px';
-                    appbar.style.marginLeft = '350px';
-                } else {
-                    sidebar.style.width = '0';
-                    appbar.style.marginLeft = '0';
-                }
-            }
-        // Event handler untuk tombol logout
-        document.getElementById('logout').addEventListener('click', function() {
-            Swal.fire({
-                title: 'Do you want to log out?',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: 'Log Out',
-                denyButtonText: `Cancel`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Lakukan tindakan logout di sini
-                    Swal.fire('Logged Out!', '', 'success');
-                    window.location.href = "<?php echo route('logout')?>";
-                }
-            });
-        });
-    </>
