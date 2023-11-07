@@ -53,6 +53,10 @@ use App\Http\Controllers\PerizinanController;
         return view('mahasiswa.profil');
     });
 
+    Route::get('/mahasiswa/testBarcode', function(){
+        return view('mahasiswa.testBarcode');
+    });
+
     // url untuk perizinan
     Route::get('/mahasiswa/perizinan',[PerizinanController::class,'processMahasiswaView']);
 
