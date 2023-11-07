@@ -26,6 +26,7 @@ use App\Http\Controllers\PerizinanController;
     Route::get('/login', function(){
         return view('login');
     })->name('login');
+    
     Route::post('/login-validation', [LoginValidation::class, 'validateLogin'])->name('login-validation');
 
     Route::get('/testing', function () {

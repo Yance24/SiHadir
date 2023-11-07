@@ -52,8 +52,9 @@ class AbsensiController extends Controller
 
     public static function checkEnableQR(){
         $account = session()->get('account');
-        $homeSchedule = session()->get('homeSchedule');
-        if($account['loginSebagai'] == 'mahasiswa'){
+        $loginAs = session()->get('loginAs');
+        $homeSchedule = session()->get('schedule');
+        if($loginAs == 'Mahasiswa'){
             if(
                 $homeSchedule->count() == 0 || 
                 TimeControl::compareTime(TimeControl::getTime(),$homeSchedule->first()->jam_mulai,'<') ||
@@ -61,7 +62,7 @@ class AbsensiController extends Controller
             )return true;
             else return false;
         }else
-        if($account['loginSebagai'] == 'dosen'){
+        if($loginAs == 'Dosen'){
             if(
                 $homeSchedule->count() == 0 || 
                 TimeControl::compareTime(TimeControl::getTime(),$homeSchedule->first()->jam_mulai,'<')

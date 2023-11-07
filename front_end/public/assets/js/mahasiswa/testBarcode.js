@@ -1,72 +1,61 @@
-if (navigator.serviceWorker) {
-    navigator.serviceWorker.register(
-        `${window.location.pathname}{{asset('assets/js/sw.js')}`,
-        {
-            scope: window.location.pathname,
-        }
-    );
+// Pada file JavaScript Anda (pemindai.js)
+let selectedDeviceId = null;
+const codeReader = new ZXing.BrowserMultiFormatReader();
+const sourceSelect = $("#pilihKamera");
+
+$(document).on("change", "#pilihKamera", function () {
+    selectedDeviceId = $(this).val();
+    if (codeReader) {
+        codeReader.reset();
+        initScanner();
+    }
+});
+
+function initScanner() {
+    codeReader
+        .listVideoInputDevices()
+        .then((videoInputDevices) => {
+            if (videoInputDevices.length > 0) {
+                if (selectedDeviceId === null) {
+                    selectedDeviceId = videoInputDevices[0].deviceId;
+                }
+
+                sourceSelect.html(""); // Clear the options before adding new ones.
+                videoInputDevices.forEach((element) => {
+                    const sourceOption = document.createElement("option");
+                    sourceOption.text = element.label;
+                    sourceOption.value = element.deviceId;
+                    if (element.deviceId === selectedDeviceId) {
+                        sourceOption.selected = true;
+                    }
+                    sourceSelect.append(sourceOption);
+                });
+
+                codeReader
+                    .decodeFromVideoDevice(selectedDeviceId, "previewKamera", (result) => {
+                        // Handle the scanned result
+                        console.log(result.text);
+                        $("#hasilscan").val(result.text);
+
+                        // Continue scanning after a short delay
+                        setTimeout(initScanner, 1000);
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        alert("Error accessing camera or scanning.");
+                    });
+            } else {
+                alert("No video input devices found.");
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            alert("Error listing video input devices.");
+        });
 }
 
-const barcodeDetector =
-    "BarcodeDetector" in window ? new BarcodeDetector() : null;
-
-(async () => {
-    if (!barcodeDetector) {
-        document.querySelector(".console").innerText =
-            "BarcodeDetector is not supported in this browser";
-        return;
-    }
-
-    try {
-        const mediaStream = await navigator.mediaDevices.getUserMedia({
-            audio: false,
-            video: {
-                facingMode: "environment",
-            },
-        });
-
-        const video = document.querySelector("video");
-        video.srcObject = mediaStream;
-
-        video.onloadedmetadata = (e) => {
-            video.play();
-        };
-
-        while (true) {
-            await new Promise((resolve) => setTimeout(resolve, 100));
-            if (video.readyState !== 4) continue;
-            const results = await barcodeDetector.detect(video);
-            if (results.length > 0) {
-                const result = results[0].rawValue || null;
-                document.querySelector(".console").innerText = result;
-
-                // Show SweetAlert notification and redirect to backend after user interaction
-                showScanSuccessNotification(result);
-            } else {
-                document.querySelector(".console").innerText = "";
-            }
-        }
-    } catch (error) {
-        console.error("Error accessing camera:", error);
-        document.querySelector(".console").innerText =
-            "Error accessing camera.";
-    }
-})();
-
-function showScanSuccessNotification(result) {
-    Swal.fire({
-        icon: "success",
-        title: "Scan Success",
-        text: `Scanned result: ${result}`,
-        showConfirmButton: false,
-    });
-
-    // Redirect to backend after 3 seconds
-    setTimeout(() => {
-        // Modify the URL as needed to redirect to your backend
-        const backendUrl = "https://example.com/backend"; // Replace with your backend URL
-        window.location.href = `${backendUrl}?result=${encodeURIComponent(
-            result
-        )}`;
-    }, 3000);
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    initScanner();
+} else {
+    alert("Cannot access camera. Make sure your browser supports getUserMedia and has necessary permissions.");
 }
