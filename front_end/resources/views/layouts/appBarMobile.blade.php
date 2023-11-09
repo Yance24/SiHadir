@@ -152,7 +152,7 @@
                 </a>
             </div>
             <div>
-                <a href="/mahasiswa/gantiPassword" class="text-decoration-none text-white">
+                <a href="/change-password" class="text-decoration-none text-white">
                     <img src="{{ asset('assets/icon/change-password.svg') }}" alt="" class=" nav-custom">
                     <span style="font-size: 15px"> Ganti Password</span>
                 </a>
@@ -160,7 +160,7 @@
             </div>
 
             <!-- NAVIGASI -->
-            <div class="d-flex flex-column m-0 ">
+            <!-- <div class="d-flex flex-column m-0 ">
                 <div>
                     <a href="/mahasiswa/dashboard" class="text-decoration-none text-white">
                         <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
@@ -184,7 +184,7 @@
                     <img src="{{ asset('assets/icon/logout.svg') }}" alt="" class=" nav-custom">
                     <span style="font-size: 15px"> Logout</span>
                 </a>
-            </div>
+            </div> -->
             <!-- END -->
         </div>
     </header>

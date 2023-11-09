@@ -1,33 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- no NavBar yet!! -->
+@extends('layouts.appbarMobile')
 
-    <!-- Keterangan pilih jenis ijin -->
-    <div class="keterangan-container">
-        pilih jenis ijin!
+@section('extra-css-js')
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        <style>
+            .container {
+                display: none;
+            }
+    
+            @media screen and (max-width: 767px) {
+                .container {
+                    display: block;
+                }
+            }
+        </style>
+</section>
+
+<div class="container" style="margin-top: 100px">
+    <div class="text-center">
+        <label class="p-3" style="font-size: 14px;">Pilih Jenis <b>Absen!</b></label>
     </div>
 
-
-    <form action="/mahasiswa/perizinan" method="get">
+    <form action="/mahasiswa/perizinan">
+    <div class="my-5">
         
-        <label class="radioButton-container">
-            <input type="radio" name="perizinan" value="Sakit">
-            Sakit
-        </label>
-        <label class="radioButton-container">
-            <input type="radio" name="perizinan" value="Izin">
-            Izin
+        <label for="flexRadioDefault1">
+        <div class="col-12 col-lg-5 mx-auto">
+            <div class="form-check mb-5 d-flex align-items-center justify-content-center rounded"
+                style="background-color: #FFF; box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25); width: 100%; max-width: 350px; height: 75px; border-radius: 15px;">
+                <input class="form-check-input ms-2" type="radio" name="perizinan" value="Izin" id="flexRadioDefault1"
+                    style="width: 20px; height: 20px;">
+                <label class="form-check-label text-center w-100"
+                    style="color: #000; font-family: Inter; font-size: 40px; font-style: normal; font-weight: 400; line-height: normal;">
+                    Izin
+                </label>
+            </div>
+        </div>
         </label>
 
-        <div class="submitButton-container">
-            <button type="submit">Selanjutnya</button>
+        <label for="flexRadioDefault2">
+        <div class="col-12 col-lg-5 mx-auto">
+            <div class="form-check mb-5 d-flex align-items-center justify-content-center rounded"
+                style="background-color: #FFF; box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25); width: 100%; max-width: 350px; height: 75px; border-radius: 15px;">
+                <input class="form-check-input ms-2" type="radio" name="perizinan" value="Sakit" id="flexRadioDefault2"
+                    checked style="width: 20px; height: 20px;">
+                <label class="form-check-label text-center w-100"
+                    style="color: #000; font-family: Inter; font-size: 40px; font-style: normal; font-weight: 400; line-height: normal;">
+                    Sakit
+                </label>
+            </div>
         </div>
+        </label>
+    </div>
+    
+    <label for="selanjutnya-button">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="btn btn-secondary">
+            <a class="text-decoration-none text-dark">
+                <span class="fw-bold text-white">Selanjutnya</span>
+                <input type="submit" id="selanjutnya-button" style="display: none;">
+            </a>
+        </div>
+    </div>
+    </label>
     </form>
-</body>
-</html>
+</div>
+

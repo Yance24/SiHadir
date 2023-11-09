@@ -73,10 +73,6 @@ use App\Http\Controllers\PerizinanController;
         return view('mahasiswa.profil');
     })->name('profil');
 
-    Route::get('/mahasiswa/perizinan', function () {
-        return view('mahasiswa.perizinan');
-    })->name('perizinan');
-
     Route::get('/mahasiswa/testCamera', function(){
         return view('mahasiswa.testCamera');
     });
@@ -140,6 +136,8 @@ use App\Http\Controllers\PerizinanController;
 
     Route::get('/admin/dashboard',[DashboardController::class,'processAdminView']);
 
+    Route::get('/admin/schedule',[ScheduleController::class,'processView']);
 
+    Route::get('/admin/schedule/kelas',[ScheduleController::class,'processKelasView']);
 
     Route::get('/admin/jadwal-akademik', 'App\Http\Controllers\SiHadirController@index');

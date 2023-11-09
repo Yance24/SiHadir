@@ -3,27 +3,56 @@
 namespace App\Http\Controllers;
 
 use App\Models\AbsenDosen;
+use App\Models\Jadwal;
+use App\Models\Semester;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 use App\Models\Schedule;
 use Illuminate\Support\Carbon;
 
 class ScheduleController extends Controller
 {
-    // public static function getDashboardSchedule(){
-    //     $dataJadwal = session()->get('schedule');
-    //     $homeSchedule = collect();
-    //     // ($waktu == 'default')? $waktu = strtotime(TimeControl::getTime()): $waktu = strtotime($waktu);
-    //     $waktu = strtotime(TimeControl::getTime('07:00:00'));
-    //     if($dataJadwal != null)
-    //     foreach($dataJadwal as $item){
-    //         $waktuSelesai = strtotime($item->jam_selesai);
-    //         if($waktu < $waktuSelesai){
-    //             $homeSchedule->push($item);
-    //             if($homeSchedule->count() >= 2) break;
-    //         }
-    //     }
-    //     session()->put(['dashboardSchedule' => $homeSchedule]);
-    // }
+    public function processView(){
+        if(!LoginValidation::validateUser('Admin')) return redirect()->back();
+
+
+        $data = $this->parseDataSemester();
+        return view('admin.schedule',[
+            'dataSemester' => $data,
+        ]);
+    }
+
+    public function processKelasView(Request $request){
+        if(!LoginValidation::validateUser('Admin')) return redirect()->back();
+
+        $kelas = $request->input('kelas');
+        $semester = $request->input('semester');
+        
+        $dataJadwal = Schedule::where('id_semester','=',$semester)
+        ->where('kelas','=',$kelas)
+        ->orderByRaw("FIELD(hari,'senin','selasa','rabu','kamis','jumat','sabtu','minggu')")
+        ->orderBy('jam_mulai')
+        ->get();
+
+        return view('admin.kelas',[
+            'dataJadwal' => $dataJadwal,
+            'kelas' => $kelas,
+            'semester' => $semester,
+        ]);
+    }
+
+    protected function parseDataSemester(){
+        $semester = Semester::all();
+        $data = collect();
+        foreach($semester as $item){
+            $kelas = Kelas::where('semester','=',$item->id_semester)->orderBy('kelas','asc')->get();
+            $data->push([
+                'semester' => $item->id_semester,
+                'kelas' => $kelas,
+            ]);
+        }
+        return $data;
+    }
 
     public static function getTodaysSchedule(){
         $loginAs = session()->get('loginAs');
@@ -35,6 +64,7 @@ class ScheduleController extends Controller
         if($loginAs == 'Mahasiswa'){
             $data = Schedule::where('hari','=',$hari)
             ->where('kelas','=',$account->kelas)
+            ->where('id_semester','=',$account->semester)
             ->orderBy('jam_mulai','asc')
             ->get();
         }else if($loginAs = 'Dosen'){
@@ -57,6 +87,7 @@ class ScheduleController extends Controller
         if($loginAs == 'Mahasiswa'){
             $data = Schedule::where('hari','=',$hari)
             ->where('kelas','=',$account->kelas)
+            ->where('id_semester','=',$account->semester)
             ->where('jam_selesai','>',$waktu)
             ->orderBy('jam_mulai','asc')->get();
         }else if($loginAs == 'Dosen'){

@@ -110,12 +110,13 @@
         <br>
         <div class="jadwal-container">
             <div class="jadwal-info">
-                <div class="mata-kuliah">PBL asdasdads asdsaadsdsadas adasd adi<?php //echo $item->mataKuliah->nama_makul; 
-                                                                                ?></div>
+                <div class="mata-kuliah"><?php echo $item->mataKuliah->nama_makul;?></div>
                 <hr class="gariscontainer">
                 <div class="jam"><?php echo date('H:i',strtotime($item->jam_mulai)) . ' - ' . date('H:i',strtotime($item->jam_selesai)); ?></div>
             </div>
         </div>
+
+        @endforeach
 
         <br>
         <br>
@@ -180,7 +181,7 @@
         </div>
 
 
-        <h2 style="display: flex; align-items: center;">
+        <!-- <h2 style="display: flex; align-items: center;">
             <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
             Jadwal Selanjutnya
         </h2>
@@ -201,7 +202,7 @@
                 <hr class="gariscontainer">
                 <div class="jam">16:20 - 18:00</div>
             </div>
-        </div>
+        </div> -->
     </div>
 
 
@@ -310,73 +311,73 @@
 
         // Function to remove data and adjust the schedule
         // Function to remove data and adjust the schedule
-        function removeDataAndAdjustSchedule() {
-            const containerToRemove = document.querySelector('.jadwal-container');
-            if (containerToRemove) {
-                const jadwalSekarangContainer = document.querySelector('.content');
-                const jadwalSelanjutnyaContainers = document.querySelectorAll('.jadwal-container');
+        // function removeDataAndAdjustSchedule() {
+        //     const containerToRemove = document.querySelector('.jadwal-container');
+        //     if (containerToRemove) {
+        //         const jadwalSekarangContainer = document.querySelector('.content');
+        //         const jadwalSelanjutnyaContainers = document.querySelectorAll('.jadwal-container');
 
-                const jadwalSekarang = jadwalSelanjutnyaContainers[0];
-                const jadwalSelanjutnya2 = jadwalSelanjutnyaContainers[1];
+        //         const jadwalSekarang = jadwalSelanjutnyaContainers[0];
+        //         const jadwalSelanjutnya2 = jadwalSelanjutnyaContainers[1];
 
-                if (jadwalSekarang) {
-                    // Remove the current schedule
-                    jadwalSekarang.remove();
+        //         if (jadwalSekarang) {
+        //             // Remove the current schedule
+        //             jadwalSekarang.remove();
 
-                    // Move the "Jadwal Sekarang" label and details
-                    jadwalSekarangContainer.innerHTML = `
-    <br>
-    <p style="font-size: 32px;">Halo, <b><?php echo $account->nama; ?></b></p>
-    <br>
-    <br>
-    <h2 style="display: flex; align-items: center;">
-        <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
-        Jadwal Sekarang
-    </h2>
-    <br>
-    <br>
-    ${jadwalSelanjutnya2.outerHTML}
-    <br>
-    
-    <h2 style="display: flex; align-items: center;">
-        <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Selanjutnya" style="width: 45px; height: 50px; margin-right: 10px;">
-        Jadwal Selanjutnya
-    </h2>
-    <br>
-    <br>
-    `;
+        //             // Move the "Jadwal Sekarang" label and details
+        //             jadwalSekarangContainer.innerHTML = `
+        //             <br>
+        //             <p style="font-size: 32px;">Halo, <b><?php echo $account->nama; ?></b></p>
+        //             <br>
+        //             <br>
+        //             <h2 style="display: flex; align-items: center;">
+        //             <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
+        //             Jadwal Sekarang
+        //             </h2>
+        //             <br>
+        //             <br>
+        //             ${jadwalSelanjutnya2.outerHTML}
+        //             <br>
+                    
+        //             <h2 style="display: flex; align-items: center;">
+        //             <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Selanjutnya" style="width: 45px; height: 50px; margin-right: 10px;">
+        //             Jadwal Selanjutnya
+        //             </h2>
+        //             <br>
+        //             <br>
+        //             `;
 
 
 
-                    // Show the remaining schedule(s)
-                    if (jadwalSelanjutnyaContainers.length > 2) {
-                        const remainingSchedules = Array.from(jadwalSelanjutnyaContainers).slice(2);
-                        remainingSchedules.forEach(schedule => {
-                            jadwalSekarangContainer.insertAdjacentElement('beforeend', schedule);
-                        });
-                    }
-                }
+        //             // Show the remaining schedule(s)
+        //             if (jadwalSelanjutnyaContainers.length > 2) {
+        //                 const remainingSchedules = Array.from(jadwalSelanjutnyaContainers).slice(2);
+        //                 remainingSchedules.forEach(schedule => {
+        //                     jadwalSekarangContainer.insertAdjacentElement('beforeend', schedule);
+        //                 });
+        //             }
+        //         }
 
-                // Hide the "Generate QR" and "Close Class" buttons
-                const generateQRButton = document.getElementById('generate-qr-button');
-                const closeClassButton = document.getElementById('close-class-button');
-                generateQRButton.style.display = 'none';
-                closeClassButton.style.display = 'none';
+        //         // Hide the "Generate QR" and "Close Class" buttons
+        //         const generateQRButton = document.getElementById('generate-qr-button');
+        //         const closeClassButton = document.getElementById('close-class-button');
+        //         generateQRButton.style.display = 'none';
+        //         closeClassButton.style.display = 'none';
 
-                // Set a timer to show the buttons when the new schedule starts
-                const nextScheduleTime = '12:00'; // Replace this with the next schedule time
-                const [hours, minutes] = nextScheduleTime.split(':');
-                const currentDate = new Date();
-                const nextScheduleDate = new Date();
-                nextScheduleDate.setHours(hours, minutes, 0, 0);
-                const timeUntilNextSchedule = nextScheduleDate - currentDate;
+        //         // Set a timer to show the buttons when the new schedule starts
+        //         const nextScheduleTime = '12:00'; // Replace this with the next schedule time
+        //         const [hours, minutes] = nextScheduleTime.split(':');
+        //         const currentDate = new Date();
+        //         const nextScheduleDate = new Date();
+        //         nextScheduleDate.setHours(hours, minutes, 0, 0);
+        //         const timeUntilNextSchedule = nextScheduleDate - currentDate;
 
-                setTimeout(() => {
-                    generateQRButton.style.display = 'block';
-                    closeClassButton.style.display = 'block';
-                }, timeUntilNextSchedule);
-            }
-        }
+        //         setTimeout(() => {
+        //             generateQRButton.style.display = 'block';
+        //             closeClassButton.style.display = 'block';
+        //         }, timeUntilNextSchedule);
+        //     }
+        // }
     </script>
 </body>
 

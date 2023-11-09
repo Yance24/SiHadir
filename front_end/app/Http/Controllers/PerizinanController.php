@@ -14,7 +14,6 @@ class PerizinanController extends Controller
         if(!LoginValidation::validateUser('Mahasiswa')) return redirect()->back();
 
         $perizinan = $request->input('perizinan');
-
         if($perizinan == null) return view('mahasiswa.jenisPerizinan');
         return view('mahasiswa.perizinan',[
             'perizinan' => $perizinan,

@@ -76,8 +76,9 @@
 
         </div>
     </div>
+    </form>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{asset('assets/js/mahasiswa/perizinan.js')}}"></script>
+    <!-- <script src="{{asset('assets/js/mahasiswa/perizinan.js')}}"></script> -->
     

@@ -11,7 +11,7 @@
     <div class="navBar-container">
 
         <div class="navBar-Title-container">
-            <h4>SiHadir <h5>Admin</h5></h4>            
+            <h4>SiHadir Admin</h4>            
         </div>
 
         <br>
