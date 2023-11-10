@@ -60,7 +60,7 @@
 
             <!-- Aku ndk tau ini nanti logicnya bakal gimana -->
             <div class="search-button-container">
-                <textarea cols="30" rows="1">Search</textarea>
+                <input type="text" placeholder="Search">
             </div>
 
             <div class="jadwal-container">
@@ -87,19 +87,19 @@
                     <div class="Aksi-container">
 
                         <form action="">
-                        <label for="edit-button">
+                        <label for="edit-button-<?php echo $jadwal->id?>">
                             <div class="edit-container">
                                 <button>Edit</button>
-                                <input type="submit" id="edit-button" style="display: none;">
+                                <input type="submit" id="edit-button-<?php echo $jadwal->id?>" style="display: none;">
                             </div>
                         </label>
                         </form>
 
                         <form action="">
-                        <label for="delete-button">
+                        <label for="delete-button-<?php echo $jadwal->id?>">
                             <div class="delete-container">
                                 <button>Delete</button>
-                                <input type="submit" id="delete-button" style="display: none;">
+                                <input type="submit" id="delete-button-<?php echo $jadwal->id?>" style="display: none;">
                             </div>
                         </label>
                         </form>
