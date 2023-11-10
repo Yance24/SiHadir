@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-
+    
     <!-- Side Nav Bar -->
     <div class="navBar-container">
 
@@ -68,21 +68,39 @@
         </div>
     </div>
 
-    <!-- Greetings -->
-    <div class="greet-container">
-        <h3>Halo! Admin <?php echo session('account')->nama?></h3>
-    </div>
+    <!-- Main Content -->
+    <div class="content-container">
 
-    <!-- Total Mahasiswa -->
-    <div class="Mahasiswa-container">
-        <h4>Total Mahasiswa</h4>
-        <h5><?php echo $totalMahasiswa; ?></h5>
-    </div>
+        <div class="keterangan-user-container">
+            <?php echo $userInfo?>
+        </div>
 
-    <!-- Total Dosen -->
-    <div class="Dosen-container">
-        <h4>Total Dosen</h4>
-        <h5><?php echo $totalDosen; ?></h5>
+        <div class="base-container">
+
+            <form action="">
+            <label for="tambah-user-button">
+                <div class="tambah-user-container">
+                    <button>Tambah</button>
+                    <input type="submit" id="tambah-user-button" style="display: none;">
+                </div>
+            </label>
+            </form>
+
+            <div class="search-bar-container">
+                <input type="text" placeholder="Search">
+            </div>
+
+            <div class="table-user-container">
+
+                <div class="keterangan-container">
+                    <div>ID</div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
 </body>

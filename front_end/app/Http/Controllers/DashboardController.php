@@ -12,6 +12,7 @@ class DashboardController extends Controller
         ScheduleController::getSchedule();
         $enableAbsent = AbsensiController::checkEnableQR();
         $enableCloseClass = AbsensiController::checkEnableTutupMakul();
+        // dd($enableCloseClass);
         return view('dosen.dashboard',[
             'enableGenerateButton' => !$enableAbsent,
             'enableCloseClass' => !$enableCloseClass,

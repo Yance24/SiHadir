@@ -122,10 +122,13 @@
         <br>
         <br>
 
-        @if($enableGenerateButton)
         <!-- Jika dosen sudah bisa mengakses generate qr -->
         <div class="center-content">
+
             <!-- Formulir Tersembunyi untuk Redirect -->
+            <!-- Tombol Generate QR -->
+            @if($enableGenerateButton)
+
             <form id="redirect-form" action="qr_dosen" method="post">
                 @csrf
                 <input type="hidden" name="parameter_name" value="parameter_value">
@@ -135,32 +138,61 @@
                     <span style="margin-left: 12px; font-size: 24px;">Generate QR</span>
                 </button>
             </form>
-            <div class="close-class">
-                <button id="close-class-button" type='button' onclick="closeclassButton()">
-                    <span style="margin-left: 70px; font-size: 24px; ">Close Class</span>
-                </button>
-            </div>
-        </div>
-        @else
-        <!-- Jika dosen belum bisa mengakses generate qr -->
-        <div class="generateQr-container">
-            Tidak tersedia!!
-        </div>
-        @endif
 
-        <!-- Tombol tutup kelas -->
-        @if($enableCloseClass)
-        <div class="closeClass-container">
-            <form action="<?php echo route('close-class')?>" method="POST">
-            @csrf
-                <button type="submit">
-                    Close Class
-                </button>
-            </form>
+            @else
+            <!-- Jika dosen belum bisa mengakses generate qr -->
+            <div class="generateQr-container">
+                <!-- Tombol generateQr Tidak tersedia!! -->
+            </div>
+            @endif
+
+
+            @if($enableCloseClass)
+            <!-- <form action="<?php echo route('close-class')?>" method="POST"> -->
+            <label for="close-class-input">
+                <div class="close-class">
+                    <button id="close-class-button" type='button' onclick="">
+                        <span style="margin-left: 70px; font-size: 24px; ">Close Class</span>
+                        <!-- <input type="submit" id="close-class-input" style="display: none;"> -->
+                    </button>
+                </div>
+            </label>
+            <!-- </form> -->
+            @else
+            <!-- Jikda dosen belum bisa mengakses generate qr -->
+            <div class="close-class-container">
+                <!-- Tombol close class tidak tersedia!! -->
+            </div>
+            @endif
         </div>
-        @else
-        <!-- Jika tombol close classnya di disable -->
-        @endif
+
+        <!-- HTML buat pop up -->
+        <div class="main-container">
+
+            <div class="logo-container"></div>
+
+            <div class="keterangan-container">
+                Apa anda ingin menutup kelas ini?
+            </div>
+
+            <div class="tidak-button-container">
+                <button>Tidak</button>
+            </div>
+
+            <form action="<?php echo route('close-class')?>" method="post">
+            @csrf
+            <label for="ya-input">
+                <div class="Ya-button-container">
+                    <button>Ya</button>
+
+                </div>
+            </label>
+            </form>
+
+        </div>
+        
+
+        
 
         <!-- Patch Generate QR -->
         <div id="qr-patch" class="qr-patch">

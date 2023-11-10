@@ -1,61 +1,37 @@
-// Pada file JavaScript Anda (pemindai.js)
-let selectedDeviceId = null;
-const codeReader = new ZXing.BrowserMultiFormatReader();
-const sourceSelect = $("#pilihKamera");
+function onScanSuccess(decodedText, decodedResult) {
+    console.log(`code matched = ${decodedText}, decodedResult`);
 
-$(document).on("change", "#pilihKamera", function () {
-    selectedDeviceId = $(this).val();
-    if (codeReader) {
-        codeReader.reset();
-        initScanner();
-    }
-});
-
-function initScanner() {
-    codeReader
-        .listVideoInputDevices()
-        .then((videoInputDevices) => {
-            if (videoInputDevices.length > 0) {
-                if (selectedDeviceId === null) {
-                    selectedDeviceId = videoInputDevices[0].deviceId;
-                }
-
-                sourceSelect.html(""); // Clear the options before adding new ones.
-                videoInputDevices.forEach((element) => {
-                    const sourceOption = document.createElement("option");
-                    sourceOption.text = element.label;
-                    sourceOption.value = element.deviceId;
-                    if (element.deviceId === selectedDeviceId) {
-                        sourceOption.selected = true;
-                    }
-                    sourceSelect.append(sourceOption);
-                });
-
-                codeReader
-                    .decodeFromVideoDevice(selectedDeviceId, "previewKamera", (result) => {
-                        // Handle the scanned result
-                        console.log(result.text);
-                        $("#hasilscan").val(result.text);
-
-                        // Continue scanning after a short delay
-                        setTimeout(initScanner, 1000);
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                        alert("Error accessing camera or scanning.");
-                    });
-            } else {
-                alert("No video input devices found.");
-            }
-        })
-        .catch((err) => {
-            console.error(err);
-            alert("Error listing video input devices.");
-        });
+    // Display SweetAlert2 success message
+    Swal.fire({
+        title: 'Success!',
+        text: 'Barcode scanned successfully',
+        icon: 'success',
+        showCancelButton: false,
+        confirmButtonText: 'Done',
+        customClass: {
+            confirmButton: 'btn btn-primary',
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Redirect to the dashboard page or perform any other action
+            // For now, just reload the page
+            location.reload();
+        }
+    });
 }
 
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    initScanner();
-} else {
-    alert("Cannot access camera. Make sure your browser supports getUserMedia and has necessary permissions.");
+function onScanFailure(error) {
+    console.log(`Code scan error = ${error}`);
 }
+
+let html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader", {
+        fps: 10,
+        qrbox: {
+            width: 250,
+            height: 250
+        }
+    },
+    false);
+
+html5QrcodeScanner.render(onScanSuccess, onScanFailure);

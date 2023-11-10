@@ -130,10 +130,15 @@ use App\Http\Controllers\PerizinanController;
     //url redirect validate admin login
     Route::post('/admin/login-validation',[LoginValidation::class,'validateAdmin'])->name('login-admin');
 
+    //url dashboard admin
     Route::get('/admin/dashboard',[DashboardController::class,'processAdminView']);
 
+    //url pemilihan jadwal pada semester dan kelas mana
     Route::get('/admin/schedule',[ScheduleController::class,'processView']);
 
+    //url tampilan jadwal yang lebih detail
     Route::get('/admin/schedule/kelas',[ScheduleController::class,'processKelasView']);
 
-    Route::get('/admin/jadwal-akademik', 'App\Http\Controllers\SiHadirController@index');
+    Route::get('/admin/user-data',[]);
+
+    // Route::get('/admin/jadwal-akademik', 'App\Http\Controllers\SiHadirController@index');
