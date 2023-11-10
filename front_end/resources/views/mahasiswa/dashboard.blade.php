@@ -13,8 +13,6 @@
     <script src="{{ asset('assets/js/mahasiswa/dashboard.js') }}"></script>
     </section>
 
-
-
     <?php 
         $account = session()->get('account');
         $schedule = session()->get('schedule');
