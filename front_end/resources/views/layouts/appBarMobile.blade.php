@@ -9,182 +9,62 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"> 
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <style>
-        .appbar {
-            display: flex;
-            height: 100px;
-            background-color: #78A2CC;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
+    <link rel="stylesheet" href="{{ asset('assets/css/layouts/appbarMobile.css') }}">
 
-        .sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            top: 100px;
-            left: 0;
-            background-color: #78A2CC;
-            overflow-x: hidden;
-            transition: 0.5s;
-            z-index: 1;
-        }
-
-        .sidebar a {
-            padding: 15px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #ffffff;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .custom-profile {
-            background: url(<?php echo asset('assets/img/bg-profile.png') ?>);
-            background-size: cover;
-            background-position: center;
-        }
-
-        .sidebar a:hover {
-            color: #78A2CC;
-        }
-
-        #menuToggle {
-            display: none;
-        }
-
-        #menuToggle:checked+.appbar+.content-fluid {
-            margin-left: 200px;
-        }
-
-        #menuToggle:checked+.appbar+.sidebar {
-            width: 55%;
-        }
-
-        #menuToggle:checked+.appbar label {
-            background-color: transparent;
-        }
-
-        #menuToggle:checked+.appbar label i {
-            color: #ffffff;
-        }
-
-        #menuToggle:checked+.appbar label:hover i {
-            color: #78A2CC;
-        }
-
-        .bg-custom {
-            background: url(<?php echo asset('assets/img/bg-profile.png') ?>) center no-repeat;
-            background-size: cover;
-        }
-
-        @media (max-width: 1024px) {
-
-            #menuToggle:checked+.appbar+.sidebar {
-                width: 60%;
-            }
-            .nav-custom{
-                font-size: 50px;
-            }
-        }
-
-        @media (max-width: 767px) {
-
-            #menuToggle:checked+.appbar+.sidebar {
-                width: 60%;
-            }
-
-            .nav-custom {
-                font-size: 10px;
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <?php 
-
-    $account = session()->get('account');
-
-    ?>
-    <input type="checkbox" id="menuToggle">
-    <div class="appbar fixed-top">
-        <label for="menuToggle" class="mt-5 ps-2" onclick="toggleSidebar()">
-            <i class="fa-solid fa-2xl fa-bars" style="color: #ffffff;"></i>
-        </label>
-        <div class="mx-auto mt-5">
-            <h1 class="text-white">Sihadir</h1>
-        </div>
-    </div>
-
-    <div class="sidebar text-white">
-        <div class="header-box custom-profile mb-3 pb-3">
-            <div class="mb-2 p-3" style="z-index: 2">
-                <img src="{{ asset('assets/img/profile-pict.png') }}" alt="profile" class="rounded-circle"
-                    width="80px" height="80px">
-            </div>
-            <div class="p-2" style="z-index: 2">
-                <span class="fw-bold nama"><?php echo $account->nama?></span><br>
-                <span class="nim"><?php echo $account->id_user?></span>
+    <header>
+        <input type="checkbox" id="menuToggle">
+        <div class="appbar fixed-top">
+            <label for="menuToggle" class="mt-4 ps-2 pe-auto">
+                <i class="fa-solid fa-2xl fa-bars pt-3" style="color: #ffffff;"></i>
+            </label>
+            <div class="mx-auto mt-4">
+                <h1 class="text-white">SiHadir</h1>
             </div>
         </div>
 
-        <div class="d-flex flex-column">
-            <div>
-                <a href="/mahasiswa/dashboard" class="text-decoration-none text-white">
-                    <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
-                    <span style="font-size: 15px"> Absen</span>
-                </a>
-            </div>
-            <div>
-                <a href="/mahasiswa/profil" class="text-decoration-none text-white ">
-                    <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
-                    <span style="font-size: 17px"> Profil</span>
-                </a>
-            </div>
-            <div>
-                <a href="/mahasiswa/perizinan" class="text-decoration-none text-white">
-                    <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class=" nav-custom">
-                    <span style="font-size: 15px"> Perizinan</span>
-                </a>
-            </div>
-            <div>
-                <a href="/change-password" class="text-decoration-none text-white">
-                    <img src="{{ asset('assets/icon/change-password.svg') }}" alt="" class=" nav-custom">
-                    <span style="font-size: 15px"> Ganti Password</span>
-                </a>
-
+        <div class="sidebar text-white">
+            <div class="header-box custom-profile mb-3 pb-3">
+                <div class="mb-2 p-3" style="z-index: 2">
+                    <img src="{{ asset('assets/img/profile-pict.png') }}" alt="profile" class="rounded-circle"
+                        width="80px" height="80px">
+                </div>
+                <div class="p-2" style="z-index: 2">
+                    <span class="fw-bold nama">Weldy Flaminggo</span><br>
+                    <span class="nim">123456789</span>
+                </div>
             </div>
 
             <!-- NAVIGASI -->
-            <!-- <div class="d-flex flex-column m-0 ">
+            <div class="d-flex flex-column m-0 ">
                 <div>
-                    <a href="/mahasiswa/dashboard" class="text-decoration-none text-white">
+                    <a href="{{ route('dashboard') }}" class="text-decoration-none text-white">
                         <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
                         <span style="font-size: 15px"> Absen</span>
                     </a>
                 </div>
                 <div>
-                    <a href="/mahasiswa/profil" class="text-decoration-none text-white ">
+                    <a href="{{ route('profil') }}" class="text-decoration-none text-white ">
                         <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
                         <span style="font-size: 17px"> Profil</span>
                     </a>
                 </div>
                 <div>
-                    <a href="/mahasiswa/perizinan" class="text-decoration-none text-white">
+                    <a href="{{ route('jenis-absen') }}" class="text-decoration-none text-white">
                         <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class="nav-custom">
                         <span style="font-size: 15px">Perizinan</span>
                     </a>
                 </div>
                 <hr class="m-0">
-                <a href="/logout" class="text-decoration-none text-white" id="logout">
+                <a href="{{ route('splashscreen') }}" class="text-decoration-none text-white" id="logout">
                     <img src="{{ asset('assets/icon/logout.svg') }}" alt="" class=" nav-custom">
                     <span style="font-size: 15px"> Logout</span>
                 </a>
-            </div> -->
+            </div>
             <!-- END -->
         </div>
     </header>

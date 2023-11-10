@@ -11,7 +11,7 @@
 </section>
 <header>
     <div class="appbar fixed-top">
-        <a href="/" class="mt-5 ps-2">
+        <a href="{{route('dashboard')}}" class="mt-5 ps-2">
             <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl" style="color: #ffffff;"></i>
         </a>
         <div class="mx-auto mt-5">
