@@ -73,10 +73,6 @@ use App\Http\Controllers\PerizinanController;
         return view('mahasiswa.profil');
     })->name('profil');
 
-    Route::get('/mahasiswa/testCamera', function(){
-        return view('mahasiswa.testCamera');
-    });
-
     Route::get('/mahasiswa/pemindai', function(){
         return view('mahasiswa.pemindai');
     })->name('pemindai');
