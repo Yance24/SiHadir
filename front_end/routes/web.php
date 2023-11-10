@@ -1,13 +1,12 @@
     <?php
-
-
     use App\Http\Controllers\DashboardController;
     use App\Http\Controllers\PemindaiController;
     use App\Http\Controllers\LoginValidation;
     use App\Http\Controllers\AbsensiController;
-use App\Http\Controllers\GantiPasswordController;
-use App\Http\Controllers\PerizinanController;
+    use App\Http\Controllers\GantiPasswordController;
+    use App\Http\Controllers\PerizinanController;
     use App\Http\Controllers\ScheduleController;
+    use App\Http\Controllers\BarcodeController;
     use Illuminate\Support\Facades\Route;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Carbon;
@@ -58,9 +57,11 @@ use App\Http\Controllers\PerizinanController;
         return view('mahasiswa.profil');
     });
 
-    Route::get('/mahasiswa/testBarcode', function(){
-        return view('mahasiswa.testBarcode');
-    });
+    Route::get('/mahasiswa/hasilScan', function(){
+        return view('mahasiswa.hasilScan');
+    })->name('hasilScan');
+    // Post hasil scan Barcode
+    Route::post('mahasiswa/hasilScan', [BarcodeController::class, 'storeScannedData']);
 
     // url untuk perizinan
     Route::get('/mahasiswa/perizinan',[PerizinanController::class,'processMahasiswaView']);

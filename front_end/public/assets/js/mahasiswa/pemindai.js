@@ -1,27 +1,29 @@
 function onScanSuccess(decodedText, decodedResult) {
-    console.log(`code matched = ${decodedText}, decodedResult`);
+    console.log(`Kode cocok = ${decodedText}, hasil terdekripsi`);
 
-    // Display SweetAlert2 success message
+    // Simpan data pemindaian di sessionStorage
+    sessionStorage.setItem('scannedData', decodedText);
+
+    // Tampilkan pesan sukses dengan SweetAlert2
     Swal.fire({
-        title: 'Success!',
-        text: 'Barcode scanned successfully',
+        title: 'Berhasil!',
+        text: 'Barcode berhasil dipindai',
         icon: 'success',
         showCancelButton: false,
-        confirmButtonText: 'Done',
+        confirmButtonText: 'Selesai',
         customClass: {
             confirmButton: 'btn btn-primary',
         }
     }).then((result) => {
         if (result.isConfirmed) {
-            // Redirect to the dashboard page or perform any other action
-            // For now, just reload the page
-            location.reload();
+            // Alihkan ke halaman lain
+            window.location.href = 'dashboard';
         }
     });
 }
 
 function onScanFailure(error) {
-    console.log(`Code scan error = ${error}`);
+    console.log(`Kesalahan pemindaian kode = ${error}`);
 }
 
 let html5QrcodeScanner = new Html5QrcodeScanner(
