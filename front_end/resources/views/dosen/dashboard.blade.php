@@ -64,8 +64,6 @@
     //$account menyimpan informasi dari akun dosen yang terlogin
     //data dari $account akan berupa field-field dari database dummyny backend
 
-    use function PHPUnit\Framework\isEmpty;
-
     $account = session()->get('account');
 
     //$schedule menyimpan informasi dari jadwal-jadwal yang ada
@@ -245,7 +243,7 @@
                     // Menangani klik tombol "Ya"
                     Swal.fire('Anda telah keluar', '', 'success');
                     // Tambahkan fungsi logout atau redirect ke halaman logout di sini
-                    window.location.href = "../login"; // Ganti dengan URL logout Anda
+                    window.location.href = "<?php echo route('logout')?>"; // Ganti dengan URL logout Anda
                 } else {
                     // Menangani klik tombol "Batal"
                     // Lakukan sesuatu atau berikan perilaku kustom
