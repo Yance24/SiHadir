@@ -16,6 +16,13 @@
 </head>
 
 <body>
+
+    <?php
+
+    $account = session()->get('account');
+
+    ?>
+
     <header>
         <input type="checkbox" id="menuToggle">
         <div class="appbar fixed-top">
@@ -34,33 +41,33 @@
                         width="80px" height="80px">
                 </div>
                 <div class="p-2" style="z-index: 2">
-                    <span class="fw-bold nama">Weldy Flaminggo</span><br>
-                    <span class="nim">123456789</span>
+                    <span class="fw-bold nama"><?php echo $account->nama?></span><br>
+                    <span class="nim"><?php echo $account->id_user?></span>
                 </div>
             </div>
 
             <!-- NAVIGASI -->
             <div class="d-flex flex-column m-0 ">
                 <div>
-                    <a href="{{ route('dashboard') }}" class="text-decoration-none text-white">
+                    <a href="/mahasiswa/dashboard" class="text-decoration-none text-white">
                         <img src="{{ asset('assets/icon/absensi.png') }}" alt="" class="nav-custom">
                         <span style="font-size: 15px"> Absen</span>
                     </a>
                 </div>
                 <div>
-                    <a href="{{ route('profil') }}" class="text-decoration-none text-white ">
+                    <a href="/mahasiswa/profil" class="text-decoration-none text-white ">
                         <img src="{{ asset('assets/icon/profil.png') }}" alt="" class="nav-custom">
                         <span style="font-size: 17px"> Profil</span>
                     </a>
                 </div>
                 <div>
-                    <a href="{{ route('jenis-absen') }}" class="text-decoration-none text-white">
+                    <a href="/mahasiswa/perizinan" class="text-decoration-none text-white">
                         <img src="{{ asset('assets/icon/perizinan.png') }}" alt="" class="nav-custom">
                         <span style="font-size: 15px">Perizinan</span>
                     </a>
                 </div>
                 <hr class="m-0">
-                <a href="{{ route('splashscreen') }}" class="text-decoration-none text-white" id="logout">
+                <a href="/logout" class="text-decoration-none text-white" id="logout">
                     <img src="{{ asset('assets/icon/logout.svg') }}" alt="" class=" nav-custom">
                     <span style="font-size: 15px"> Logout</span>
                 </a>

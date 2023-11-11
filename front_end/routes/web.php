@@ -60,6 +60,13 @@
     Route::get('/mahasiswa/hasilScan', function(){
         return view('mahasiswa.hasilScan');
     })->name('hasilScan');
+
+    // url untuk pemindai
+    Route::get('/mahasiswa/pemindai', [AbsensiController::class,'processScanQrView'])->name('pemindai');
+
+    // Send ajax request to validate qr id
+    Route::get('/mahasiswa/validate-scan',[AbsensiController::class,'scanQr']);
+
     // Post hasil scan Barcode
     Route::post('mahasiswa/hasilScan', [BarcodeController::class, 'storeScannedData']);
 
@@ -74,9 +81,6 @@
         return view('mahasiswa.profil');
     })->name('profil');
 
-    Route::get('/mahasiswa/pemindai', function(){
-        return view('mahasiswa.pemindai');
-    })->name('pemindai');
 
     Route::get('/pemindai', 'PemindaiController@scanner')->name('pemindai::class.scanner');
 

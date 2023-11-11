@@ -175,16 +175,21 @@
                 Apa anda ingin menutup kelas ini?
             </div>
 
-            <div class="tidak-button-container">
-                <button>Tidak</button>
-            </div>
+            <form action="">
+            <label for="tidak-input">
+                <div class="tidak-button-container">
+                    <button>Tidak</button>
+                    <input type="submit" id="tidak-input" style="display: none;">
+                </div>  
+            </label>
+            </form>
 
             <form action="<?php echo route('close-class')?>" method="post">
             @csrf
             <label for="ya-input">
                 <div class="Ya-button-container">
                     <button>Ya</button>
-
+                    <input type="submit" id="ya-input" style="display: none;">
                 </div>
             </label>
             </form>

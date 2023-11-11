@@ -12,10 +12,26 @@ use Illuminate\Support\Str;
 class AbsensiController extends Controller
 {
 
+    public function processScanQrView(){
+        if(!LoginValidation::validateUser('Mahasiswa')) return redirect()->back();
+
+        return view('mahasiswa.pemindai');
+    }
+
     public function scanQr(Request $request){
         if(!LoginValidation::validateUser('Mahasiswa')) return redirect()->back();
+
+        $idQr = $request->input('idQr');
         $idJadwal = $request->session()->get('schedule')->first()->id_jadwal;
         $absenDosen = AbsenDosen::where('id_jadwal','=',$idJadwal)->first();
+
+        // dd('tes');
+
+        if($idQr != $absenDosen->id_QR) return response()->json([
+            'status' => 'invalid'
+        ]);
+
+
         if($absenDosen != null){
             $waktu = TimeControl::getTime();
             $tanggal = TimeControl::getDate();
@@ -31,7 +47,9 @@ class AbsensiController extends Controller
                 'id_jadwal' => $idJadwal,
             ]);
         }
-        return redirect('/Home');
+        return response()->json([
+            'status' => 'valid'
+        ]);
     }
 
     public function generateQr(){
@@ -96,6 +114,7 @@ class AbsensiController extends Controller
                 TimeControl::compareTime(TimeControl::getTime(),$homeSchedule->first()->jam_mulai,'<') ||
                 AbsenMahasiswa::where('id_user','=',$account->id_user)
                 ->where('id_jadwal','=',$homeSchedule[0]->id_jadwal)
+                ->where('tanggal','=',$tanggal)
                 ->first() != null
             )return true;
             else return false;

@@ -100,6 +100,30 @@
         </footer>
     </div>
 
+    
+    <!-- HTML untuk nampilin pop-up lupa password -->
+    <div class="pop-up-container">
+
+        <div class="Icon-container">
+            <!-- PUT ICON HERE! -->
+        </div>
+
+        <div class="Keterangan-container">
+            <!-- EDIT KETERANGAN HERE -->
+            Hubungi admin untuk mereset password anda!
+        </div>
+
+        <form action="">
+        <label for="ok-button-input">
+            <div class="OK-button-container">
+                <button>OK</button>
+                <input type="submit" id="ok-button-input" style="display: none;">
+            </div>
+        </label>
+        </form>
+
+    </div>
+        
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
