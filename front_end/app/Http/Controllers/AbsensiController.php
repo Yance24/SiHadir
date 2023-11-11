@@ -51,6 +51,9 @@ class AbsensiController extends Controller
                 'id_jadwal' => $idJadwal,
             ]);
         }
+
+        
+
         return response()->json([
             'status' => 'valid'
         ]);
@@ -80,7 +83,9 @@ class AbsensiController extends Controller
     }
 
     public function closeClass(Request $request){
-        if(!LoginValidation::validateUser('Dosen')) return redirect()->back();
+        if(!LoginValidation::validateUser('Dosen')) return response()->json([
+            'status' => 'invalid authorities!'
+        ]);
 
 
         $jadwal = $request->session()->get('schedule')->first();
@@ -104,7 +109,9 @@ class AbsensiController extends Controller
             // }
             // dd();
         }        
-        return redirect('/dosen/dashboard');
+        return response()->json([
+            'status' => 'success'
+        ]);
     }
 
     public static function checkEnableQR(){

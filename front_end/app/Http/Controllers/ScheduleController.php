@@ -98,7 +98,7 @@ class ScheduleController extends Controller
             foreach($jadwal as $row){
                 $absenDosen = AbsenDosen::where('id_jadwal','=',$row->id_jadwal)
                 ->where('tanggal','=',$tanggal)->first();
-                if(TimeControl::compareTime($waktu,$row->jam_selesai,'>') && $absenDosen == null) break;
+                if(TimeControl::compareTime($waktu,$row->jam_selesai,'>') && $absenDosen == null) continue;
                 if($absenDosen == null || $absenDosen->waktu_selesai == null) $data->push($row);
             }
         }

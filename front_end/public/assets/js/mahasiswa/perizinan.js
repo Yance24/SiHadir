@@ -8,6 +8,16 @@ const fileInput = document.getElementById("fileInput");
 const fileNameInput = document.getElementById("fileName");
 const sendButton = document.getElementById("sendButton");
 let pdfData = null;
+let selectedJadwal = [];
+let jenisPerizinan = document.getElementById("jenisPerizinan").value;
+
+function getSelectedJadwal(){
+    let checkBoxes = document.querySelectorAll('input[name="jadwal[]"]:checked');
+    
+    checkBoxes.forEach(function(checkBox){
+        selectedJadwal.push(checkBox.value);
+    });
+}
 
 fileInput.addEventListener("change", function () {
     const file = this.files[0];
@@ -32,6 +42,7 @@ fileInput.addEventListener("change", function () {
             alert("Berkas harus berformat PDF untuk dapat dilihat.");
         }
     }
+    displayFileName();
 });
 
 document.querySelector(".fa-paperclip").addEventListener("click", function () {
@@ -42,6 +53,12 @@ pratinjauButton.addEventListener("click", function () {
     const cachedPDF = sessionStorage.getItem("cachedPDF");
     let currentScale = 1; // Skala awal
     let stepSize = 0.15; // Ukuran langkah zoom (15%)
+    getSelectedJadwal();
+    console.log(window.Laravel.csrfToken);
+    console.log(selectedJadwal);
+    console.log(fileInput.files[0]);
+    console.log(jenisPerizinan);
+
 
     if (cachedPDF) {
         Swal.fire({
@@ -122,55 +139,92 @@ pratinjauButton.addEventListener("click", function () {
             },
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    "Surat Telah Dikirim",
-                    "Surat akan dikirimkan ke Dosen",
-                    "success"
-                );
 
-                // Mengambil data PDF dari session
-                const pdfData = atob(cachedPDF.split(",")[1]);
+                let formData = new FormData();
 
-                // Simpan data PDF ke variabel FormData
-                const formData = new FormData();
-                formData.append(
-                    "pdfFile",
-                    new Blob([pdfData], {
-                        type: "application/pdf",
-                    }),
-                    "nama_berkas.pdf"
-                );
+                formData.append('_token',window.Laravel.csrfToken);
+                formData.append('jadwal',selectedJadwal);
+                formData.append('jenisPerizinan',jenisPerizinan);
+                formData.append('file-izin',fileInput.files[0]);
 
-                // Kirim data PDF ke backend dengan menggunakan metode fetch atau XMLHttpRequest
-                fetch("URL_BACKEND", {
-                    method: "POST",
-                    body: formData,
-                })
-                    .then((response) => {
-                        if (response.ok) {
-                            // Berhasil mengirim data PDF
-                            console.log(
-                                "Data PDF berhasil dikirim ke backend."
-                            );
-                        } else {
-                            console.error(
-                                "Gagal mengirim data PDF ke backend."
+                for(item of formData){
+                    console.log(item);
+                }
+
+                $.ajax({
+                    url: '/mahasiswa/perizinan/send-file',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response){
+                        if(response.status == 'success'){
+                            Swal.fire(
+                                "Surat Telah Dikirim",
+                                "Surat akan dikirimkan ke Dosen",
+                                "success"
+                            ).then((result) => {
+                                if(result.isConfirmed){
+                                    window.location.href = 'dashboard';
+                                }
+                            });
+                        }else{
+                            Swal.fire(
+                                "Surat Gagal Dikirim",
+                                "Surat tidak berhasil dikirim",
+                                "error"
                             );
                         }
-                    })
-                    .catch((error) => {
-                        console.error(
-                            "Gagal mengirim data PDF ke backend: " + error
-                        );
-                    });
+                    },
+                    error: function(error){
+                        console.error('AJAX Error: ',error);
+                    }
+
+                });
+
+                // Mengambil data PDF dari session
+                // const pdfData = atob(cachedPDF.split(",")[1]);
+
+                // Simpan data PDF ke variabel FormData
+                // const formData = new FormData();
+                // formData.append(
+                //     "pdfFile",
+                //     new Blob([pdfData], {
+                //         type: "application/pdf",
+                //     }),
+                //     "nama_berkas.pdf"
+                // );
+
+                // Kirim data PDF ke backend dengan menggunakan metode fetch atau XMLHttpRequest
+                // fetch("URL_BACKEND", {
+                //     method: "POST",
+                //     body: formData,
+                // })
+                //     .then((response) => {
+                //         if (response.ok) {
+                //             // Berhasil mengirim data PDF
+                //             console.log(
+                //                 "Data PDF berhasil dikirim ke backend."
+                //             );
+                //         } else {
+                //             console.error(
+                //                 "Gagal mengirim data PDF ke backend."
+                //             );
+                //         }
+                //     })
+                //     .catch((error) => {
+                //         console.error(
+                //             "Gagal mengirim data PDF ke backend: " + error
+                //         );
+                //     });
 
                 // Hapus sesi PDF yang diunggah
                 sessionStorage.removeItem("cachedPDF");
 
                 // Tunggu 3 detik sebelum pindah ke halaman dashboard
-                setTimeout(function () {
-                    window.location.href = "dashboard";
-                }, 3000);
+                // setTimeout(function () {
+                //     window.location.href = "dashboard";
+                // }, 3000);
             }
         });
     } else {
@@ -186,7 +240,7 @@ function displayFileName() {
 }
 
 // Tambahkan event listener ke input file untuk mendeteksi perubahan
-fileInput.addEventListener("change", displayFileName);
+// fileInput.addEventListener("change", displayFileName);
 
 // Cek apakah pengguna sudah mengunggah file sebelumnya saat halaman dimuat
 const initialPDF = sessionStorage.getItem("cachedPDF");

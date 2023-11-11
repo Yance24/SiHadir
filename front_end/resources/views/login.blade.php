@@ -7,6 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .bg-custom {
             background: url("{{ asset('assets/img/bg-login-terbaru.svg') }}") center;
@@ -87,7 +89,7 @@
                     <i class="far fa-eye fa-lg pe-auto position-absolute top-50" id="password-toggle" type="button"></i>
                 </div>
                 <div class="text-start p-2" style="margin-bottom: 100px">
-                    <a href="" onclick="" class="text-decoration-none">Lupa Password?</a>
+                    <a onclick="lupaPassword()" class="text-decoration-none">Lupa Password?</a>
                 </div>
                 <div class="mt-3">
                     <button type="submit" class="btn btn-primary w-75 rounded-pill" style="background-color: #99BBEC">Login</button>
@@ -98,30 +100,6 @@
         <footer class="text-center mt-4 pb-2">
             <span class="text-dark fs-5 font-weight-bold">V.0.1.0.</span>
         </footer>
-    </div>
-
-    
-    <!-- HTML untuk nampilin pop-up lupa password -->
-    <div class="pop-up-container">
-
-        <div class="Icon-container">
-            <!-- PUT ICON HERE! -->
-        </div>
-
-        <div class="Keterangan-container">
-            <!-- EDIT KETERANGAN HERE -->
-            Hubungi admin untuk mereset password anda!
-        </div>
-
-        <form action="">
-        <label for="ok-button-input">
-            <div class="OK-button-container">
-                <button>OK</button>
-                <input type="submit" id="ok-button-input" style="display: none;">
-            </div>
-        </label>
-        </form>
-
     </div>
         
 
@@ -146,6 +124,15 @@
             }
         });
     });
+
+    function lupaPassword(){
+        Swal.fire({
+            title: 'Lupa Password',
+            text: 'Hubungi admin untuk mereset password anda!',
+            icon: 'warning',
+            showCancelButton: false,
+        });
+    }
 </script>
 
 </html>

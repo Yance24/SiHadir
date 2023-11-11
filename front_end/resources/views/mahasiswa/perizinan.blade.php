@@ -13,8 +13,8 @@
     <!-- Tambahkan SweetAlert2 JavaScript -->
     </section>
 
-    <form action="<?php echo route('sendPerizinan-file')?>" method="post" enctype="multipart/form-data">
-    @csrf
+    <!-- <form action="<?php echo route('sendPerizinan-file')?>" method="post" enctype="multipart/form-data">
+    @csrf  -->
     <div class="container" style="margin-top: 100px;">
         <div class="row justify-content-center">
             
@@ -39,7 +39,7 @@
                 </div>
             </div> -->
             
-                <input type="hidden" name="jenisPerizinan" value="<?php echo $perizinan?>">
+                <input type="hidden" id="jenisPerizinan" value="<?php echo $perizinan?>">
 
             <div class="row">
                 <div class="input-group d-block justify-content-center">
@@ -56,13 +56,13 @@
                             <!-- <input type="submit" id="pritinjau-input" style="display: none;"> -->
                         <!-- </label> -->
 
-                        <label for="file-input">
+                        <!-- <label for="file-input"> -->
                             <div class="m-l-3 rounded-circle bg-primary border">
                                 <i class="fa-solid fa-paperclip fa-2xl" id="fileInputIcon"
                                     style="cursor: pointer; font-size: 50px;"></i>
-                                <input type="file" id="file-input" name="file-izin" style="display: none;">
+                                <!-- <input type="file" id="file-input" name="file-izin" style="display: none;"> -->
                             </div>
-                        </label>
+                        <!-- </label> -->
 
                         <div class="d-flex" style="opacity: 0;">
                             <input type="file" class="custom-file-input" id="fileInput"
@@ -76,9 +76,11 @@
 
         </div>
     </div>
-    </form>
+    <!-- </form> -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- <script src="{{asset('assets/js/mahasiswa/perizinan.js')}}"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>window.Laravel = {csrfToken: "<?php echo csrf_token()?>"}</script>
+    <script src="{{asset('assets/js/mahasiswa/perizinan.js')}}"></script>
     

@@ -31,7 +31,7 @@
         <div class="col-12 col-lg-5 mx-auto">
             <div class="form-check mb-5 d-flex align-items-center justify-content-center rounded"
                 style="background-color: #FFF; box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25); width: 100%; max-width: 350px; height: 75px; border-radius: 15px;">
-                <input class="form-check-input ms-2" type="radio" name="perizinan" value="Izin" id="flexRadioDefault1"
+                <input class="form-check-input ms-2" type="radio" name="perizinan" value="Ijin" id="flexRadioDefault1"
                     style="width: 20px; height: 20px;">
                 <label class="form-check-label text-center w-100"
                     style="color: #000; font-family: Inter; font-size: 40px; font-style: normal; font-weight: 400; line-height: normal;">

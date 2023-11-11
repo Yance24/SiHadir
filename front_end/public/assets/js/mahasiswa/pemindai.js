@@ -2,7 +2,7 @@ function onScanSuccess(decodedText, decodedResult) {
     console.log(`Kode cocok = ${decodedText}, hasil terdekripsi`);
 
     // Simpan data pemindaian di sessionStorage
-    sessionStorage.setItem('scannedData', decodedText);
+    // sessionStorage.setItem('scannedData', decodedText);
 
     $.ajax({
         url: '/mahasiswa/validate-scan',

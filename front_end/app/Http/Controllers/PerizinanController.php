@@ -7,6 +7,7 @@ use App\Models\Schedule;
 use App\Models\Perizinan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class PerizinanController extends Controller
 {
@@ -56,11 +57,20 @@ class PerizinanController extends Controller
     }
 
     public function sendFile(Request $request){
-        $pilihanJadwal = $request->input('jadwal');
+        $pilihanJadwal = explode(',',$request->input('jadwal'));
         $perizinan = $request->input('jenisPerizinan');
         $tanggal = TimeControl::getDate();
         $file = $request->file('file-izin');
         $account = session()->get('account');
+
+        // echo(
+        //     '<script>
+        //         console.log('.$pilihanJadwal.');
+        //     </script>'
+        // );
+
+        // dd($pilihanJadwal, $perizinan, $tanggal, $file, $account);
+
 
         //make the timedSchedule
         foreach($pilihanJadwal as $idJadwal){
@@ -96,5 +106,8 @@ class PerizinanController extends Controller
             ]);
         }
         
+        return response()->json([
+            'status' => 'success'
+        ]);
     }
 }

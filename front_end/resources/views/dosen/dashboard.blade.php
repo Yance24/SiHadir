@@ -148,17 +148,17 @@
 
 
             @if($enableCloseClass)
-            <form action="<?php echo route('close-class')?>" method="POST">
-            @csrf
-            <label for="close-class-input">
+            <!-- <form action="<?php echo route('close-class')?>" method="POST"> -->
+            <!-- @csrf -->
+            <label for="close-class-button">
                 <div class="close-class">
-                    <button id="close-class-button">
+                    <button id="close-class-button" onclick="closeclassButton()">
                         <span style="margin-left: 70px; font-size: 24px; ">Close Class</span>
                     </button>
-                    <input type="submit" id="close-class-input" style="display: none;">
+                    <!-- <input type="submit" id="close-class-input" style="display: none;"> -->
                 </div>
             </label>
-            </form>
+            <!-- </form> -->
             @else
             <!-- Jikda dosen belum bisa mengakses generate qr -->
             <div class="close-class-container">
@@ -166,39 +166,6 @@
             </div>
             @endif
         </div>
-
-        <!-- HTML buat pop up -->
-        <div class="main-container">
-
-            <div class="logo-container"></div>
-
-            <div class="keterangan-container">
-                Apa anda ingin menutup kelas ini?
-            </div>
-
-            <form action="">
-            <label for="tidak-input">
-                <div class="tidak-button-container">
-                    <button>Tidak</button>
-                    <input type="submit" id="tidak-input" style="display: none;">
-                </div>  
-            </label>
-            </form>
-
-            <form action="<?php echo route('close-class')?>" method="post">
-            @csrf
-            <label for="ya-input">
-                <div class="Ya-button-container">
-                    <button>Ya</button>
-                    <input type="submit" id="ya-input" style="display: none;">
-                </div>
-            </label>
-            </form>
-
-        </div>
-        
-
-        
 
         <!-- Patch Generate QR -->
         <div id="qr-patch" class="qr-patch">
@@ -326,9 +293,21 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Handle "Ya" button click
-                    Swal.fire('Validasi berhasil terkirim', '', 'success');
-                    removeDataAndAdjustSchedule(); // Call the function to remove data and adjust the schedule
-
+                    $.ajax({
+                        url: '<?php echo route('close-class')?>',
+                        method: 'POST',
+                        data: {
+                            _token: '<?php echo csrf_token()?>'
+                        },
+                        success: function(response){
+                            if(response.status == 'success'){
+                                Swal.fire('Kelas berhasil ditutup!', '', 'success');
+                                window.location.href = 'dashboard';
+                            }else{
+                                Swal.fire('Kelas gagal ditutup!', '', 'error');
+                            }
+                        },
+                    });
                 } else {
                     // Handle "Tidak" button click
                     // Do nothing or provide custom behavior
