@@ -27,8 +27,12 @@ class AbsensiController extends Controller
 
         // dd('tes');
 
-        if($idQr != $absenDosen->id_QR) return response()->json([
+        if($absenDosen->id_QR == 'INVALID') return response()->json([
             'status' => 'invalid'
+        ]);
+
+        if($idQr != $absenDosen->id_QR) return response()->json([
+            'status' => 'salah'
         ]);
 
 

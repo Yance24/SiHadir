@@ -28,11 +28,24 @@ function onScanSuccess(decodedText, decodedResult) {
                         window.location.href = 'dashboard';
                     }
                 });
+            }else if(response.status == 'invalid'){
+                Swal.fire({
+                    title: 'Gagal!',
+                    text: 'QR untuk jadwal ini sudah invalid!',
+                    icon: 'error',
+                    showCancelButton: false,
+                    confirmButtonText: 'Selesai'
+
+                }).then((result) => {
+                    if (result.isConfirmed){
+                        window.location.href = 'dashboard'
+                    }
+                });
             }else{
                 Swal.fire({
                     title: 'Gagal!',
                     text: 'QR yang anda scan salah!',
-                    icon: 'error',
+                    icon: 'warning',
                     showCancelButton: false,
                     confirmButtonText: 'Selesai'
 

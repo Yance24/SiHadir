@@ -148,16 +148,17 @@
 
 
             @if($enableCloseClass)
-            <!-- <form action="<?php echo route('close-class')?>" method="POST"> -->
+            <form action="<?php echo route('close-class')?>" method="POST">
+            @csrf
             <label for="close-class-input">
                 <div class="close-class">
-                    <button id="close-class-button" type='button' onclick="">
+                    <button id="close-class-button">
                         <span style="margin-left: 70px; font-size: 24px; ">Close Class</span>
-                        <!-- <input type="submit" id="close-class-input" style="display: none;"> -->
                     </button>
+                    <input type="submit" id="close-class-input" style="display: none;">
                 </div>
             </label>
-            <!-- </form> -->
+            </form>
             @else
             <!-- Jikda dosen belum bisa mengakses generate qr -->
             <div class="close-class-container">

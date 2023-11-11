@@ -50,7 +50,8 @@
                                 <hr>
                                 @if($firstSchedule && $enableScanButton)
                                 <?php $firstSchedule = false;?>
-                                <form action="/mahasiswa/pemindai" method="GET">
+                                <form action="/mahasiswa/pemindai" method="POST">
+                                    @csrf
                                     <div class="text-center">
                                         <button id="absenButton" class="btn btn-primary shadow-lg rounded-3"
                                             style="width: 200px; height: 50px">

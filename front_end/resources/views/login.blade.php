@@ -87,7 +87,7 @@
                     <i class="far fa-eye fa-lg pe-auto position-absolute top-50" id="password-toggle" type="button"></i>
                 </div>
                 <div class="text-start p-2" style="margin-bottom: 100px">
-                    <a href="" class="text-decoration-none">Lupa Password?</a>
+                    <a href="" onclick="" class="text-decoration-none">Lupa Password?</a>
                 </div>
                 <div class="mt-3">
                     <button type="submit" class="btn btn-primary w-75 rounded-pill" style="background-color: #99BBEC">Login</button>

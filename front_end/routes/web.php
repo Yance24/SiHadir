@@ -62,7 +62,7 @@
     })->name('hasilScan');
 
     // url untuk pemindai
-    Route::get('/mahasiswa/pemindai', [AbsensiController::class,'processScanQrView'])->name('pemindai');
+    Route::post('/mahasiswa/pemindai', [AbsensiController::class,'processScanQrView'])->name('pemindai');
 
     // Send ajax request to validate qr id
     Route::get('/mahasiswa/validate-scan',[AbsensiController::class,'scanQr']);
