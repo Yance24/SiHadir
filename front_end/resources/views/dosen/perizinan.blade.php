@@ -9,6 +9,7 @@
     <link rel=" stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <style>
         .profile-images {
@@ -31,8 +32,6 @@
 
     //$account menyimpan informasi dari akun dosen yang terlogin
     //data dari $account akan berupa field-field dari database dummyny backend
-
-    use function PHPUnit\Framework\isEmpty;
 
     $account = session()->get('account');
 
@@ -107,7 +106,8 @@
                         <div class="nama-mahasiswa"><?php echo $absenMahasiswa->mahasiswa->nama?></div>
                         <div class="nim-mahasiswa"><?php echo $absenMahasiswa->mahasiswa->id_user?></div>
                         <div class="photo-mail">
-                            <button class="previewButton" onclick="previewPDF('3202116005')">
+                            <!-- <button class="previewButton" onclick="previewPDF('3202116005')"> -->
+                            <button class="previewButton" onclick="showPreviewPopUp('<?php echo $absenMahasiswa->id_jadwal;?>','<?php echo $absenMahasiswa->id_absenMahasiswa;?>')">
                                 <div class="icon-text-container">
                                     <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
                                     <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
@@ -120,60 +120,115 @@
             </div>
         </div>
         @endforeach
-        
+
+
+        <!-- Modal untuk pratinjau/preview PDF -->
+        <!-- <div id="previewModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <iframe id="pdfPreview" width="424px" height="619px"></iframe>
+                <div class="keterangan-surat"><span>Apakah dokumen tersebut <b>VALID?</b></span></div>
+                <button class="invalidButton" onclick="invalidButton()">Invalid</button>
+                <button class="validButton" onclick="validButton()">Valid</button>
+            </div>
+        </div> -->
+
     </div>
 
     <script>
-        //untuk popup alert invalid dan valid
-        // Function to display the SweetAlert2 popup
-        function invalidButton() {
-            Swal.fire({
-                title: 'Anda tidak mengizinkan izin tersebut?',
-                icon: 'warning',
-                showCancelButton: true, // Menampilkan tombol "Tidak"
-                confirmButtonColor: '#7ACC78',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya',
-                cancelButtonText: 'Tidak',
-                reverseButtons: true // Memutar urutan tombol
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Handle "Ya" button click
-                    Swal.fire('Validasi berhasil terkirim', '', 'success');
-                    removeData(); // Panggil removeData setelah popup ditutup
-                    closeModal();
 
-                    // Clear the name data here
-                } else {
-                    // Handle "Tidak" button click
-                    // Do nothing or provide custom behavior
+        function showPreviewPopUp(idJadwal,idUser){
+            Swal.fire({
+                html:
+                // '<div id="previewModal" class="modal" style="display:block;">'+
+                    '<div class="model-content">'+
+                        '<iframe id="pdfPreview" width="424px" height="619px" src="/dosen/perizinan/'+idUser+'"></iframe>'+
+                        '<div class="keterangan-surat"><span>Apakah dokumen tersebut <b>VALID?</b></span></div>'+
+                    '</div>'
+                // '</div>'
+                ,
+
+                showCancelButton: true,
+                showCloseButton: true,
+                confirmButtonText: 'Valid',
+                cancelButtonText: 'Invalid',
+                confirmButtonColor: '#7ACC78',
+                cancelButtonColor: '#FC4B4B',
+                reverseButtons: true,
+            }).then((result) => {
+                if(result.isConfirmed){
+
+                    let formData = new FormData();
+
+                    formData.append('_token','<?php echo csrf_token()?>');
+                    formData.append('idJadwal',idJadwal);
+                    formData.append('idUser',idUser);
+
+                    $.ajax({
+                        url: '/dosen/perizinan/validateIzin',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response){
+                            if(response.status == 'success'){
+                                Swal.fire({
+                                    text: 'validasi berhasil terkirim',
+                                    icon: 'success',
+                                    confirmButtonColor: '#7ACC78',
+                                }).then(() => {
+                                    window.location.href = "";
+                                });
+                            }else{
+                                Swal.fire({
+                                    text: 'validasi tidak berhasil dikirim!',
+                                    icon: 'error',
+                                    confirmButtonColor: '#7ACC78',
+                                }).then(() => {
+                                    window.location.href = "";
+                                });
+                            }
+                        }
+                    });
+                }else if(result.dismiss === Swal.DismissReason.cancel){
+
+                    let formData = new FormData();
+
+                    formData.append('_token','<?php echo csrf_token()?>');
+                    formData.append('idJadwal',idJadwal);
+                    formData.append('idUser',idUser);
+
+                    $.ajax({
+                        url: '/dosen/perizinan/invalidateIzin',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response){
+                            if(response.status == 'success'){
+                                Swal.fire({
+                                    text: 'invalidasi berhasil terkirim',
+                                    icon: 'success',
+                                    confirmButtonColor: '#7ACC78',
+                                }).then(() => {
+                                    window.location.href = "";
+                                });
+                            }else{
+                                Swal.fire({
+                                    text: 'invalidasi tidak berhasil dikirim!',
+                                    icon: 'error',
+                                    confirmButtonColor: '#7ACC78',
+                                }).then(() => {
+                                    window.location.href = "";
+                                });
+                            }
+                        }
+                    });
                 }
             });
+            
         }
 
-        // Function to display the SweetAlert2 popup
-        function validButton() {
-            Swal.fire({
-                title: 'Anda mengizinkan izin tersebut?',
-                icon: 'warning',
-                showCancelButton: true, // Menampilkan tombol "Tidak"
-                confirmButtonColor: '#7ACC78',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya',
-                cancelButtonText: 'Tidak',
-                reverseButtons: true // Memutar urutan tombol
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Handle "Ya" button click
-                    Swal.fire('Validasi berhasil terkirim', '', 'success');
-                    removeData(); // Panggil removeData setelah popup ditutup
-                    closeModal();
-                } else {
-                    // Handle "Tidak" button click
-                    // Do nothing or provide custom behavior
-                }
-            });
-        }
         //untuk popup alert log out
         // Fungsi untuk menampilkan popup SweetAlert2
         document.getElementById('logoutLink').addEventListener('click', function(event) {
@@ -200,67 +255,6 @@
                 }
             });
         });
-
-
-
-        // buat pratinjau PDF
-        function previewPDF(studentID) {
-            // Mengganti atribut src iframe dengan URL PDF yang sesuai berdasarkan ID mahasiswa
-            const pdfURL = `{{ asset('assets/img/uud.pdf') }}`;
-            document.getElementById('pdfPreview').src = pdfURL;
-
-            // Menampilkan modal pratinjau PDF
-            const modal = document.getElementById('previewModal');
-            modal.style.display = 'block';
-
-            // Menambahkan kelas 'active' ke elemen mahasiswa yang dipilih
-            const selectedMahasiswa = document.querySelector(`[onclick="previewPDF('${studentID}')"]`).closest('.mahasiswa');
-            if (selectedMahasiswa) {
-                selectedMahasiswa.querySelector('.mahasiswa-info').classList.add('active');
-            }
-        }
-
-
-
-        // Mengatur fungsi untuk tombol "Invalid" di dalam pratinjau
-        const invalidBtn = document.querySelector('.invalidButton');
-        invalidBtn.onclick = function() {
-            invalidButton();
-        };
-
-        // Mengatur fungsi untuk tombol "Valid" di dalam pratinjau
-        const validBtn = document.querySelector('.validButton');
-        validBtn.onclick = function() {
-            validButton();
-        };
-
-        //untuk menutup preview pdf saat tekan yes
-
-        function closeModal() {
-            const modal = document.getElementById('previewModal');
-            modal.style.display = 'none';
-            const pdfPreview = document.getElementById('pdfPreview');
-            pdfPreview.src = ''; // Hentikan pratinjau PDF
-        }
-
-
-        // function removeData() {
-        //     // Cari elemen yang ingin dihapus
-        //     const containerToRemove = document.querySelector('.mahasiswa-info.active');
-
-        //     if (containerToRemove) {
-        //         containerToRemove.parentNode.remove(); // Hapus container
-        //     }
-        // }
-
-        // function untuk menghapus data atau container yang dipilih,dan dipanggil di dalam IF alert
-        function removeData() {
-            // Cari elemen yang ingin dihapus
-            const containerToRemove = document.querySelector('.mahasiswa-info.active');
-            if (containerToRemove) {
-                containerToRemove.closest('.mahasiswa').remove(); // Hapus container
-            }
-        }
     </script>
 
 </body>

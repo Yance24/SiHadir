@@ -123,6 +123,14 @@
     //url for perizinan dosen
     Route::get('/dosen/perizinan',[PerizinanController::class,'processDosenView']);
 
+
+    //url untuk fetch pdf request
+    Route::get('/dosen/perizinan/{idUser}',[PerizinanController::class,'requestPdf']);
+
+    Route::post('/dosen/perizinan/validateIzin',[PerizinanController::class,'validateIzin']);
+
+    Route::post('/dosen/perizinan/invalidateIzin',[PerizinanController::class,'invalidateIzin']);
+
     
 
     //Route untuk admin

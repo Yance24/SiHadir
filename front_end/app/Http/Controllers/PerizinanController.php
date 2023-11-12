@@ -92,6 +92,7 @@ class PerizinanController extends Controller
             $absenMahasiswa = AbsenMahasiswa::where('tanggal','=',$tanggal)
             ->where('id_user','=',$account->id_user)
             ->where('id_jadwal','=',$idJadwal)
+            ->where('keterangan','!=','Invalid')
             ->get();
 
             if($absenMahasiswa->count() > 0){
@@ -123,6 +124,52 @@ class PerizinanController extends Controller
         
         return response()->json([
             'status' => 'success'
+        ]);
+    }
+
+    public function requestPdf($idUser){
+        $path = Perizinan::where('id_absenMahasiswa','=',$idUser)->where('status_izin','=','pending')->first()->surat;
+        $path = storage_path('app/'.$path);
+
+        if(file_exists($path))
+            return response()->file($path);
+        else return response()->json([
+            'error' => 'Surat izin Not Found'
+        ],400);
+        
+    }
+
+    public function validateIzin(Request $request){
+        $idAbsenMahasiswa = $request->input('idUser');
+
+        $tipeIzin = Perizinan::where('id_absenMahasiswa','=',$idAbsenMahasiswa)->first()->tipe_izin;
+
+        DB::table('absen_mahasiswa')->where('id_absenMahasiswa','=',$idAbsenMahasiswa)->update([
+            'keterangan' => $tipeIzin,
+        ]);
+
+        DB::table('perizinan')->where('id_absenMahasiswa','=',$idAbsenMahasiswa)->update([
+            'status_izin' => 'valid',
+        ]);
+
+        return response()->json([
+            'status'=> 'success'
+        ]);
+    }
+
+    public function invalidateIzin(Request $request){
+        $idAbsenMahasiswa = $request->input('idUser');
+
+        DB::table('absen_mahasiswa')->where('id_absenMahasiswa','=',$idAbsenMahasiswa)->update([
+            'keterangan' => 'Invalid',
+        ]);
+
+        DB::table('perizinan')->where('id_absenMahasiswa','=',$idAbsenMahasiswa)->update([
+            'status_izin' => 'invalid',
+        ]);
+
+        return response()->json([
+            'status'=> 'success'
         ]);
     }
 }
