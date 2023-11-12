@@ -18,6 +18,7 @@
     <div class="container" style="margin-top: 100px;">
         <div class="row justify-content-center">
             
+        @if($schedule->count() > 0)
             <!-- Menampilkan jadwal-jadwal pelajaran -->
             @foreach($schedule as $item)
             <label for="<?php echo 'jadwal_'.$item->id_jadwal?>">
@@ -31,38 +32,50 @@
             </div>
             </label>
             @endforeach
-            <!-- <div class="row-md-6">
-                <div class="second mb-5">
-                    <h1 class="fw-bold" style="font-size: 26px;">PBL</h1>
-                    <hr>
-                    <span>07.00 AM - 12.00 AM</span>
-                </div>
-            </div> -->
+
+        @else
+
+            <!-- Tidak ada jadwal yang ditampilkan -->
+            <div>Tidak ada jadwal!!</div>
+
+        @endif
             
-                <input type="hidden" id="jenisPerizinan" value="<?php echo $perizinan?>">
+
+            <input type="hidden" id="jenisPerizinan" value="<?php echo $perizinan?>">
 
             <div class="row">
                 <div class="input-group d-block justify-content-center">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="fileName" placeholder="Nama Berkas" readonly>
+                        <!-- Nama Berkas -->
+                        @if($schedule->count() > 0)
+                            <input type="text" class="form-control" id="fileName" placeholder="Nama Berkas" readonly>
+                        @else
+                            <!-- Disabled jika tidak ada jadwal -->
+                        @endif
                     </div>
                     <div class="custom-file d-flex justify-content-end align-items-center ms-2">
 
-                        <!-- <label for="pritinjau-input"> -->
+
+                        <!-- Tombol Pratinjau -->
+                        @if($schedule->count() > 0)
                             <a id="pratinjauButton"
                                 class="btn btn-primary rounded-pill text-center d-flex align-items-center justify-content-center fs-2"
                                 style="width: 200px; height: 70px;" disabled>Pratinjau</a>
                             
-                            <!-- <input type="submit" id="pritinjau-input" style="display: none;"> -->
-                        <!-- </label> -->
+                        @else
+                            <!-- Disabled jika tidak ada jadwal -->
+                        @endif
 
-                        <!-- <label for="file-input"> -->
+                        <!-- Tombol attach file -->
+                        @if($schedule->count() > 0)
                             <div class="m-l-3 rounded-circle bg-primary border">
                                 <i class="fa-solid fa-paperclip fa-2xl" id="fileInputIcon"
                                     style="cursor: pointer; font-size: 50px;"></i>
                                 <!-- <input type="file" id="file-input" name="file-izin" style="display: none;"> -->
                             </div>
-                        <!-- </label> -->
+                        @else
+                            <!-- Disabled jika tidak ada jadwal -->
+                        @endif
 
                         <div class="d-flex" style="opacity: 0;">
                             <input type="file" class="custom-file-input" id="fileInput"

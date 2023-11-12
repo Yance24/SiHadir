@@ -53,12 +53,6 @@ pratinjauButton.addEventListener("click", function () {
     const cachedPDF = sessionStorage.getItem("cachedPDF");
     let currentScale = 1; // Skala awal
     let stepSize = 0.15; // Ukuran langkah zoom (15%)
-    getSelectedJadwal();
-    console.log(window.Laravel.csrfToken);
-    console.log(selectedJadwal);
-    console.log(fileInput.files[0]);
-    console.log(jenisPerizinan);
-
 
     if (cachedPDF) {
         Swal.fire({
@@ -139,6 +133,12 @@ pratinjauButton.addEventListener("click", function () {
             },
         }).then((result) => {
             if (result.isConfirmed) {
+
+                getSelectedJadwal();
+                console.log(window.Laravel.csrfToken);
+                console.log(selectedJadwal);
+                console.log(fileInput.files[0]);
+                console.log(jenisPerizinan);
 
                 let formData = new FormData();
 

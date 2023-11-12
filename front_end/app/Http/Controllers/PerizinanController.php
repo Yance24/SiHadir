@@ -16,11 +16,35 @@ class PerizinanController extends Controller
 
         $perizinan = $request->input('perizinan');
         if($perizinan == null) return view('mahasiswa.jenisPerizinan');
+
         return view('mahasiswa.perizinan',[
             'perizinan' => $perizinan,
-            'schedule' => ScheduleController::getTodaysSchedule(),
+            'schedule' => $this->getAvailableIzin(),
         ]);
     }
+
+    protected function getAvailableIzin(){
+        $jadwal = ScheduleController::getTodaysSchedule();
+        $tanggal = TimeControl::getDate();
+
+        $account = session()->get('account');
+
+        $data = collect();
+
+        foreach($jadwal as $item){
+            $absenMahasiswa = AbsenMahasiswa::where('id_user','=',$account->id_user)
+            ->where('tanggal','=',$tanggal)
+            ->where('id_jadwal','=',$item->id_jadwal)
+            ->where('keterangan','=','Pending')
+            ->first();
+            
+            if($absenMahasiswa == null) $data->push($item);
+        }
+
+        return $data;
+        
+    }
+
 
     public function processDosenView(Request $request){
         if(!LoginValidation::validateUser('Dosen')) return redirect()->back();
@@ -62,15 +86,6 @@ class PerizinanController extends Controller
         $tanggal = TimeControl::getDate();
         $file = $request->file('file-izin');
         $account = session()->get('account');
-
-        // echo(
-        //     '<script>
-        //         console.log('.$pilihanJadwal.');
-        //     </script>'
-        // );
-
-        // dd($pilihanJadwal, $perizinan, $tanggal, $file, $account);
-
 
         //make the timedSchedule
         foreach($pilihanJadwal as $idJadwal){
