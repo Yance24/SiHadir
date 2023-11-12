@@ -12,7 +12,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <link rel="stylesheet" href="{{ asset('assets/css/layouts/appbarMobile.css') }}">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -67,7 +67,7 @@
                     </a>
                 </div>
                 <hr class="m-0">
-                <a href="/logout" class="text-decoration-none text-white" id="logout">
+                <a class="text-decoration-none text-white" id="logout">
                     <img src="{{ asset('assets/icon/logout.svg') }}" alt="" class=" nav-custom">
                     <span style="font-size: 15px"> Logout</span>
                 </a>

@@ -48,34 +48,7 @@
 
     //buat melihat data dari variable $schedule
     // dd($schedule);
-
-    // if ($dashBoard->isEmpty()) {
-    //     echo "<h1>tidak ada jadwal hari ini</h1>";
-    // }
-
-    // dd();
-
-    //buat melihat data dari variable $dashBoard
-    // dd($dashBoard);
     ?>
-
-    <!-- <?php
-
-            // $urlPdf = 'urlgfdgf';
-            // $dataMahasiswa;
-
-            // foreach ($dataMahasiswa as $item) {
-            //     $item->nama;
-            //     $item->id_user;
-
-            // }
-
-            // if (isset($urlPdf)) {
-
-            // }
-
-
-            ?> -->
 
 
     <!-- Pembatas Sidebar -->
@@ -112,96 +85,10 @@
             </a>
         </div>
     </div>
+
+    
     <!-- Pembatas Sidebar -->
     <div class="content-perizinan">
-        <!-- <div class="jadwal-container-perizinan">
-            <div class="jadwal-info-perizinan">
-                <div class="mata-kuliah-perizinan1">PBL</div>
-                <div class="jam-perizinan1">07:00 - 12:00</div>
-                <hr class="gariscontainer-perizinan1">
-            </div>
-
-            <div class="mahasiswa-container">
-
-                <div class="mahasiswa">
-                    <div class="mahasiswa-info">
-                        <div class="nama-mahasiswa">Adi Suryadi</div>
-                        <div class="nim-mahasiswa">3202116005</div>
-                        <div class="photo-mail">
-                            <button class="previewButton" onclick="previewPDF('3202116005')">
-                                <div class="icon-text-container">
-                                    <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
-                                    <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="mahasiswa">
-                    <div class="mahasiswa-info">
-                        <div class="nama-mahasiswa">Weldy Flamingo</div>
-                        <div class="nim-mahasiswa">3202116123</div>
-
-                        <div class="photo-mail">
-                            <button class="previewButton" onclick="previewPDF('3202116123')">
-                                <div class="icon-text-container">
-                                    <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
-                                    <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="mahasiswa">
-                    <div class="mahasiswa-info">
-                        <div class="nama-mahasiswa">Rizky Ramadhan</div>
-                        <div class="nim-mahasiswa">3202116003</div>
-                        <div class="photo-mail">
-                            <button class="previewButton" onclick="previewPDF('3202116003')">
-                                <div class="icon-text-container">
-                                    <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
-                                    <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mahasiswa">
-                    <div class="mahasiswa-info">
-                        <div class="nama-mahasiswa">Agustia Lita</div>
-                        <div class="nim-mahasiswa">3202116085</div>
-                        <div class="photo-mail">
-                            <button class="previewButton" onclick="previewPDF('3202116085')">
-                                <div class="icon-text-container">
-                                    <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
-                                    <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="mahasiswa">
-                    <div class="mahasiswa-info">
-                        <div class="nama-mahasiswa">Fahryan</div>
-                        <div class="nim-mahasiswa">3202116032</div>
-                        <div class="photo-mail">
-                            <button class="previewButton" onclick="previewPDF('3202116032')">
-                                <div class="icon-text-container">
-                                    <span style="font-size: 24px; color: #FFFF; margin-right: 15px;"><b>Pratinjau Izin</b></span>
-                                    <img src="{{ asset('assets/icon/icon-pesan.svg') }}" alt="Izin" class="icon-pesan">
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
         <!-- Jadwal serta daftar Mahasiswa yang izin-->
         @foreach($parsedPerizinan as $item)
         <!-- info jadwal -->
@@ -233,29 +120,7 @@
             </div>
         </div>
         @endforeach
-
-        <!-- Modal untuk pratinjau/preview PDF -->
-        <div id="previewModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <iframe id="pdfPreview" width="424px" height="619px"></iframe>
-                <div class="keterangan-surat"><span>Apakah dokumen tersebut <b>VALID?</b></span></div>
-                <button class="invalidButton" onclick="invalidButton()">Invalid</button>
-                <button class="validButton" onclick="validButton()">Valid</button>
-            </div>
-        </div>
-
-        <br>
-        <br>
-        <br>
-
-        <!-- <div class="jadwal-container-perizinan2">
-            <div class="jadwal-info-perizinan">
-                <div class="mata-kuliah-perizinan2">Pemrograman Web</div>
-                <hr class="gariscontainer-perizinan2">
-                <div class="jam-perizinan2">14:00 - 16:00</div>
-            </div>
-        </div> -->
+        
     </div>
 
     <script>

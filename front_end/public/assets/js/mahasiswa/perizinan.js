@@ -67,7 +67,13 @@ pratinjauButton.addEventListener("click", function () {
                 '<button id="zoomInButton" class="btn btn-secondary">Zoom In</button>' +
                 '<button id="zoomOutButton" class="btn btn-secondary" style="margin-left: 10px;">Zoom Out</button>' +
                 "</div></div>",
-            showCloseButton: true,
+            showCloseButton: false,
+            showCancelButton: true,
+            confirmButtonColor: '#7ACC78',
+            cancelButtonColor: '#FC4B4B',
+            confirmButtonText: 'Kirim',
+            cancelButtonText: 'Batal',
+            reverseButtons: true,
             focusConfirm: false,
             willOpen: function () {
                 const canvas = document.getElementById("pdfCanvas");

@@ -18,15 +18,17 @@ function toggleSidebar() {
 // Event handler for the logout button
 document.getElementById('logout').addEventListener('click', function() {
     Swal.fire({
-        title: 'Do you want to log out?',
-        showDenyButton: true,
+        text: 'Do you want to log out?',
+        icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Log Out',
-        denyButtonText: `Cancel`,
+        confirmButtonText: 'Ya',
+        cancelButtonText: `Tidak`,
+        cancelButtonColor: '#CC7878',
+        confirmButtonColor: '#7ACC78',
+        reverseButtons: true,
     }).then((result) => {
         if (result.isConfirmed) {
-            // Perform the logout action here
-            Swal.fire('Logged Out!', '', 'success');
+            window.location.href = '/logout';
         }
     });
 });
