@@ -2,63 +2,133 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
-use App\Mahasiswa;
+use Illuminate\Validation\Rule;
 
 class MahasiswaController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $mahasiswas = Mahasiswa::all();
-        return view('mahasiswa.index', compact('mahasiswas'));
+        $mahasiswa = Mahasiswa::all(); // Mengambil semua data jadwal dari tabel
+
+        return view('mahasiswa', ['mahasiswa' => $mahasiswa]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('mahasiswa.create');
+        $mahasiswa = Mahasiswa::all();
+
+        return view('mahasiswa.create', ['mahasiswa' => $mahasiswa]);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'id_user' => 'required',
-            'nama' => 'required',
-            'kelas' => 'required',
+
+        $request->validate([
+            'id_user' => [
+                'required',
+                Rule::unique('mahasiswa', 'id_user')
+            ],
+            'nama' => 'required|string|max:50',
             'kelamin' => 'required',
         ]);
+        // Simpan data dosen
+        $mahasiswa = new Mahasiswa;
+        $mahasiswa->id_user = $request->input('id_user');
+        $mahasiswa->nama = $request->input('nama');
+        $mahasiswa->kelamin = $request->input('kelamin');
 
-        Mahasiswa::create($validatedData);
+        // Mengisi password dengan NIK
+        $mahasiswa->password = $request->input('id_user');
 
-        return redirect('/mahasiswa')->with('success', 'Data mahasiswa berhasil ditambahkan.');
+        $mahasiswa->save();
+
+
+        return redirect('/mahasiswa')->with('success', 'Data berhasil dihapus.');
     }
 
-    public function destroy($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Mahasiswa  $mmahasiswa
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Mahasiswa $mahasiswa)
     {
-        $mahasiswa = Mahasiswa::find($id);
-        if ($mahasiswa) {
-            $mahasiswa->delete();
-            return redirect('/mahasiswa')->with('success', 'Data mahasiswa berhasil dihapus.');
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Mahasiswa  $mahasiswa
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Mahasiswa $mahasiswa, $id_user)
+    {
+        $mahasiswa = Mahasiswa::find($id_user);
+        return view('mahasiswa.edit', ['mahasiswa' => $mahasiswa]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Mahasiswa  $mahasiswa
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Mahasiswa $mahasiswa, $id_user)
+    {
+        // Ambil data mahasiswa berdasarkan ID
+        $mahasiswa = Mahasiswa::find($id_user);
+
+        // Update data sesuai dengan input yang diterima
+        $mahasiswa->id_user = $request->input('id_user');
+        $mahasiswa->nama = $request->input('nama');
+        $mahasiswa->password = $request->input('password');
+        $mahasiswa->kelamin = $request->input('kelamin');
+
+
+        // Simpan perubahan ke database
+        $mahasiswa->save();
+
+        // Redirect kembali ke halaman data mahasiswa
+        return redirect('/mahasiswa');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Mahasiswa  $mahasiswa
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Mahasiswa $mahasiswa, $id_user)
+    {
+        $mahasiswa = Mahasiswa::find($id_user);
+
+        if (!$mahasiswa) {
+            return redirect('/mahasiswa')->with('error', 'Data tidak ditemukan.');
         }
-        return redirect('/mahasiswa')->with('error', 'Data mahasiswa tidak ditemukan.');
-    }
 
-    public function edit($id)
-    {
-        $mahasiswa = Mahasiswa::find($id);
-        return view('mahasiswa.edit', compact('mahasiswa'));
-    }
+        $mahasiswa->delete();
 
-    public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'id_user' => 'required',
-            'nama' => 'required',
-            'kelas' => 'required',
-            'kelamin' => 'required',
-        ]);
-
-        Mahasiswa::where('id', $id)->update($validatedData);
-
-        return redirect('/mahasiswa')->with('success', 'Data mahasiswa berhasil diperbarui.');
+        return redirect('/mahasiswa')->with('success', 'Data berhasil dihapus.');
     }
 }

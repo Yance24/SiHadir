@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Create Mahasiswa</h1>
-    <form method="POST" action="{{ route('mahasiswa.store') }}">
+    <h1>Create Dosen</h1>
+    <form method="POST" action="{{ route('dosen.store') }}">
         @csrf
 
-        <label for="id_user">NIM:</label>
-        <input type="text" name="id_user">
+        <label for="id_userdosen">NIK:</label>
+        <input type="text" name="id_userdosen">
 
         <label for="nama">Nama:</label>
         <input type="text" name="nama">
@@ -20,6 +20,6 @@
         {{-- <label for="password">password:</label>
         <input  type="text" name="password"> --}}
 
-        <button type="submit">Simpan Data Mahasiswa</button>
+        <button type="submit">Simpan Data dosen</button>
     </form>
 @endsection
