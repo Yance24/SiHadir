@@ -9,6 +9,7 @@ use App\Models\Kelas;
 use Illuminate\Http\Request;
 use App\Models\Schedule;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
@@ -104,5 +105,64 @@ class ScheduleController extends Controller
         }
 
         session()->put(['schedule' => $data]);
+    }
+
+    public function addSemester(){
+        $totalSemester = Semester::all()->count() + 1;
+        $keteranganSemester = ($totalSemester % 2) == 0? 'genap':'ganjil';
+        DB::table('semester')->insert([
+            'id_semester' => $totalSemester,
+            'semester' => $keteranganSemester,
+        ]);
+        return response()->json([
+            'status' => 'success',
+        ]);
+    }
+
+    public function removeSemester(Request $request){   
+        $totalSemester = Semester::all()->count();
+
+
+        if(Kelas::where('semester','=',$totalSemester)->first() != null){
+            if($request->has('operation')){
+                DB::table('kelas')->where('semester','=',$totalSemester)->delete();
+                DB::table('jadwal')->where('id_semester','=', $totalSemester)->delete();
+            }else return response()->json([
+                'status'=> 'needConfirmation',
+            ]);
+        }
+        
+        DB::table('semester')->where('id_semester','=',$totalSemester)->delete();
+        return response()->json([
+            'status'=> 'success',
+        ]);
+    }
+
+    public function addKelas(Request $request){
+        $selectedSemester = $request->input('selectedSemester');
+        $kelasName = $request->input('kelasName');
+
+        DB::table('kelas')->insert([
+            'semester' => $selectedSemester,
+            'kelas' => $kelasName,
+        ]);
+
+        return response()->json([
+            'status'=> 'success',
+        ]);
+    }
+
+    public function removeKelas(Request $request){
+        $semester = $request->input('semester');
+        $kelas = $request->input('kelas');
+
+        DB::table('kelas')
+        ->where('semester','=', $semester)
+        ->where('kelas','=',$kelas)
+        ->delete();
+
+        return response()->json([
+            'status'=> 'success',
+        ]);
     }
 }

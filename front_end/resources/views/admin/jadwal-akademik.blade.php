@@ -33,6 +33,26 @@
 
     </style>
 </head>
+
+
+
+
+<!-- BUKAN YANG INI BAGIAN JADWAL BUAT ADMIN!!! - Yance -->
+
+<!-- View untuk /admin/schedule tuh di schedule.blade -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body style="height: 100vh; overflow:hidden">
     <div class="container-fluid">
         <div class="row">

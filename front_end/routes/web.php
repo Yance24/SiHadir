@@ -149,6 +149,14 @@
     //url pemilihan jadwal pada semester dan kelas mana
     Route::get('/admin/schedule',[ScheduleController::class,'processView']);
 
+    Route::post('/admin/schedule/addSemester',[ScheduleController::class,'addSemester']);
+
+    Route::post('/admin/schedule/removeSemester',[ScheduleController::class,'removeSemester']);
+
+    Route::post('/admin/schedule/addKelas',[ScheduleController::class,'addKelas']);
+
+    Route::post('/admin/schedule/removeKelas',[ScheduleController::class,'removeKelas']);
+
     //url tampilan jadwal yang lebih detail
     Route::get('/admin/schedule/kelas',[ScheduleController::class,'processKelasView']);
 

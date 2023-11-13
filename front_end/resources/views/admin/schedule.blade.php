@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- IMPORT STUFF DO NOT DELETE!!!!! -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    <!---->
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 <body>
     <!-- Side Nav Bar -->
@@ -54,14 +64,23 @@
 
         <div class="base-container">
 
-            <form action="">
-            <label for="tambah-semester-button">
+            <label for="tambah-semester-input">
                 <div class="tambah-semester-container">
-                    <button>Tambah</button>
-                    <input type="submit" id="tambah-semester-button" style="display: none;">
+                    <button id="tambah-semester-input" onclick="addSemester()">Tambah Semester</button>
                 </div>
             </label>
-            </form>
+
+            <label for="delete-semester-input">
+                <div class="delete-semester-container">
+                    <button id="delete-semester-input" onclick="removeSemester()">Remove Semester</button>
+                </div>
+            </label>
+
+            <label for="tambah-kelas-input">
+                <div class="tambah-kelas-container">
+                    <button id="tambah-kelas-input" onclick="addKelas()">Tambah Kelas</button>
+                </div>
+            </label>
 
             <div class="semester-container">
 
@@ -85,8 +104,9 @@
                             </label>
                         </form>
 
+                        <label for="delete-button-input"></label>
                         <div class="delete-button-container">
-                
+                            <button id="delete-button-input" onclick="removeKelas('<?php echo $semester['semester'];?>','<?php echo $kelas->kelas?>')">Delete</button>
                         </div>
                     @endforeach
 
@@ -99,5 +119,182 @@
 
     </div>
 
+    <script>
+        function addSemester(){
+            let formData = new FormData()
+            formData.append('_token','<?php echo csrf_token();?>');
+
+            $.ajax({
+                url: '/admin/schedule/addSemester',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    window.location.href = "";
+                },
+            });
+        }
+
+        function removeSemester(){
+            let formData = new FormData()
+            formData.append('_token','<?php echo csrf_token();?>');
+            // formData.append('operation','check');
+
+            $.ajax({
+                url: '/admin/schedule/removeSemester',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    if(response.status == 'needConfirmation'){
+                        Swal.fire({
+                            icon: 'warning',
+                            text: 'data kelas dan jadwal akan ikut terhapus, anda yakin?',
+                            confirmButtonText: 'Hapus',
+                            confirmButtonColor: '#78A2CC',
+                            showCancelButton: true,
+                            cancelButtonText: 'Batal',
+                            cancelButtonColor: '#FC4B4B',
+                            reverseButtons: true,
+                        }).then((result) => {
+                            if(result.isConfirmed){
+                                formData.append('operation','confirmed');
+                                $.ajax({
+                                    url: '/admin/schedule/removeSemester',
+                                    type: 'POST',
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
+                                    success: function(response){
+                                        if(response.status == 'success'){
+                                            Swal.fire({
+                                                icon: 'success',
+                                                text: 'berhasil menghapus seluruh data satu semester',
+                                                confirmButtonColor: '#78A2CC',
+                                            }).then(() => {
+                                                window.location.href = "";
+                                                return;
+                                            });
+                                    }   
+                                    }   
+                                });
+                            }
+                        });
+                    }else
+                    window.location.href = "";
+                }
+            });
+        }
+
+        function addKelas(){
+
+            Swal.fire({
+                title: 'Tambah Kelas',
+                html: 
+                '<div class="tambah-kelas-pop-container">'+
+                    '<label for="pilih-semester">'+
+                        '<div>Semester</div>'+
+                        '<select id="pilih-semester">'+
+                            '@foreach($dataSemester as $semester)'+
+                            '<option value="<?php echo $semester['semester']?>">Semester <?php echo $semester['semester'];?></option>'+
+                            '@endforeach'+
+                        '</select>'+
+                    '</label>'+
+                    '<label for="kelas-input">'+
+                        '<div>Kelas</div>'+
+                        '<input type="text" id="kelas-input">'+
+                    '</label>'+
+                '</div>'
+                ,
+                
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#78A2CC',
+                showCancelButton: true,
+                cancelButtonText: 'Batal',
+                cancelButtonColor: '#FC4B4B',
+                reverseButtons: true,
+            }).then((result) => {
+                if(result.isConfirmed){
+
+                    const selectedSemester = document.getElementById('pilih-semester').value;
+                    const kelasName = document.getElementById('kelas-input').value;
+
+                    let formData = new FormData();
+                    formData.append('_token','<?php echo csrf_token()?>');
+                    formData.append('selectedSemester',selectedSemester);
+                    formData.append('kelasName',kelasName);
+
+                    $.ajax({
+                        url: '/admin/schedule/addKelas',
+                        type: 'POST',
+                        data: formData,  
+                        processData: false,
+                        contentType: false,
+                        
+                        success: function(response){
+                            window.location.href = "";
+                        },
+
+                        error: function(error){
+                            console.error('AJAX ERROR : '+error)
+                        },
+                    });
+                }
+            });
+
+            
+        }
+
+        function removeKelas(semester,kelas){
+            Swal.fire({
+                icon: 'warning',
+                text: 'Apa anda yakin ingin menghapus kelas '+kelas+' semester '+semester+'?',
+                confirmButtonText: 'Hapus',
+                confirmButtonColor: '#7ACC78',
+                showCancelButton: true,
+                cancelButtonText: 'Batal',
+                cancelButtonColor: '#FC4B4B',
+                reverseButtons: true,
+            }).then((result) => {
+                if(result.isConfirmed){
+                    let formData = new FormData();
+                    formData.append('_token','<?php echo csrf_token()?>');
+                    formData.append('semester',semester);
+                    formData.append('kelas',kelas);
+
+                    $.ajax({
+                        url: '/admin/schedule/removeKelas',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+
+                        success: function(response){
+                            if(response.status == 'success'){
+                                Swal.fire({
+                                    icon: 'success',
+                                    text: 'Kelas Berhasil di hapus',
+                                    confirmButtonColor: '#7ACC78'
+                                }).then(() => {
+                                    window.location.href = "";
+                                });
+                            }else{
+                                Swal.fire({
+                                    icon: 'error',
+                                    text: 'Kelas gagal di hapus',
+                                    confirmButtonColor: '#7ACC78'
+                                }).then(() => {
+                                    window.location.href = "";
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+    </script>
 </body>
 </html>
