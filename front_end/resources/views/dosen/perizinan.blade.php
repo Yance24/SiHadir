@@ -73,7 +73,7 @@
                 <img src="{{ asset('assets/icon/mail1.svg') }}" alt="Perizinan">
                 <span>Perizinan</span>
             </a>
-            <a href="#contact">
+            <a href="/change-password">
                 <img src="{{ asset('assets/icon/lock1.svg') }}" alt="Ganti Password">
                 <span>Ganti Password</span>
             </a>
@@ -120,19 +120,6 @@
             </div>
         </div>
         @endforeach
-
-
-        <!-- Modal untuk pratinjau/preview PDF -->
-        <!-- <div id="previewModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <iframe id="pdfPreview" width="424px" height="619px"></iframe>
-                <div class="keterangan-surat"><span>Apakah dokumen tersebut <b>VALID?</b></span></div>
-                <button class="invalidButton" onclick="invalidButton()">Invalid</button>
-                <button class="validButton" onclick="validButton()">Valid</button>
-            </div>
-        </div> -->
-
     </div>
 
     <script>
@@ -140,12 +127,10 @@
         function showPreviewPopUp(idJadwal,idUser){
             Swal.fire({
                 html:
-                // '<div id="previewModal" class="modal" style="display:block;">'+
                     '<div class="model-content">'+
                         '<iframe id="pdfPreview" width="424px" height="619px" src="/dosen/perizinan/'+idUser+'"></iframe>'+
                         '<div class="keterangan-surat"><span>Apakah dokumen tersebut <b>VALID?</b></span></div>'+
                     '</div>'
-                // '</div>'
                 ,
 
                 showCancelButton: true,

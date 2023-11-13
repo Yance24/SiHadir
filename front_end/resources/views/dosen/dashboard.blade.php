@@ -184,30 +184,6 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- <h2 style="display: flex; align-items: center;">
-            <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
-            Jadwal Selanjutnya
-        </h2>
-        <br>
-        <br>
-        <div class="jadwal-container">
-            <div class="jadwal-info">
-                <div class="mata-kuliah">PEMROGRAMAN WEB</div>
-                <hr class="gariscontainer">
-                <div class="jam">12:00 - 16:00</div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="jadwal-container">
-            <div class="jadwal-info">
-                <div class="mata-kuliah">JARINGAN KOMPUTER LANJUT</div>
-                <hr class="gariscontainer">
-                <div class="jam">16:20 - 18:00</div>
-            </div>
-        </div> -->
     </div>
 
 
@@ -217,41 +193,6 @@
     </script>
 
     <script>
-        // Ambil tombol Generate QR dan patch Generate QR
-        // var generateQRButton = document.getElementById("generate-qr-button");
-        // var qrPatch = document.getElementById("qr-patch");
-
-        // // Tambahkan event listener untuk tombol Generate QR
-        // generateQRButton.addEventListener("click", function() {
-        //     // Tampilkan patch Generate QR saat tombol ditekan
-        //     qrPatch.style.display = "block";
-        //     // Di sini Anda dapat menambahkan konten untuk patch Generate QR sesuai kebutuhan Anda
-        // });
-
-
-        // // untuk qr code generate
-        // // Function to HTML encode the text
-        // // This creates a new hidden element,
-        // // inserts the given text into it 
-        // // and outputs it out as HTML
-        // function htmlEncode(value) {
-        //     return $('<div/>').text(value)
-        //         .html();
-        // }
-
-        // $(function() {
-        //     // Specify an onclick function for the generate button
-        //     $('#generate-qr-button').click(function() {
-        //         // Generate a unique QR Code with a random value
-        //         let randomValue = Math.random().toString(36).substr(2, 5);
-        //         let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + randomValue + '&chs=160x160&chld=L|0';
-        //         // Replace the src of the image with the new QR code
-        //         $('.qr-code').attr('src', finalURL);
-        //     });
-        // });
-
-
-
         //untuk popup alert log out
         // Fungsi untuk menampilkan popup SweetAlert2
         document.getElementById('logoutLink').addEventListener('click', function(event) {
@@ -314,87 +255,6 @@
                 }
             });
         }
-
-
-        //buat redirect generate qr code
-        // Tambahkan event listener ke tombol "Generate QR"
-        // document.getElementById("generate-qr-button").addEventListener("click", function() {
-        //     // Dapatkan formulir tersembunyi
-        //     var form = document.getElementById("redirect-form");
-
-        //     // Submit formulir tersembunyi dengan metode POST
-        //     form.submit();
-        // });
-
-        // Function to remove data and adjust the schedule
-        // Function to remove data and adjust the schedule
-        // function removeDataAndAdjustSchedule() {
-        //     const containerToRemove = document.querySelector('.jadwal-container');
-        //     if (containerToRemove) {
-        //         const jadwalSekarangContainer = document.querySelector('.content');
-        //         const jadwalSelanjutnyaContainers = document.querySelectorAll('.jadwal-container');
-
-        //         const jadwalSekarang = jadwalSelanjutnyaContainers[0];
-        //         const jadwalSelanjutnya2 = jadwalSelanjutnyaContainers[1];
-
-        //         if (jadwalSekarang) {
-        //             // Remove the current schedule
-        //             jadwalSekarang.remove();
-
-        //             // Move the "Jadwal Sekarang" label and details
-        //             jadwalSekarangContainer.innerHTML = `
-        //             <br>
-        //             <p style="font-size: 32px;">Halo, <b><?php echo $account->nama; ?></b></p>
-        //             <br>
-        //             <br>
-        //             <h2 style="display: flex; align-items: center;">
-        //             <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Sekarang" style="width: 45px; height: 50px; margin-right: 10px;">
-        //             Jadwal Sekarang
-        //             </h2>
-        //             <br>
-        //             <br>
-        //             ${jadwalSelanjutnya2.outerHTML}
-        //             <br>
-                    
-        //             <h2 style="display: flex; align-items: center;">
-        //             <img src="{{ asset('assets/icon/table4.png') }}" alt="Jadwal Selanjutnya" style="width: 45px; height: 50px; margin-right: 10px;">
-        //             Jadwal Selanjutnya
-        //             </h2>
-        //             <br>
-        //             <br>
-        //             `;
-
-
-
-        //             // Show the remaining schedule(s)
-        //             if (jadwalSelanjutnyaContainers.length > 2) {
-        //                 const remainingSchedules = Array.from(jadwalSelanjutnyaContainers).slice(2);
-        //                 remainingSchedules.forEach(schedule => {
-        //                     jadwalSekarangContainer.insertAdjacentElement('beforeend', schedule);
-        //                 });
-        //             }
-        //         }
-
-        //         // Hide the "Generate QR" and "Close Class" buttons
-        //         const generateQRButton = document.getElementById('generate-qr-button');
-        //         const closeClassButton = document.getElementById('close-class-button');
-        //         generateQRButton.style.display = 'none';
-        //         closeClassButton.style.display = 'none';
-
-        //         // Set a timer to show the buttons when the new schedule starts
-        //         const nextScheduleTime = '12:00'; // Replace this with the next schedule time
-        //         const [hours, minutes] = nextScheduleTime.split(':');
-        //         const currentDate = new Date();
-        //         const nextScheduleDate = new Date();
-        //         nextScheduleDate.setHours(hours, minutes, 0, 0);
-        //         const timeUntilNextSchedule = nextScheduleDate - currentDate;
-
-        //         setTimeout(() => {
-        //             generateQRButton.style.display = 'block';
-        //             closeClassButton.style.display = 'block';
-        //         }, timeUntilNextSchedule);
-        //     }
-        // }
     </script>
 </body>
 
