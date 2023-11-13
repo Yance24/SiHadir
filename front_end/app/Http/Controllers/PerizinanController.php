@@ -35,7 +35,12 @@ class PerizinanController extends Controller
             $absenMahasiswa = AbsenMahasiswa::where('id_user','=',$account->id_user)
             ->where('tanggal','=',$tanggal)
             ->where('id_jadwal','=',$item->id_jadwal)
-            ->where('keterangan','=','Pending')
+            ->where(function($query){
+                $query->
+                where('keterangan','=','Pending')->
+                orWhere('keterangan','=','Sakit')->
+                orWhere('keterangan','=','Ijin');
+            })
             ->first();
             
             if($absenMahasiswa == null) $data->push($item);
