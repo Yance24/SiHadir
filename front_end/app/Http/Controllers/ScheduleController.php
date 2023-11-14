@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\AbsenDosen;
+use App\Models\DosenAccounts;
+use App\Models\MataKuliah;
 use App\Models\Jadwal;
 use App\Models\Semester;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 use App\Models\Schedule;
+use App\Models\TahunAjar;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -35,10 +38,16 @@ class ScheduleController extends Controller
         ->orderBy('jam_mulai')
         ->get();
 
+        $dataMataKuliah = MataKuliah::all();
+
+        $dataDosen = DosenAccounts::all();
+
         return view('admin.kelas',[
             'dataJadwal' => $dataJadwal,
             'kelas' => $kelas,
             'semester' => $semester,
+            'dataMatakuliah' => $dataMataKuliah,
+            'dataDosen' => $dataDosen,
         ]);
     }
 
@@ -163,6 +172,32 @@ class ScheduleController extends Controller
 
         return response()->json([
             'status'=> 'success',
+        ]);
+    }
+
+    public function addJadwal(Request $request){
+        $hari = $request->input('hari');
+        $jamMulai = $request->input('jamMulai');
+        $jamSelesai = $request->input('jamSelesai');
+        $idMakul = $request->input('idMakul');
+        $idDosen = $request->input('idDosen');
+        $semester = $request->input('semester');
+        $kelas = $request->input('kelas');
+        $idTahunAjar = TahunAjar::where('status','=','aktif')->first()->id_tahunajar;
+
+        DB::table('jadwal')->insert([
+            'id_makul' => $idMakul,
+            'id_userdosen' => $idDosen,
+            'id_semester' => $semester,
+            'id_tahunajar' => $idTahunAjar,
+            'hari' => $hari,
+            'kelas' => $kelas,
+            'jam_mulai' => $jamMulai,
+            'jam_selesai' => $jamSelesai,
+        ]);
+
+        return response()->json([
+            'status' => 'success',
         ]);
     }
 }

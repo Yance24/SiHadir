@@ -160,6 +160,8 @@
     //url tampilan jadwal yang lebih detail
     Route::get('/admin/schedule/kelas',[ScheduleController::class,'processKelasView']);
 
+    Route::post('/admin/schedule/kelas/addJadwal',[ScheduleController::class,'addJadwal']);
+
     Route::get('/admin/user-data',[]);
 
     // Route::get('/admin/jadwal-akademik', 'App\Http\Controllers\SiHadirController@index');
