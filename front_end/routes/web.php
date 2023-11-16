@@ -162,6 +162,12 @@
 
     Route::post('/admin/schedule/kelas/addJadwal',[ScheduleController::class,'addJadwal']);
 
+    Route::post('/admin/schedule/kelas/getSelectedJadwal',[ScheduleController::class,'getSelectedJadwal']);
+
+    Route::post('/admin/schedule/kelas/updateJadwal',[ScheduleController::class,'updateJadwal']);
+
+    route::post('/admin/schedule/kelas/deleteJadwal',[ScheduleController::class,'deleteJadwal']);
+
     Route::get('/admin/user-data',[]);
 
     // Route::get('/admin/jadwal-akademik', 'App\Http\Controllers\SiHadirController@index');

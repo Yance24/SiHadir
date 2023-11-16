@@ -200,4 +200,55 @@ class ScheduleController extends Controller
             'status' => 'success',
         ]);
     }
+
+    public function getSelectedJadwal(Request $request){
+        $idJadwal = $request->input('idJadwal');
+        $jadwal = Schedule::where('id_jadwal','=',$idJadwal)->first();
+
+        return response()->json([
+            'status' => 'success',
+            'hari' => $jadwal->hari,
+            'jamMulai' => $jadwal->jam_mulai,
+            'jamSelesai' => $jadwal->jam_selesai,
+            'MataKuliah' => $jadwal->id_makul,
+            'DosenPengampu' => $jadwal->id_userdosen,
+        ]);
+    }
+
+    public function updateJadwal(Request $request){
+        $idJadwal = $request->input('idJadwal');
+        $hari = $request->input('hari');
+        $jamMulai = $request->input('jamMulai');
+        $jamSelesai = $request->input('jamSelesai');
+        $idMakul = $request->input('idMakul');
+        $idDosen = $request->input('idDosen');
+        $semester = $request->input('semester');
+        $kelas = $request->input('kelas');
+        $idTahunAjar = TahunAjar::where('status','=','aktif')->first()->id_tahunajar;
+
+        DB::table('jadwal')->where('id_jadwal','=',$idJadwal)->update([
+            'id_makul' => $idMakul,
+            'id_userdosen' => $idDosen,
+            'id_semester' => $semester,
+            'id_tahunajar' => $idTahunAjar,
+            'hari' => $hari,
+            'kelas' => $kelas,
+            'jam_mulai' => $jamMulai,
+            'jam_selesai' => $jamSelesai,
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+        ]);
+    }
+
+    public function deleteJadwal(Request $request){
+        $idJadwal = $request->input('idJadwal');
+
+        DB::table('jadwal')->where('id_jadwal','=',$idJadwal)->delete();
+
+        return response()->json([
+            'status' => 'success',
+        ]);
+    }
 }

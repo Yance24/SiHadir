@@ -91,23 +91,17 @@
 
                     <div class="Aksi-container">
 
-                        <form action="">
-                        <label for="edit-button-<?php echo $jadwal->id?>">
+                        <label for="edit-button-<?php echo $jadwal->id_jadwal?>">
                             <div class="edit-container">
-                                <button>Edit</button>
-                                <input type="submit" id="edit-button-<?php echo $jadwal->id?>" style="display: none;">
+                                <button id="edit-button-<?php echo $jadwal->id_jadwal?>" onclick="editJadwal('<?php echo $jadwal->id_jadwal?>')">Edit</button>
                             </div>
                         </label>
-                        </form>
 
-                        <form action="">
-                        <label for="delete-button-<?php echo $jadwal->id?>">
+                        <label for="delete-button-<?php echo $jadwal->id_jadwal?>">
                             <div class="delete-container">
-                                <button>Delete</button>
-                                <input type="submit" id="delete-button-<?php echo $jadwal->id?>" style="display: none;">
+                                <button id="delete-button-<?php echo $jadwal->id_jadwal?>" onclick="deleteJadwal('<?php echo $jadwal->id_jadwal?>')">Delete</button>
                             </div>
                         </label>
-                        </form>
 
 
 
@@ -181,8 +175,7 @@
                     const idMataKuliah = document.getElementById('pilih-matakuliah').value;
                     const idDosen = document.getElementById('pilih-dosen').value;
 
-                    console
-
+                    // Validasi data
                     if(idMataKuliah == 'none' || idDosen == 'none'){
                         Swal.fire({
                             icon: 'error',
@@ -229,6 +222,179 @@
                 }
             });
         }
+
+        function editJadwal(idJadwal){
+            let formData = new FormData();
+            formData.append('_token','<?php echo csrf_token() ?>');
+            formData.append('idJadwal',idJadwal);
+            $.ajax({
+                url: '/admin/schedule/kelas/getSelectedJadwal',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    if(response.status == 'success'){
+                        Swal.fire({
+                            title: 'Update Jadwal',
+                            html:
+                                '<div class="tambah-jadwal-container">'+
+                                    '<div>Hari</div>'+
+                                        '<select id="pilih-hari">'+
+                                            '<option value="senin">Senin</option>'+
+                                            '<option value="selasa">Selasa</option>'+
+                                            '<option value="rabu">Rabu</option>'+
+                                            '<option value="kamis">Kamis</option>'+
+                                            '<option value="jumat">Jumat</option>'+
+                                            '<option value="Sabtu">Sabtu</option>'+
+                                            '<option value="Minggu">Minggu</option>'+
+                                        '</select>'+
+
+                                    '<span>'+
+                                        '<div class="jam-mulai-container">'+
+                                            '<div>Jam Mulai</div>'+
+                                            '<input type="text" id="jam-mulai-input" placeholder="00:00">'+
+                                        '</div>'+
+                                        '<div class="jam-selesai-container">'+
+                                            '<div>Jam Selesai</div>'+
+                                            '<input type="text" id="jam-selesai-input" placeholder="00:00">'+
+                                        '</div>'+
+                                    '</span>'+
+
+                                    '<div>Mata Kuliah</div>'+
+                                    '<select id="pilih-matakuliah">'+
+                                        '<option value="none" selected>-- Pilih Mata Kuliah --</option>'+
+                                        '@foreach($dataMatakuliah as $makul)'+
+                                        '<option value="<?php echo $makul->id_makul?>"><?php echo $makul->nama_makul?></option>'+
+                                        '@endforeach'+
+                                    '</select>'+
+
+                                    '<div>Dosen pengampu</div>'+
+                                    '<select id="pilih-dosen">'+
+                                        '<option value="none" selected>-- Pilih Dosen Pengampu --</option>'+
+                                        '@foreach($dataDosen as $dosen)'+
+                                        '<option value="<?php echo $dosen->id_userdosen?>"><?php echo $dosen->nama?></option>'+
+                                        '@endforeach'+
+                                    '</select>'+
+                                '</div>'
+                            ,
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#78A2CC',
+                            showCancelButton: true,
+                            cancelButtonText: 'Batal',
+                            cancelButtonColor: '#FC4B4B',
+                            reverseButtons: true,
+                            
+                            didOpen: () => {
+                                document.getElementById('pilih-hari').value = response.hari;
+                                document.getElementById('jam-mulai-input').value = response.jamMulai;
+                                document.getElementById('jam-selesai-input').value = response.jamSelesai;
+                                document.getElementById('pilih-matakuliah').value = response.MataKuliah;
+                                document.getElementById('pilih-dosen').value = response.DosenPengampu;
+                            },
+                        }).then((result) => {
+                            if(result.isConfirmed){
+                                const idMataKuliah = document.getElementById('pilih-matakuliah').value;
+                                const idDosen = document.getElementById('pilih-dosen').value;
+
+                                // Validasi data
+                                if(idMataKuliah == 'none' || idDosen == 'none'){
+                                    Swal.fire({
+                                        icon: 'error',
+                                        text: 'Pilih matakuliah dan dosennya!'
+                                    }).then(() => {
+                                        return;
+                                    });
+                                }
+                    
+                                const formData = new FormData();
+                                const pilihHari = document.getElementById('pilih-hari').value;
+                                const jamMulai = document.getElementById('jam-mulai-input').value;
+                                const jamSelesai = document.getElementById('jam-selesai-input').value;
+                                const semester = '<?php echo $semester?>';
+                                const kelas = '<?php echo $kelas?>';
+
+                                formData.append('_token','<?php echo csrf_token()?>')
+                                formData.append('hari',pilihHari);
+                                formData.append('jamMulai',jamMulai);
+                                formData.append('jamSelesai',jamSelesai);
+                                formData.append('idMakul',idMataKuliah);
+                                formData.append('idDosen',idDosen);
+                                formData.append('semester',semester);
+                                formData.append('kelas',kelas);
+                                formData.append('idJadwal',idJadwal);
+
+                                $.ajax({
+                                    url: '/admin/schedule/kelas/updateJadwal',
+                                    type: 'POST',
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
+
+                                    success: function(response){
+                                        if(response.status == 'success'){
+                                            Swal.fire({
+                                                icon: 'success',
+                                                text: 'Jadwal berhasil dirubah',
+                                                confirmButtonColor: '#7ACC78',
+                                            }).then(() => {
+                                                window.location.href = "";
+                                            });
+                                        }
+                                    }
+
+                                });
+                            }
+                        });
+                    }
+                },
+
+                error: function(error){
+                    console.error('AJAX ERROR : ',error);
+                }
+            });
+        }
+
+        function deleteJadwal(idJadwal){
+            Swal.fire({
+                icon: 'warning',
+                text: 'Apa anda yakin ingin menghapus jadwal?',
+                confirmButtonColor: '#05FF00',
+                confirmButtonText: 'Hapus',
+                showCancelButton: true,
+                cancelButtonColor: '#FC4B4B',
+                cancelButtonText: 'Batal',
+                reverseButtons: true,
+            }).then((result) => {
+                if(result.isConfirmed){
+                    const formData = new FormData();
+                    formData.append('_token','<?php echo csrf_token()?>');
+                    formData.append('idJadwal',idJadwal);
+
+                    $.ajax({
+                        url: '/admin/schedule/kelas/deleteJadwal',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+
+                        success:function(response){
+                            if(response.status == 'success'){
+                                Swal.fire({
+                                    icon: 'success',
+                                    text: 'Jadwal berhasil dihapus',
+                                    confirmButtonColor: '#7ACC78',
+                                }).then(() => {
+                                    window.location.href = "";
+                                });
+                            }
+                        }
+
+                    })
+                }
+            });
+        }
+
     </script>
 
 </body>
