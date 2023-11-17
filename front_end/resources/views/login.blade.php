@@ -81,11 +81,22 @@
             <!-- form di bawah aku buat methodny POST -->
             <form class="bg-light font-weight-bold text-center p-4 shadow mb-5 mx-auto pb-5 shadow align-content-center justify-center" action="<?php echo route('login-validation'); ?>" style="width: 550px; height: auto; border-radius: 45px;" method="POST">
                 @csrf
-                <div class="mb-3 mt-3 pb-4">
-                    <input type="text" name="username" placeholder="USERNAME" class="form-control rounded-pill">
+                <div class="mb-3 mt-3 pb-4 position-relative">
+                    <input type="text" name="username" placeholder="USERNAME" class="form-control rounded-pill @error('username') is-invalid @enderror">
+                    @error('username')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3 form-group input-group password-toggle position-relative">
-                    <input type="password" id="password" class="form-control rounded-pill" placeholder="PASSWORD" name="password">
+                    <input type="password" id="password" class="form-control rounded-pill @error('password') is-invalid @enderror" placeholder="PASSWORD" name="password">
+                    {{-- <i class="far fa-eye fa-lg pe-auto position-absolute top-50" id="password-toggle" type="button"></i> --}}
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                     <i class="far fa-eye fa-lg pe-auto position-absolute top-50" id="password-toggle" type="button"></i>
                 </div>
                 <div class="text-start p-2" style="margin-bottom: 100px">
@@ -111,6 +122,17 @@
     $(document).ready(function() {
         var passwordInput = $("#password");
         var passwordToggle = $("#password-toggle");
+
+        passwordInput.focus(function() {
+            passwordToggle.show();
+            passwordInput.removeClass("is-invalid");
+        });
+
+        passwordInput.blur(function() {
+            if (!passwordToggle.hasClass("is-invalid")) {
+                passwordToggle.show();
+            }
+        });
 
         passwordToggle.click(function() {
             if (passwordInput.attr("type") === "password") {

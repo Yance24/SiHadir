@@ -16,6 +16,11 @@ class LoginValidation extends Controller
         // ]);
 
         // dd($validateData);
+        $request ->validate([
+            'username' => 'required|max:50',
+            'password'=> 'required|min:8|max:50',
+
+        ]);
 
         $account = MahasiswaAccounts::where('id_user','=',$request->input('username'))->first();
         if($account != null){
