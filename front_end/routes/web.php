@@ -175,7 +175,7 @@
     // Route::get('/admin/jadwal-akademik', 'App\Http\Controllers\SiHadirController@index');
 
     //url tampilan userdata admin
-    Route::get('/admin/user-data/admin', [AdminController::class, 'index']);
+    // Route::get('/admin/user-data/admin', [AdminController::class, 'index']);
 
     Route::put('/admin/user-data/admin/{id_admin}', [AdminController::class, 'update'])->name('admin.update');
 
@@ -188,7 +188,7 @@
     Route::delete('/admin/user-data/admin/{id_admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
     //url tampilan userdata dosen
-    Route::get('/admin/user-data/dosen', [DosenController::class, 'index']);
+    // Route::get('/admin/user-data/dosen', [DosenController::class, 'index']);
 
     Route::put('/admin/user-data/dosen/{id_userdosen}', [DosenController::class, 'update'])->name('dosen.update');
 
@@ -199,4 +199,9 @@
     Route::post('/admin/user-data/dosen', [DosenController::class, 'store'])->name('dosen.store');
 
     Route::delete('/admin/user-data/dosen/{id_userdosen}', [DosenController::class, 'destroy'])->name('dosen.destroy');
+
+    //url baru saya
+    Route::get('/admin/user-dataa', [AdminController::class, 'index']);
+
+    Route::get('/admin/user-data/{model}', [AdminController::class, 'getData']);
 

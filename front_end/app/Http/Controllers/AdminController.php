@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\DosenAccounts;
+use App\Models\MahasiswaAccounts;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -15,9 +17,23 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admin = Admin::all(); // Mengambil semua data jadwal dari tabel
-    
-        return view('admin.dataAdmin.index', ['admin' => $admin]);
+        return view("admin.data");
+    }
+
+    public function getData($model)
+    {
+        if ($model == 'mahasiswa') {
+            $data = MahasiswaAccounts::all();
+        } elseif ($model == 'dosen') {
+            $data = DosenAccounts::all();
+        } elseif ($model == 'admin') {
+            $data = Admin::all();
+        } else {
+            // Handle case when model is not recognized
+            abort(404);
+        }
+
+        return view('admin.data', compact('data', 'model'));
     }
 
     /**
@@ -31,6 +47,7 @@ class AdminController extends Controller
 
         return view('admin.dataAdmin.create', ['admin'=> $admin]);
     }
+
 
     /**
      * Store a newly created resource in storage.
