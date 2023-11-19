@@ -17,7 +17,7 @@ use App\Http\Controllers\RekapdataController;
 
 Route::get('/', [RekapdataController::class, 'showSemester'])->name('dashboardrekap');
 Route::get('/rekapdata/kelas{class}/semester{semester}', [RekapdataController::class, 'classDetail'])->name('rekapdata');
+Route::get('/rekapdata/Kelas/{class}/Semester/{semester}/pdf', [RekapdataController::class, 'downloadPDF'])->name('downloadPDF');
 // Route::get('/exportpdf/{class}', [RekapdataController::class, 'exportpdf'])->name('export-pdf');
 // Route::get('/rekapdata/Kelas/{class}/pdf', [RekapdataController::class, 'downloadPDF'])->name('downloadPDF');
-Route::get('/rekapdata/Kelas/{class}/Semester/{semester}/pdf', [RekapdataController::class, 'downloadPDF'])->name('downloadPDF');
 // Route::get('/', [RekapdataController::class, 'listsemester']);
