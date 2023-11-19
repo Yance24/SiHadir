@@ -6,8 +6,9 @@
     <title>Rekap Data</title>
 </head>
 <body>  
-    <a href="{{ route('downloadPDF', ['class' => $class]) }}" target="_blank">Download PDF</a>
+    <a href="{{ route('downloadPDF', ['class' => $class, 'semester' => $semester]) }}" target="_blank">Download PDF</a>
     <h1> Kelas {{ $class }}</h1>
+    <h1>Semester {{ $semester }}</h1>
     <table border="1">
         <thead>
             <tr>

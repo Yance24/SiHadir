@@ -14,10 +14,10 @@ use App\Http\Controllers\RekapdataController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboardrekapdata');
-});
-Route::get('/dashboardrekap', [RekapdataController::class, 'showSemester'])->name('dashboardrekap');
-Route::get('/rekapdata/Kelas/{class}', [RekapdataController::class, 'classDetail'])->name('rekapdata');
+
+Route::get('/', [RekapdataController::class, 'showSemester'])->name('dashboardrekap');
+Route::get('/rekapdata/kelas{class}/semester{semester}', [RekapdataController::class, 'classDetail'])->name('rekapdata');
 // Route::get('/exportpdf/{class}', [RekapdataController::class, 'exportpdf'])->name('export-pdf');
-Route::get('/rekapdata/Kelas/{class}/pdf', [RekapdataController::class, 'downloadPDF'])->name('downloadPDF');
+// Route::get('/rekapdata/Kelas/{class}/pdf', [RekapdataController::class, 'downloadPDF'])->name('downloadPDF');
+Route::get('/rekapdata/Kelas/{class}/Semester/{semester}/pdf', [RekapdataController::class, 'downloadPDF'])->name('downloadPDF');
+// Route::get('/', [RekapdataController::class, 'listsemester']);

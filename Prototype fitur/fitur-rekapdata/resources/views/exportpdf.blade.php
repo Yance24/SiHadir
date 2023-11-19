@@ -7,6 +7,7 @@
 </head>
 <body>  
     <h1> Kelas {{ $class }}</h1>
+    <h1>Semester {{ $semester }}</h1>
     <table border="1">
         <thead>
             <tr>

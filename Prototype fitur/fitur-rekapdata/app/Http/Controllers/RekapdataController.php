@@ -21,18 +21,32 @@ class RekapdataController extends Controller
         return view('dashboardrekapdata', ['groupedData' => $groupedData]);
     }
 
-    public function classDetail($class)
+    public function classDetail($class, $semester)
     {
-        $dataForClass = mahasiswaModel::where('kelas', $class)->get();
+        $dataForClass = mahasiswaModel::where('kelas', $class)
+            ->where('semester', $semester)
+            ->orderBy('kelas')
+            ->get();
 
-        return view('rekapdata', ['class' => $class, 'dataForClass' => $dataForClass]);
+        return view('rekapdata', ['class' => $class, 'semester' => $semester, 'dataForClass' => $dataForClass]);
     }
-    public function downloadPDF($class)
+    public function downloadPDF($class, $semester)
     {
-        $dataForClass = mahasiswaModel::where('kelas', $class)->get();
+        // $dataForClass = mahasiswaModel::where('kelas', $class)->get();
+        $dataForClass = mahasiswaModel::where('kelas', $class)
+            ->where('semester', $semester)
+            ->orderBy('kelas')
+            ->get();
 
-        $pdf = PDF::loadView('exportpdf', ['class' => $class, 'dataForClass' => $dataForClass]);
+        $pdf = PDF::loadView('exportpdf', ['class' => $class, 'semester' => $semester, 'dataForClass' => $dataForClass]);
 
         return $pdf->download('rekapdata.pdf');
+    }
+
+    public function listsemester()
+    {
+        $semester = mahasiswaModel::pluck('semester')->unique();
+        $kelas = mahasiswaModel::where('semester', $semester);
+        return view('dashboard', ['semester' => $semester], ['kelas' => $kelas]);
     }
 }
