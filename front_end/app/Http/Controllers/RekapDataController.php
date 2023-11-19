@@ -64,12 +64,6 @@ class RekapDataController extends Controller
         return $data;
     }
 
-    // protected function countKompensasi($jumlahAlpa){
-    //     if($jumlahAlpa <= 1) return $jumlahAlpa * 5;
-    //     else if($jumlahAlpa < 8) return 8;
-    //     else return $jumlahAlpa * 2;
-    // }
-
     public function updateChanges(Request $request){
         $idUser = explode(',',$request->input('idUser'));
         $jumlahAlpa = explode(',',$request->input('jumlahAlpa'));

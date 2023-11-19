@@ -10,6 +10,7 @@
     use App\Http\Controllers\AdminController;
     use App\Http\Controllers\DosenController;
 use App\Http\Controllers\RekapDataController;
+use App\Http\Controllers\UserDataController;
 use Illuminate\Support\Facades\Route;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Carbon;
@@ -178,12 +179,10 @@ use Illuminate\Support\Facades\Route;
 
     Route::post('/admin/rekapData/kelas/updateChanges',[RekapDataController::class,'updateChanges']);
 
+    //user Data
+    Route::get('/admin/user-data',[UserDataController::class,'processView']);
 
-
-
-
-
-    Route::get('/admin/user-data',[]);
+    Route::post('/admin/user-data/addUser',[UserDataController::class,'addUser']);
 
     // Route::get('/admin/jadwal-akademik', 'App\Http\Controllers\SiHadirController@index');
 
