@@ -43,10 +43,10 @@ class RekapdataController extends Controller
         return $pdf->download('rekapdata.pdf');
     }
 
-    public function listsemester()
-    {
-        $semester = mahasiswaModel::pluck('semester')->unique();
-        $kelas = mahasiswaModel::where('semester', $semester);
-        return view('dashboard', ['semester' => $semester], ['kelas' => $kelas]);
-    }
+    // public function listsemester()
+    // {
+    //     $semester = mahasiswaModel::pluck('semester')->unique();
+    //     $kelas = mahasiswaModel::where('semester', $semester);
+    //     return view('dashboard', ['semester' => $semester], ['kelas' => $kelas]);
+    // }
 }
