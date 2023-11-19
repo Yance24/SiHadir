@@ -20,8 +20,8 @@ class ScheduleController extends Controller
         if(!LoginValidation::validateUser('Admin')) return redirect()->back();
 
 
-        $data = $this->parseDataSemester();
-        return view('admin.schedule',[
+        $data = $this::parseDataSemester();
+        return view('admin.jadwal.schedule',[
             'dataSemester' => $data,
         ]);
     }
@@ -38,11 +38,11 @@ class ScheduleController extends Controller
         ->orderBy('jam_mulai')
         ->get();
 
-        $dataMataKuliah = MataKuliah::all();
+        $dataMataKuliah = MataKuliah::all();    
 
         $dataDosen = DosenAccounts::all();
 
-        return view('admin.kelas',[
+        return view('admin.jadwal.kelas',[
             'dataJadwal' => $dataJadwal,
             'kelas' => $kelas,
             'semester' => $semester,
@@ -51,7 +51,7 @@ class ScheduleController extends Controller
         ]);
     }
 
-    protected function parseDataSemester(){
+    static public function parseDataSemester(){
         $semester = Semester::all();
         $data = collect();
         foreach($semester as $item){

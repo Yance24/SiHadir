@@ -9,7 +9,8 @@
     use App\Http\Controllers\BarcodeController;
     use App\Http\Controllers\AdminController;
     use App\Http\Controllers\DosenController;
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RekapDataController;
+use Illuminate\Support\Facades\Route;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Carbon;
     use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -168,11 +169,27 @@
 
     Route::post('/admin/schedule/kelas/updateJadwal',[ScheduleController::class,'updateJadwal']);
 
-    route::post('/admin/schedule/kelas/deleteJadwal',[ScheduleController::class,'deleteJadwal']);
+    Route::post('/admin/schedule/kelas/deleteJadwal',[ScheduleController::class,'deleteJadwal']);
+
+
+    Route::get('/admin/rekapData',[RekapDataController::class,'processView']);
+
+    Route::get('/admin/rekapData/kelas',[RekapDataController::class,'processKelasView']);
+
+    Route::post('/admin/rekapData/kelas/updateChanges',[RekapDataController::class,'updateChanges']);
+
+
+
+
+
 
     Route::get('/admin/user-data',[]);
 
     // Route::get('/admin/jadwal-akademik', 'App\Http\Controllers\SiHadirController@index');
+
+
+
+
 
     //url tampilan userdata admin
     Route::get('/admin/user-data/admin', [AdminController::class, 'index']);

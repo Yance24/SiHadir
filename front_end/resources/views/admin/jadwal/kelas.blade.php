@@ -63,11 +63,6 @@
                 </div>
             </label>
 
-            <!-- Aku ndk tau ini nanti logicnya bakal gimana -->
-            <div class="search-button-container">
-                <input type="text" placeholder="Search">
-            </div>
-
             <div class="jadwal-container">
 
                 <!-- Baris keterangan di paling atas tabel -->

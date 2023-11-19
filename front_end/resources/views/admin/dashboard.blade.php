@@ -33,22 +33,19 @@
                 <div class="expanded-user-container">
                     <label for="admin-button">
                         <div class="admin-container">
-                            <button>Admin</button>
-                            <input type="submit" id="admin-button" name="user" value="Admin" style="display: none;">
+                            <button type="submit" id="admin-button" name="user" value="Admin">Admin</button>
                         </div>
                     </label>
 
                     <label for="dosen-button">
                         <div class="dosen-container">
-                            <button>Dosen</button>
-                            <input type="submit" id="dosen-button" name="user" value="Dosen" style="display: none;">
+                            <button type="submit" id="dosen-button" name="user" value="Dosen">Dosen</button>
                         </div>
                     </label>
 
                     <label for="mahasiswa-button">
                         <div class="mahasiswa-container">
-                            <button>Mahasiswa</button>
-                            <input type="submit" id="mahasiswa-button" name="user" value="Mahasiswa" style="display: none;">
+                            <button type="submit" id="mahasiswa-button" name="user" value="Mahasiswa">Mahasiswa</button>
                         </div>
                     </label>
 
@@ -59,7 +56,7 @@
             </div>
 
             <div class="attendance-container">
-                <a href="/admin/attendanceRecap">Attendance Recap</a>
+                <a href="/admin/rekapData">Attendance Recap</a>
             </div>
 
             <div class="logout-container">
