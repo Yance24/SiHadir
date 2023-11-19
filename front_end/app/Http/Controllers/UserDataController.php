@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\DosenAccount;
-use App\Models\MahasiswaAccount;
+use App\Models\DosenAccounts;
+use App\Models\MahasiswaAccounts;
 use Illuminate\Http\Request;
 
 class UserDataController extends Controller
@@ -24,9 +24,9 @@ class UserDataController extends Controller
             ]);
         }
         else if($user == 'Dosen')
-            $data = DosenAccount::all();
+            $data = DosenAccounts::all();
         else if($user == 'Mahasiswa')
-            $data = MahasiswaAccount::all();
+            $data = MahasiswaAccounts::all();
         else return redirect()->back();
         
 

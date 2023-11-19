@@ -7,6 +7,8 @@
     use App\Http\Controllers\PerizinanController;
     use App\Http\Controllers\ScheduleController;
     use App\Http\Controllers\BarcodeController;
+    use App\Http\Controllers\AdminController;
+    use App\Http\Controllers\DosenController;
     use Illuminate\Support\Facades\Route;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Carbon;
@@ -171,3 +173,30 @@
     Route::get('/admin/user-data',[]);
 
     // Route::get('/admin/jadwal-akademik', 'App\Http\Controllers\SiHadirController@index');
+
+    //url tampilan userdata admin
+    Route::get('/admin/user-data/admin', [AdminController::class, 'index']);
+
+    Route::put('/admin/user-data/admin/{id_admin}', [AdminController::class, 'update'])->name('admin.update');
+
+    Route::get('/admin/user-data/admin/{id_admin}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+
+    Route::get('/admin/user-data/admin/create', [AdminController::class, 'create'])->name('admin.create');
+
+    Route::post('/admin/user-data/admin', [AdminController::class, 'store'])->name('admin.store');
+
+    Route::delete('/admin/user-data/admin/{id_admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
+
+    //url tampilan userdata dosen
+    Route::get('/admin/user-data/dosen', [DosenController::class, 'index']);
+
+    Route::put('/admin/user-data/dosen/{id_userdosen}', [DosenController::class, 'update'])->name('dosen.update');
+
+    Route::get('/admin/user-data/dosen/{id_userdosen}/edit', [DosenController::class, 'edit'])->name('dosen.edit');
+
+    Route::get('/admin/user-data/dosen/create', [DosenController::class, 'create'])->name('dosen.create');
+
+    Route::post('/admin/user-data/dosen', [DosenController::class, 'store'])->name('dosen.store');
+
+    Route::delete('/admin/user-data/dosen/{id_userdosen}', [DosenController::class, 'destroy'])->name('dosen.destroy');
+
